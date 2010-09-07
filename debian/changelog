@@ -1,0 +1,5 @@
+gcc-mingw-w64 (4.5.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Stephen Kitt <steve@sk2.org>  Tue, 07 Sep 2010 15:57:34 +0200
