@@ -74,6 +74,8 @@ $(unpack_stamp):
 	mv gcc-$(deb_upstream_version) $(upstream_dir)
 	mkdir -p $(stampdir)
 	touch $@
+	# Apply our extra patch here...
+	patch -p0 < debian/patches/mingw-include.patch
 
 clean:
 	dh_testdir
