@@ -5,6 +5,8 @@ This work was packaged for Debian by:
 It is based on the gcc-4.5-source package maintained by the Debian GCC
 Maintainers <debian-gcc@lists.debian.org>.
 
+The following is reproduced from the copyright file in gcc-4.5-source:
+
 This is the Debian GNU/Linux prepackaged version of the GNU compiler
 collection, containing Ada, C, C++, Fortran 95, Java, Objective-C,
 Objective-C++, and Treelang compilers, documentation, and support
