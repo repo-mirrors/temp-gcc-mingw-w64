@@ -9,16 +9,18 @@
 top_dir := $(shell pwd)
 gcc_dir := /usr/src/gcc-4.5
 upstream_dir := $(top_dir)/src
-build64_dir := $(top_dir)/build64
-build32_dir := $(top_dir)/build32
+build_dir := $(top_dir)/build
 stampdir := $(top_dir)/stamp
 deb_version := $(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 gnu_upstream_version := $(shell echo $(deb_upstream_version) | cut -d. -f1-3)
-package := gcc-mingw-w64
 
-target32 := i486-w64-mingw32
-target64 := amd64-w64-mingw32
+# Include the rules variant - symlink rules.bootstrap to produce the
+# minimal gcc required to build mingw-w64, or rules.full to produce
+# the full gcc.
+include debian/rules.variant
+
+targets := i486-w64-mingw32 x86_64-w64-mingw32
 
 CFLAGS = -Wall -g
 # TODO Handle install with nostrip?
@@ -29,16 +31,13 @@ else
     CFLAGS += -O2
 endif
 
-#number of jobs to run for build
+# Number of jobs to run for build
 ifeq ($(USE_NJOBS),no)
   NJOBS :=
   USE_CPUS := 1
 else
-  ifeq ($(with_java),yes)
-    MEM_PER_CPU = 192
-  else
-    MEM_PER_CPU = 128
-  endif
+  # Increase to 192 if building Java
+  MEM_PER_CPU = 128
   NUM_CPUS := $(shell if echo $(USE_NJOBS) | grep -q -E '^[0-9]+$$'; \
                         then echo $(USE_NJOBS); \
                         else getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1; fi)
@@ -53,10 +52,6 @@ endif
 # Support parallel=<n> in DEB_BUILD_OPTIONS (see #209008)
 ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS := -j $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
-endif
-
-ifeq ($(with_pascal),yes)
-  NJOBS :=
 endif
 
 # Patch targets
@@ -76,45 +71,94 @@ $(unpack_stamp):
 	touch $@
 	# Apply our extra patch here...
 	patch -p0 < debian/patches/mingw-include.patch
+	patch -p0 < debian/patches/disable-multilib.patch
 
 clean:
 	dh_testdir
 	dh_testroot
 	dh_clean
-	rm -rf $(stampdir) $(build32_dir) $(build64_dir) $(upstream_dir) .pc autotools_files series
+	rm -rf $(stampdir) $(build_dir) $(upstream_dir) .pc autotools_files series
 
-CONFFLAGS = --disable-shared --disable-multilib --prefix=/usr --with-system-zlib --libexecdir=/usr/lib --without-included-gettext
+# Configuration constructed as in the gcc package
+PF=usr
+libdir=lib
+libexecdir=$(PF)/$(libdir)
 
-configure32-stamp: $(patch_stamp)
+# Standard Debian configuration flags
+# TODO Re-enable shared, multilib and linker-build-id
+CONFFLAGS = \
+	--prefix=/$(PF) \
+	--disable-shared \
+	--disable-multilib \
+	--enable-linker-build-id \
+	--with-system-zlib \
+	--libexecdir=/$(libexecdir) \
+	--without-included-gettext
+# Target-specific
+#	--with-gxx-include-dir=/$(cxx_inc_dir)
+CONFFLAGS += \
+	--libdir=/$(PF)/$(libdir) \
+	--enable-libstdcxx-time=yes \
+	--with-tune=generic
+# Target-specific
+#	--with-headers=/$(PF)/$(DEB_TARGET_GNU_TYPE)/include
+#	--with-libs=/$(PF)/$(DEB_TARGET_GNU_TYPE)/lib
+# MinGW-w64 flags
+CONFFLAGS += \
+	--enable-leading-mingw64-underscores
+# Languages
+CONFFLAGS += \
+	--enable-languages=$(languages)
+#CONFFLAGS = --disable-shared --disable-multilib --prefix=/usr --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-languages=c,c++,fortran --with-gnu-ld --with-gnu-as --enable-leading-mingw64-underscores
+
+configure-stamp: $(unpack_stamp) # $(patch_stamp)
 	dh_testdir
-	mkdir -p $(build32_dir)
-	cd $(build32_dir) && \
-	$(upstream_dir)/configure $(CONFFLAGS) --target=$(target32)
-	touch $@
-configure64-stamp: $(patch_stamp)
-	dh_testdir
-	mkdir -p $(build64_dir)
-	cd $(build64_dir) && \
-	$(upstream_dir)/configure $(CONFFLAGS) --enable-64bit --target=$(target64)
+	for target in $(targets); do \
+		mkdir -p $(build_dir)/$$target && \
+		cd $(build_dir)/$$target && \
+		$(upstream_dir)/configure $(CONFFLAGS) \
+			--target=$$target \
+			--with-gxx-include-dir=/$(PF)/include/c++/$(gnu_upstream_version); \
+	done
+# \
+#			--with-headers=/$(PF)/$$target/include \
+#			--with-libs=/$(PF)/$$target/lib \
+#			--with-as=/usr/bin/$$target-as \
+#			--with-ld=/usr/bin/$$target-ld; \
+#	done
 	touch $@
 
-build: build32-stamp build64-stamp
-build32-stamp: configure32-stamp
+build: build-stamp
+build-stamp: configure-stamp
 	dh_testdir
-	cd $(build32_dir) && $(MAKE) $(NJOBS) all-gcc
-	touch $@
-build64-stamp: configure64-stamp
-	dh_testdir
-	cd $(build64_dir) && $(MAKE) $(NJOBS) all-gcc
+	for target in $(targets); do \
+		cd $(build_dir)/$$target && $(MAKE) $(NJOBS) $(BUILD_TARGET); \
+	done
 	touch $@
 
 install: install-stamp
-install-stamp: build32-stamp build64-stamp
+install-stamp: build-stamp
 	dh_testdir
 	dh_testroot
-	dh_clean -k
-	cd $(build32_dir) && make install-gcc DESTDIR=$(top_dir)/debian/$(package)
-	cd $(build64_dir) && make install-gcc DESTDIR=$(top_dir)/debian/$(package)
+	dh_prep
+	for target in $(targets); do \
+		cd $(build_dir)/$$target && $(MAKE) $(INSTALL_TARGET) DESTDIR=$(top_dir)/debian/$(package); \
+	done
+
+	# Remove files which conflict with other packages
+	# gcc-4.5-locales
+	rm -rf $(top_dir)/debian/$(package)/usr/share/locale
+	# binutils-dev
+	rm -f $(top_dir)/debian/$(package)/usr/lib/libiberty.a
+	# libstdc++6-4.5-dbg (potentially)
+	rm -rf $(top_dir)/debian/$(package)/usr/share/gcc-4.5.1/python
+	# -doc packages
+	rm -rf $(top_dir)/debian/$(package)/usr/share/info
+	rm -rf $(top_dir)/debian/$(package)/usr/share/man/man7
+
+	for i in 1 2; do \
+		find $(top_dir)/debian/$(package)/ -type d -empty | while read i; do rmdir $$i; done; \
+	done
 
 	touch $@
 
@@ -125,7 +169,7 @@ binary-arch: build install
 	dh_installdocs
 	dh_installman
 	dh_installchangelogs $(upstream_dir)/ChangeLog
-	dh_strip
+	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(gnu_upstream_version)/lib
 	dh_compress
 	dh_fixperms
 	dh_installdeb
