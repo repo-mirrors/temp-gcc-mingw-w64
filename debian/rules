@@ -14,6 +14,7 @@ stampdir := $(top_dir)/stamp
 deb_version := $(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 gnu_upstream_version := $(shell echo $(deb_upstream_version) | cut -d. -f1-3)
+base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 
 # Include the rules variant - symlink rules.bootstrap to produce the
 # minimal gcc required to build mingw-w64, or rules.full to produce
@@ -94,38 +95,33 @@ CONFFLAGS = \
 	--with-system-zlib \
 	--libexecdir=/$(libexecdir) \
 	--without-included-gettext
-# Target-specific
-#	--with-gxx-include-dir=/$(cxx_inc_dir)
 CONFFLAGS += \
 	--libdir=/$(PF)/$(libdir) \
 	--enable-libstdcxx-time=yes \
 	--with-tune=generic
-# Target-specific
-#	--with-headers=/$(PF)/$(DEB_TARGET_GNU_TYPE)/include
-#	--with-libs=/$(PF)/$(DEB_TARGET_GNU_TYPE)/lib
 # MinGW-w64 flags
 CONFFLAGS += \
-	--enable-leading-mingw64-underscores
+	--enable-leading-mingw64-underscores \
+	--enable-version-specific-runtime-libs
+# leading-mingw64-underscores is needed to correctly link on x86_64
+# version-specific-runtime-libs puts target-specific libraries in
+# /usr/lib/gcc rather than /usr/$(target)
 # Languages
 CONFFLAGS += \
 	--enable-languages=$(languages)
 #CONFFLAGS = --disable-shared --disable-multilib --prefix=/usr --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-languages=c,c++,fortran --with-gnu-ld --with-gnu-as --enable-leading-mingw64-underscores
 
-configure-stamp: $(unpack_stamp) # $(patch_stamp)
+configure-stamp: $(patch_stamp)
 	dh_testdir
 	for target in $(targets); do \
 		mkdir -p $(build_dir)/$$target && \
 		cd $(build_dir)/$$target && \
 		$(upstream_dir)/configure $(CONFFLAGS) \
 			--target=$$target \
-			--with-gxx-include-dir=/$(PF)/include/c++/$(gnu_upstream_version); \
+			--with-gxx-include-dir=/$(PF)/include/c++/$(base_version) \
+			--with-as=/usr/bin/$$target-as \
+			--with-ld=/usr/bin/$$target-ld; \
 	done
-# \
-#			--with-headers=/$(PF)/$$target/include \
-#			--with-libs=/$(PF)/$$target/lib \
-#			--with-as=/usr/bin/$$target-as \
-#			--with-ld=/usr/bin/$$target-ld; \
-#	done
 	touch $@
 
 build: build-stamp
@@ -156,6 +152,25 @@ install-stamp: build-stamp
 	rm -rf $(top_dir)/debian/$(package)/usr/share/info
 	rm -rf $(top_dir)/debian/$(package)/usr/share/man/man7
 
+	# No need to ship empty manpages
+	rm -rf $(top_dir)/debian/$(package)/usr/share/man/man1
+
+	# We don't need libiberty
+	rm -f $(patsubst %,$(top_dir)/debian/$(package)/$(PF)/%/lib/libiberty.a,$(targets))
+
+	# Drop .la files
+	rm -f $(patsubst %,$(top_dir)/debian/$(package)/$(PF)/lib/gcc/%/$(gnu_upstream_version)/*.la,$(targets))
+
+	# Move libraries to base directories and add version-specific links
+ifneq ($(base_version),$(gnu_upstream_version))
+	[ -d $(top_dir)/debian/$(package)/usr/include/c++ ] && cd $(top_dir)/debian/$(package)/usr/include/c++ && ln -s $(base_version) $(gnu_upstream_version) || true
+	for target in $(targets); do \
+		cd $(top_dir)/debian/$(package)/$(PF)/lib/gcc/$$target && \
+		mv $(gnu_upstream_version) $(base_version) && \
+		ln -s $(base_version) $(gnu_upstream_version); \
+	done
+endif
+
 	for i in 1 2; do \
 		find $(top_dir)/debian/$(package)/ -type d -empty | while read i; do rmdir $$i; done; \
 	done
@@ -169,7 +184,7 @@ binary-arch: build install
 	dh_installdocs
 	dh_installman
 	dh_installchangelogs $(upstream_dir)/ChangeLog
-	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(gnu_upstream_version)/lib
+	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib
 	dh_compress
 	dh_fixperms
 	dh_installdeb
