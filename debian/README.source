@@ -24,7 +24,4 @@ Note that once mingw-w64 is available (it's an architecture "all"
 package), building the gcc package no longer requires this series of
 steps.
 
-Also note that the patch in http://bugs.debian.org/600502 needs to be
-applied to gcc-4.5-source.
-
- -- Stephen Kitt <steve@sk2.org>, Sun,  7 Nov 2010 23:26:02 +0100
+ -- Stephen Kitt <steve@sk2.org>, Mon, 15 Nov 2010 19:36:23 +0100
