@@ -61,6 +61,7 @@ series_file = series
 unpack_stamp = $(stampdir)/unpack
 patch_stamp = $(stampdir)/patch
 GFDL_INVARIANT_FREE=yes
+srcdir=$(upstream_dir)
 include $(gcc_dir)/debian/rules.patch
 
 unpack: $(unpack_stamp)
