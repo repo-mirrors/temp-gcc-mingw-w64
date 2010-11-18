@@ -148,7 +148,9 @@ install-stamp: build-stamp
 	# binutils-dev
 	rm -f $(top_dir)/debian/$(package)/usr/lib/libiberty.a
 	# libstdc++6-4.5-dbg (potentially)
-	rm -rf $(top_dir)/debian/$(package)/usr/share/gcc-4.5.1/python
+	rm -rf $(top_dir)/debian/$(package)/usr/share/gcc-$(gnu_upstream_version)/python
+	# libstdc++6-4.6-dev
+	ls -1 $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/|grep -v w64-mingw32|xargs -I{} rm -rf $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/{}
 	# -doc packages
 	rm -rf $(top_dir)/debian/$(package)/usr/share/info
 	rm -rf $(top_dir)/debian/$(package)/usr/share/man/man7
