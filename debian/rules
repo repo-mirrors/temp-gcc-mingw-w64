@@ -21,7 +21,7 @@ base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1
 # the full gcc.
 include debian/rules.variant
 
-targets := i486-w64-mingw32 x86_64-w64-mingw32
+targets := i686-w64-mingw32 x86_64-w64-mingw32
 
 CFLAGS = -Wall -g
 # TODO Handle install with nostrip?
