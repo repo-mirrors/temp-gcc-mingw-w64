@@ -11,7 +11,7 @@ gcc_dir := /usr/src/gcc-4.5
 upstream_dir := $(top_dir)/src
 build_dir := $(top_dir)/build
 stampdir := $(top_dir)/stamp
-deb_version := $(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
+deb_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-4.5-source)
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 gnu_upstream_version := $(shell echo $(deb_upstream_version) | cut -d. -f1-3)
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
@@ -23,14 +23,8 @@ include debian/rules.variant
 
 targets := i686-w64-mingw32 x86_64-w64-mingw32
 
-CFLAGS = -Wall -g
-# TODO Handle install with nostrip?
-
-ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
-    CFLAGS += -O0
-else
-    CFLAGS += -O2
-endif
+CFLAGS = $(shell dpkg-buildflags --get CFLAGS)
+CFLAGS += -Wall
 
 # Number of jobs to run for build
 ifeq ($(USE_NJOBS),no)
@@ -66,7 +60,7 @@ include $(gcc_dir)/debian/rules.patch
 
 unpack: $(unpack_stamp)
 $(unpack_stamp):
-	tar xJf $(gcc_dir)/gcc-$(gnu_upstream_version)-dfsg.tar.xz
+	tar xf $(gcc_dir)/gcc-$(gnu_upstream_version)-dfsg.tar.*
 	rm -rf $(upstream_dir)
 	mv gcc-$(deb_upstream_version) $(upstream_dir)
 	mkdir -p $(stampdir)
@@ -78,8 +72,8 @@ $(unpack_stamp):
 clean:
 	dh_testdir
 	dh_testroot
-	dh_clean
 	rm -rf $(stampdir) $(build_dir) $(upstream_dir) .pc autotools_files series
+	dh_clean
 
 # Configuration constructed as in the gcc package
 PF=usr
@@ -115,9 +109,8 @@ CONFFLAGS += \
 configure-stamp: $(patch_stamp)
 	dh_testdir
 	for target in $(targets); do \
-		mkdir -p $(build_dir)/$$target && \
-		cd $(build_dir)/$$target && \
-		$(upstream_dir)/configure $(CONFFLAGS) \
+		dh_auto_configure -B$(build_dir)/$$target -D$(upstream_dir) -- \
+			$(CONFFLAGS) \
 			--target=$$target \
 			--with-gxx-include-dir=/$(PF)/include/c++/$(base_version) \
 			--with-as=/usr/bin/$$target-as \
@@ -139,7 +132,7 @@ install-stamp: build-stamp
 	dh_testroot
 	dh_prep
 	for target in $(targets); do \
-		cd $(build_dir)/$$target && $(MAKE) $(INSTALL_TARGET) DESTDIR=$(top_dir)/debian/$(package); \
+		dh_auto_install -B$(build_dir)/$$target -- $(INSTALL_TARGET); \
 	done
 
 	# Remove files which conflict with other packages
@@ -188,11 +181,12 @@ binary-arch: build install
 	dh_installman
 	dh_installchangelogs $(upstream_dir)/ChangeLog
 	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib
+	dh_lintian
 	dh_compress
 	dh_fixperms
 	dh_installdeb
 	dh_shlibdeps
-	dh_gencontrol
+	dh_gencontrol -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version)
 	dh_md5sums
 	dh_builddeb
 
