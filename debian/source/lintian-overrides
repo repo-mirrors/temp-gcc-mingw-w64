@@ -1,0 +1,5 @@
+# debian/control is a symlink to simplify building bootstrap vs full gcc
+gcc-mingw-w64 source: debian-control-file-is-a-symlink
+
+# debian/watch tracks gcc-4.5-source so we know when to rebuild
+gcc-mingw-w64 source: debian-watch-file-in-native-package
