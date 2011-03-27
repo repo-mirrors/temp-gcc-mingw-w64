@@ -96,9 +96,7 @@ CONFFLAGS += \
 	--with-tune=generic
 # MinGW-w64 flags
 CONFFLAGS += \
-	--enable-leading-mingw64-underscores \
 	--enable-version-specific-runtime-libs
-# leading-mingw64-underscores is needed to correctly link on x86_64
 # version-specific-runtime-libs puts target-specific libraries in
 # /usr/lib/gcc rather than /usr/$(target)
 # Languages
@@ -108,6 +106,7 @@ CONFFLAGS += \
 
 configure-stamp: $(patch_stamp)
 	dh_testdir
+	set -e; \
 	for target in $(targets); do \
 		dh_auto_configure -B$(build_dir)/$$target -D$(upstream_dir) -- \
 			$(CONFFLAGS) \
@@ -121,6 +120,7 @@ configure-stamp: $(patch_stamp)
 build: build-stamp
 build-stamp: configure-stamp
 	dh_testdir
+	set -e; \
 	for target in $(targets); do \
 		cd $(build_dir)/$$target && $(MAKE) $(NJOBS) $(BUILD_TARGET); \
 	done
@@ -131,8 +131,9 @@ install-stamp: build-stamp
 	dh_testdir
 	dh_testroot
 	dh_prep
+	set -e; \
 	for target in $(targets); do \
-		dh_auto_install -B$(build_dir)/$$target -- $(INSTALL_TARGET); \
+		cd $(build_dir)/$$target && $(MAKE) DESTDIR=$(top_dir)/debian/$(package) $(INSTALL_TARGET); \
 	done
 
 	# Remove files which conflict with other packages
