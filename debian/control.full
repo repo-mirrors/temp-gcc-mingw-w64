@@ -3,7 +3,7 @@ Section: devel
 Priority: extra
 Maintainer: Stephen Kitt <steve@sk2.org>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev,
- gcc-4.5-source (>= 4.5.1-11), xz-utils, libgmp3-dev (>= 2:4.1),
+ gcc-4.5-source (>= 4.5.1-11), xz-utils, libgmp-dev,
  libmpfr-dev (>= 2.3.2), libmpc-dev (>= 0.8.0), zlib1g-dev,
  mingw-w64-dev (>= 1.0), binutils-mingw-w64 (>= 2.20)
 Standards-Version: 3.9.1
@@ -15,6 +15,7 @@ Package: gcc-mingw-w64
 Architecture: i386 amd64
 Depends: ${shlibs:Depends}, ${misc:Depends},
  binutils-mingw-w64 (>= 2.20), mingw-w64-dev (>= 1.0)
+Built-Using: gcc-4.5 (= ${binary:Version})
 Conflicts: gcc-mingw-w64-bootstrap
 Replaces: gcc-mingw-w64-bootstrap
 Recommends: gcc-4.5-locales (>= ${local:Version}),
