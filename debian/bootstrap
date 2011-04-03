@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # Builds the gcc-mingw-w64-bootstrap package, required to build
-# mingw-w64.
+# mingw-w64. This script is intended to be run from the directory
+# in which you extracted the source (ie. not run within the debian
+# directory but from the debian directory's parent).
+#
 # By default this will use dpkg-buildpackage but you can specify an
 # alternate build command on the command line:
 #	./debian/bootstrap pdebuild
