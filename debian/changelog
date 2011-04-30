@@ -1,3 +1,9 @@
+gcc-mingw-w64 (0.2) unstable; urgency=low
+
+  * Switch to gcc-4.6.
+
+ -- Stephen Kitt <steve@sk2.org>  Fri, 29 Apr 2011 08:09:03 +0200
+
 gcc-mingw-w64 (0.1) unstable; urgency=low
 
   * Initial release (Closes: #602997).

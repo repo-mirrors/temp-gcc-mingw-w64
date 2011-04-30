@@ -1,17 +1,17 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gcc-mingw-w64 using gcc-4.5-source.
+# Build gcc-mingw-w64 using gcc-4.6-source.
 # Copyright © 2010 Stephen Kitt <steve@sk2.org>
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
 top_dir := $(shell pwd)
-gcc_dir := /usr/src/gcc-4.5
+gcc_dir := /usr/src/gcc-4.6
 upstream_dir := $(top_dir)/src
 build_dir := $(top_dir)/build
 stampdir := $(top_dir)/stamp
-deb_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-4.5-source)
+deb_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-4.6-source)
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 gnu_upstream_version := $(shell echo $(deb_upstream_version) | cut -d. -f1-3)
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
@@ -137,11 +137,11 @@ install-stamp: build-stamp
 	done
 
 	# Remove files which conflict with other packages
-	# gcc-4.5-locales
+	# gcc-4.6-locales
 	rm -rf $(top_dir)/debian/$(package)/usr/share/locale
 	# binutils-dev
 	rm -f $(top_dir)/debian/$(package)/usr/lib/libiberty.a
-	# libstdc++6-4.5-dbg (potentially)
+	# libstdc++6-4.6-dbg (potentially)
 	rm -rf $(top_dir)/debian/$(package)/usr/share/gcc-$(gnu_upstream_version)/python
 	# libstdc++6-4.6-dev
 	ls -1 $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/|grep -v w64-mingw32|xargs -I{} rm -rf $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/{}
