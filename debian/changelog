@@ -1,13 +1,6 @@
-gcc-mingw-w64 (0.2) unstable; urgency=low
+gcc-mingw-w64-bootstrap (0ubuntu1) oneiric; urgency=low
 
-  * Allow building on all architectures.
-  * Enable LTO support (Closes: #623711).
-  * Standards-Version 3.9.2, no change required.
+  * New bootstrapping package for the mingw-w64 toolchain, based on the
+    gcc-mingw-w64 package (LP: #783175).
 
- -- Stephen Kitt <steve@sk2.org>  Sat, 30 Apr 2011 23:54:55 +0200
-
-gcc-mingw-w64 (0.1) unstable; urgency=low
-
-  * Initial release (Closes: #602997).
-
- -- Stephen Kitt <steve@sk2.org>  Tue, 16 Nov 2010 12:52:08 +0100
+ -- Stephen Kitt <steve@sk2.org>  Tue, 17 May 2011 17:22:08 +0200

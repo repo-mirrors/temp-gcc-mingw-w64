@@ -1,0 +1,2 @@
+# gcc manpages are non-free
+gcc-mingw-w64-bootstrap: binary-without-manpage

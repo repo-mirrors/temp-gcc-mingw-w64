@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gcc-mingw-w64 using gcc-4.5-source.
-# Copyright © 2010 Stephen Kitt <steve@sk2.org>
+# Bootstrap gcc-mingw-w64 using gcc-4.5-source.
+# Copyright © 2010, 2011 Stephen Kitt <steve@sk2.org>
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
@@ -16,10 +16,11 @@ deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 gnu_upstream_version := $(shell echo $(deb_upstream_version) | cut -d. -f1-3)
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 
-# Include the rules variant - symlink rules.bootstrap to produce the
-# minimal gcc required to build mingw-w64, or rules.full to produce
-# the full gcc.
-include debian/rules.variant
+# Build the minimal gcc required to build mingw-w64
+package := gcc-mingw-w64-bootstrap
+languages := c,c++
+BUILD_TARGET := all-gcc
+INSTALL_TARGET := install-gcc
 
 targets := i686-w64-mingw32 x86_64-w64-mingw32
 
@@ -60,7 +61,7 @@ include $(gcc_dir)/debian/rules.patch
 
 unpack: $(unpack_stamp)
 $(unpack_stamp):
-	tar xf $(gcc_dir)/gcc-$(gnu_upstream_version)-dfsg.tar.*
+	tar xf $(gcc_dir)/gcc-$(gnu_upstream_version).tar.*
 	rm -rf $(upstream_dir)
 	mv gcc-$(deb_upstream_version) $(upstream_dir)
 	mkdir -p $(stampdir)
