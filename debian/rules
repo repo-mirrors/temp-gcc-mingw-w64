@@ -81,10 +81,10 @@ libdir=lib
 libexecdir=$(PF)/$(libdir)
 
 # Standard Debian configuration flags
-# TODO Re-enable shared, multilib and linker-build-id
+# TODO Re-enable multilib and linker-build-id
 CONFFLAGS = \
 	--prefix=/$(PF) \
-	--disable-shared \
+	--enable-shared \
 	--disable-multilib \
 	--enable-linker-build-id \
 	--with-system-zlib \
@@ -105,7 +105,8 @@ CONFFLAGS += \
 #CONFFLAGS = --disable-shared --disable-multilib --prefix=/usr --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-languages=c,c++,fortran --with-gnu-ld --with-gnu-as --enable-leading-mingw64-underscores
 # LTO
 CONFFLAGS += \
-	--enable-lto
+	--enable-lto \
+	--with-plugin-ld
 
 configure-stamp: $(patch_stamp)
 	dh_testdir
