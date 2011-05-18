@@ -155,9 +155,6 @@ install-stamp: build-stamp
 	# No need to ship empty manpages
 	rm -rf $(top_dir)/debian/$(package)/usr/share/man/man1
 
-	# We don't need libiberty
-	rm -f $(patsubst %,$(top_dir)/debian/$(package)/$(PF)/%/lib/libiberty.a,$(targets))
-
 	# Drop .la files
 	rm -f $(patsubst %,$(top_dir)/debian/$(package)/$(PF)/lib/gcc/%/$(gnu_upstream_version)/*.la,$(targets))
 
