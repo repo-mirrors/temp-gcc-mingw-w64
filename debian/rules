@@ -106,6 +106,9 @@ CONFFLAGS += \
 # LTO
 CONFFLAGS += \
 	--enable-lto
+# Dynamic strings (as used upstream)
+CONFFLAGS += \
+	--enable-fully-dynamic-string
 
 configure-stamp: $(patch_stamp)
 	dh_testdir
