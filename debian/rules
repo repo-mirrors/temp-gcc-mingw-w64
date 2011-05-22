@@ -6,14 +6,15 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+target_version := 4.6
+
 top_dir := $(shell pwd)
-gcc_dir := /usr/src/gcc-4.6
+gcc_dir := /usr/src/gcc-$(target_version)
 upstream_dir := $(top_dir)/src
 build_dir := $(top_dir)/build
 stampdir := $(top_dir)/stamp
-deb_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-4.6-source)
+deb_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version)-source)
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
-gnu_upstream_version := $(shell echo $(deb_upstream_version) | cut -d. -f1-3)
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 
 # Include the rules variant - symlink rules.bootstrap to produce the
@@ -60,7 +61,7 @@ include $(gcc_dir)/debian/rules.patch
 
 unpack: $(unpack_stamp)
 $(unpack_stamp):
-	tar xf $(gcc_dir)/gcc-$(gnu_upstream_version)-dfsg.tar.*
+	tar xf $(gcc_dir)/gcc-*.tar.*
 	rm -rf $(upstream_dir)
 	mv gcc-$(deb_upstream_version) $(upstream_dir)
 	mkdir -p $(stampdir)
@@ -140,13 +141,13 @@ install-stamp: build-stamp
 	done
 
 	# Remove files which conflict with other packages
-	# gcc-4.6-locales
+	# gcc-$(target_version)-locales
 	rm -rf $(top_dir)/debian/$(package)/usr/share/locale
 	# binutils-dev
 	rm -f $(top_dir)/debian/$(package)/usr/lib/libiberty.a
-	# libstdc++6-4.6-dbg (potentially)
-	rm -rf $(top_dir)/debian/$(package)/usr/share/gcc-$(gnu_upstream_version)/python
-	# libstdc++6-4.6-dev
+	# libstdc++6-$(target_version)-dbg (potentially)
+	rm -rf $(top_dir)/debian/$(package)/usr/share/gcc-*/python
+	# libstdc++6-$(target_version)-dev
 	ls -1 $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/|grep -v w64-mingw32|xargs -I{} rm -rf $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/{}
 	# -doc packages
 	rm -rf $(top_dir)/debian/$(package)/usr/share/info
@@ -159,17 +160,19 @@ install-stamp: build-stamp
 	rm -f $(patsubst %,$(top_dir)/debian/$(package)/$(PF)/%/lib/libiberty.a,$(targets))
 
 	# Drop .la files
-	rm -f $(patsubst %,$(top_dir)/debian/$(package)/$(PF)/lib/gcc/%/$(gnu_upstream_version)/*.la,$(targets))
+	find $(top_dir)/debian/$(package) -name \*.la -delete
 
 	# Move libraries to base directories and add version-specific links
-ifneq ($(base_version),$(gnu_upstream_version))
-	[ -d $(top_dir)/debian/$(package)/usr/include/c++ ] && cd $(top_dir)/debian/$(package)/usr/include/c++ && ln -s $(base_version) $(gnu_upstream_version) || true
-	for target in $(targets); do \
-		cd $(top_dir)/debian/$(package)/$(PF)/lib/gcc/$$target && \
-		mv $(gnu_upstream_version) $(base_version) && \
-		ln -s $(base_version) $(gnu_upstream_version); \
+	for gnu_upstream_version in $$(basename debian/gcc-mingw-w64/usr/share/gcc-*|cut -d- -f2); do \
+		if [ "$$gnu_upstream_version" != "$(base_version)" ]; then \
+			[ -d $(top_dir)/debian/$(package)/usr/include/c++ ] && cd $(top_dir)/debian/$(package)/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
+			for target in $(targets); do \
+				cd $(top_dir)/debian/$(package)/$(PF)/lib/gcc/$$target && \
+				mv $$gnu_upstream_version $(base_version) && \
+				ln -s $(base_version) $$gnu_upstream_version; \
+			done; \
+		fi; \
 	done
-endif
 
 	for i in 1 2; do \
 		find $(top_dir)/debian/$(package)/ -type d -empty | while read i; do rmdir $$i; done; \
