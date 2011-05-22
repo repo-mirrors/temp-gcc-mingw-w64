@@ -106,7 +106,8 @@ CONFFLAGS += \
 #CONFFLAGS = --disable-shared --disable-multilib --prefix=/usr --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-languages=c,c++,fortran --with-gnu-ld --with-gnu-as --enable-leading-mingw64-underscores
 # LTO
 CONFFLAGS += \
-	--enable-lto
+	--enable-lto \
+	--with-plugin-ld
 
 configure-stamp: $(patch_stamp)
 	dh_testdir

@@ -1,8 +1,9 @@
 gcc-mingw-w64 (0.3) unstable; urgency=low
 
   * Switch to gcc 4.6.
+  * Install the LTO plugin (Closes: #625901).
 
- -- Stephen Kitt <steve@sk2.org>  Wed, 04 May 2011 07:42:17 +0200
+ -- Stephen Kitt <steve@sk2.org>  Sun, 08 May 2011 23:38:03 +0200
 
 gcc-mingw-w64 (0.2) unstable; urgency=low
 
