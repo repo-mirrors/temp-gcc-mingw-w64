@@ -2,6 +2,8 @@ gcc-mingw-w64 (0.3) unstable; urgency=low
 
   * Switch to gcc 4.6.
   * Install the LTO plugin (Closes: #625901).
+  * Require binutils 2.22 to avoid LTO-related segfaults (see
+    http://sourceware.org/bugzilla/show_bug.cgi?id=12693 for details).
 
  -- Stephen Kitt <steve@sk2.org>  Sun, 08 May 2011 23:38:03 +0200
 

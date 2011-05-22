@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 7.0.50~), autotools-dev,
  gcc-4.6-source, xz-utils, libgmp-dev,
  libmpfr-dev (>= 2.3.2), libmpc-dev (>= 0.8.0), zlib1g-dev,
  libelf-dev,
- mingw-w64-dev (>= 1.0), binutils-mingw-w64 (>= 2.20)
+ mingw-w64-dev (>= 1.0), binutils-mingw-w64 (>= 2.22)
 Standards-Version: 3.9.2
 Homepage: http://www.gnu.org/software/gcc/
 Vcs-Git: git://git.debian.org/collab-maint/gcc-mingw-w64.git
@@ -15,7 +15,7 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/gcc-mingw-w64.git;a=summary
 Package: gcc-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
- binutils-mingw-w64 (>= 2.20), mingw-w64-dev (>= 1.0)
+ binutils-mingw-w64 (>= 2.22), mingw-w64-dev (>= 1.0)
 Built-Using: gcc-4.6 (= ${binary:Version})
 Conflicts: gcc-mingw-w64-bootstrap
 Replaces: gcc-mingw-w64-bootstrap
