@@ -3,10 +3,10 @@ Section: devel
 Priority: extra
 Maintainer: Stephen Kitt <steve@sk2.org>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev,
- gcc-4.5-source (>= 4.5.1-11), xz-utils, libgmp-dev,
+ gcc-4.6-source, xz-utils, libgmp-dev,
  libmpfr-dev (>= 2.3.2), libmpc-dev (>= 0.8.0), zlib1g-dev,
  libelf-dev,
- mingw-w64-dev (>= 1.0), binutils-mingw-w64 (>= 2.20)
+ mingw-w64-dev (>= 1.0), binutils-mingw-w64 (>= 2.21.51.20110523)
 Standards-Version: 3.9.2
 Homepage: http://www.gnu.org/software/gcc/
 Vcs-Git: git://git.debian.org/collab-maint/gcc-mingw-w64.git
@@ -15,12 +15,12 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/gcc-mingw-w64.git;a=summary
 Package: gcc-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
- binutils-mingw-w64 (>= 2.20), mingw-w64-dev (>= 1.0)
-Built-Using: gcc-4.5 (= ${binary:Version})
+ binutils-mingw-w64 (>= 2.21.51.20110523), mingw-w64-dev (>= 1.0)
+Built-Using: gcc-4.6 (= ${binary:Version})
 Conflicts: gcc-mingw-w64-bootstrap
 Replaces: gcc-mingw-w64-bootstrap
-Recommends: gcc-4.5-locales (>= ${local:Version}),
- libstdc++6-4.5-dev (>= ${local:Version})
+Recommends: libstdc++6-4.6-dev (>= ${local:Version})
+Suggests: gcc-4.6-locales (>= ${local:Version}),
 Description: The GNU Compiler Collection for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
  64-bit Windows applications using the GNU Compiler Collection (gcc).

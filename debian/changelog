@@ -2,8 +2,12 @@ gcc-mingw-w64 (0.3) unstable; urgency=low
 
   * Ship libiberty (Closes: #626117).
   * Enable fully dynamic strings (Closes: #626956).
+  * Switch to gcc 4.6.
+  * Install the LTO plugin (Closes: #625901).
+  * Require binutils 2.21.51.20110523 to avoid LTO-related segfaults (see
+    http://sourceware.org/bugzilla/show_bug.cgi?id=12693 for details).
 
- -- Stephen Kitt <steve@sk2.org>  Thu, 19 May 2011 01:02:53 +0200
+ -- Stephen Kitt <steve@sk2.org>  Tue, 24 May 2011 23:49:37 +0200
 
 gcc-mingw-w64 (0.2) unstable; urgency=low
 

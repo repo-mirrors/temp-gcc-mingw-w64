@@ -2,4 +2,4 @@
 package := gcc-mingw-w64
 languages := c,c++,fortran
 BUILD_TARGET :=
-INSTALL_TARGET := install
+INSTALL_TARGET := install install-lto-plugin
