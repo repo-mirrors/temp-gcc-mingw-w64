@@ -6,6 +6,10 @@ gcc-mingw-w64 (0.3) unstable; urgency=low
   * Install the LTO plugin (Closes: #625901).
   * Require binutils 2.21.51.20110523 to avoid LTO-related segfaults (see
     http://sourceware.org/bugzilla/show_bug.cgi?id=12693 for details).
+  * Avoid attempting to build libstdc++-pic.a.
+  * Drop leading "The" from the package description.
+  * Strip the libraries.
+  * Build-depend on libcloog-ppl-dev to enable extra optimisations.
 
  -- Stephen Kitt <steve@sk2.org>  Tue, 24 May 2011 23:49:37 +0200
 

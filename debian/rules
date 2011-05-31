@@ -64,11 +64,11 @@ $(unpack_stamp):
 	tar xf $(gcc_dir)/gcc-*.tar.*
 	rm -rf $(upstream_dir)
 	mv gcc-$(deb_upstream_version) $(upstream_dir)
-	mkdir -p $(stampdir)
-	touch $@
-	# Apply our extra patch here...
+	# Apply our extra patches here...
 	patch -p0 < debian/patches/mingw-include.patch
 	patch -p0 < debian/patches/disable-multilib.patch
+	mkdir -p $(stampdir)
+	touch $@
 
 clean:
 	dh_testdir
@@ -112,9 +112,12 @@ CONFFLAGS += \
 CONFFLAGS += \
 	--enable-fully-dynamic-string
 
+configure: configure-stamp
 configure-stamp: $(patch_stamp)
 	dh_testdir
 	set -e; \
+	# Remove the patch building libstdc++_pic.a before configuring
+	patch -R -p2 -dsrc < $(gcc_dir)/debian/patches/libstdc++-pic.diff
 	for target in $(targets); do \
 		dh_auto_configure -B$(build_dir)/$$target -D$(upstream_dir) -- \
 			$(CONFFLAGS) \
@@ -188,7 +191,16 @@ binary-arch: build install
 	dh_installdocs
 	dh_installman
 	dh_installchangelogs $(upstream_dir)/ChangeLog
+	# Strip the binaries
 	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib
+	# Special processing for the libraries
+ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
+	strip --remove-section=.comment --remove-section=.note --strip-unneeded $(patsubst %,$(top_dir)/debian/$(package)/usr/lib/gcc/%/$(target_version)/liblto_plugin.so.0.0.0,$(targets))
+	for target in $(targets); do \
+		$$target-strip --strip-unneeded $(top_dir)/debian/$(package)/usr/$$target/lib/libiberty.a && \
+		$$target-strip --strip-unneeded $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/lib*.a; \
+	done
+endif
 	dh_lintian
 	dh_compress
 	dh_fixperms
