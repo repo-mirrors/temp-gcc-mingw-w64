@@ -212,7 +212,6 @@ binary-arch: build install
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
 	strip --remove-section=.comment --remove-section=.note --strip-unneeded $(patsubst %,$(top_dir)/debian/$(package)/usr/lib/gcc/%/$(target_version)/liblto_plugin.so.0.0.0,$(targets))
 	for target in $(targets); do \
-		$$target-strip --strip-unneeded $(top_dir)/debian/$(package)/usr/$$target/lib/libiberty.a && \
 		$$target-strip --strip-unneeded $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/lib*.a $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/adalib/lib*.a; \
 	done
 endif

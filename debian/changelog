@@ -1,8 +1,10 @@
 gcc-mingw-w64 (0.4) unstable; urgency=low
 
   * Include Ada support (Closes: #632375).
+  * Stop trying to ship libiberty, upstream no longer supports it
+    (Closes: #634567).
 
- -- Stephen Kitt <steve@sk2.org>  Thu, 21 Jul 2011 08:22:39 +0200
+ -- Stephen Kitt <steve@sk2.org>  Thu, 21 Jul 2011 08:25:16 +0200
 
 gcc-mingw-w64 (0.3) unstable; urgency=low
 
