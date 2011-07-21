@@ -1,5 +1,5 @@
 # Build the full GCC.
 package := gcc-mingw-w64
-languages := c,c++,fortran
+languages := c,c++,fortran,ada
 BUILD_TARGET :=
 INSTALL_TARGET := install install-lto-plugin

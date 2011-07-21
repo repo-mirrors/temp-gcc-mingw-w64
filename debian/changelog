@@ -1,3 +1,9 @@
+gcc-mingw-w64 (0.4) unstable; urgency=low
+
+  * Include Ada support (Closes: #632375).
+
+ -- Stephen Kitt <steve@sk2.org>  Thu, 21 Jul 2011 08:22:39 +0200
+
 gcc-mingw-w64 (0.3) unstable; urgency=low
 
   * Ship libiberty (Closes: #626117).
