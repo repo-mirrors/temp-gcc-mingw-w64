@@ -1,6 +1,7 @@
 gcc-mingw-w64 (0.4) unstable; urgency=low
 
-  * Include Ada support (Closes: #632375).
+  * Include Ada support (Closes: #632375). Build-depend on gcc-4.6-source
+    4.6.1-5 or later to get the required upstream fixes.
   * Stop trying to ship libiberty, upstream no longer supports it
     (Closes: #634567).
   * Protect intrinsics in C++ code (Closes: #633552).
