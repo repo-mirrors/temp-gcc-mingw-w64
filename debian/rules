@@ -127,6 +127,8 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	# Fix the breakage introduced by the Ada Subversion update
 	# Using "-N" should allow the build to work if this is fixed "upstream"
 	patch -N -p2 -d$(upstream_dir) < debian/patches/g-socthi-mingw-tabs.patch
+	# Add extern "C" blocks around intrinsics
+	patch -p1 -d$(upstream_dir) < debian/patches/cpp-intrinsics.patch
 	touch $@
 
 configure: configure-stamp
