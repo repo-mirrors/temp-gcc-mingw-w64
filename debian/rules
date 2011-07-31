@@ -126,7 +126,7 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	patch -R -p2 -d$(upstream_dir) < $(gcc_dir)/debian/patches/libstdc++-pic.diff
 	# Fix the breakage introduced by the Ada Subversion update
 	# Using "-N" should allow the build to work if this is fixed "upstream"
-	patch -N -p2 -d$(upstream_dir) < debian/patches/g-socthi-mingw-tabs.patch
+	patch -N -p2 -d$(upstream_dir) < debian/patches/g-socthi-mingw-tabs.patch || true
 	# Add extern "C" blocks around intrinsics
 	patch -p1 -d$(upstream_dir) < debian/patches/cpp-intrinsics.patch
 	touch $@
