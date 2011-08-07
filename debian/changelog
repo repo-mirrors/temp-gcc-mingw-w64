@@ -6,7 +6,7 @@ gcc-mingw-w64 (0.4) unstable; urgency=low
     (Closes: #634567).
   * Protect intrinsics in C++ code (Closes: #633552).
   * Provide shared versions of DLL-compatible libraries (Closes:
-    #652778). The appropriate DLLs may have to be shipped with the
+    #625778). The appropriate DLLs may have to be shipped with the
     resulting binaries, unless static build options are used (-static,
     -static-libgcc and/or -static-libstdc++).
   * Re-organise configure flags and update them as used upstream.
