@@ -1,4 +1,4 @@
-gcc-mingw-w64 (0.4) unstable; urgency=low
+gcc-mingw-w64 (1) unstable; urgency=low
 
   * Include Ada support (Closes: #632375). Build-depend on gcc-4.6-source
     4.6.1-5 or later to get the required upstream fixes.
@@ -10,6 +10,8 @@ gcc-mingw-w64 (0.4) unstable; urgency=low
     resulting binaries, unless static build options are used (-static,
     -static-libgcc and/or -static-libstdc++).
   * Re-organise configure flags and update them as used upstream.
+  * Switch to single-number versions and add the gcc-mingw-w64 version to
+    the resulting binary package's version.
 
  -- Stephen Kitt <steve@sk2.org>  Thu, 21 Jul 2011 08:25:16 +0200
 

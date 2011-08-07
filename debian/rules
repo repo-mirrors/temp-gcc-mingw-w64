@@ -13,7 +13,7 @@ gcc_dir := /usr/src/gcc-$(target_version)
 upstream_dir := $(top_dir)/src
 build_dir := $(top_dir)/build
 stampdir := $(top_dir)/stamp
-deb_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version)-source)
+deb_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version)-source)+$(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 
