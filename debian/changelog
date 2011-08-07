@@ -5,6 +5,11 @@ gcc-mingw-w64 (0.4) unstable; urgency=low
   * Stop trying to ship libiberty, upstream no longer supports it
     (Closes: #634567).
   * Protect intrinsics in C++ code (Closes: #633552).
+  * Provide shared versions of DLL-compatible libraries (Closes:
+    #652778). The appropriate DLLs may have to be shipped with the
+    resulting binaries, unless static build options are used (-static,
+    -static-libgcc and/or -static-libstdc++).
+  * Re-organise configure flags and update them as used upstream.
 
  -- Stephen Kitt <steve@sk2.org>  Thu, 21 Jul 2011 08:25:16 +0200
 

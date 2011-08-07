@@ -88,35 +88,35 @@ libdir=lib
 libexecdir=$(PF)/$(libdir)
 
 # Standard Debian configuration flags
-# TODO Re-enable shared, multilib and linker-build-id
 CONFFLAGS = \
 	--prefix=/$(PF) \
-	--disable-shared \
+	--enable-shared \
+	--enable-static \
 	--disable-multilib \
 	--enable-linker-build-id \
 	--with-system-zlib \
 	--libexecdir=/$(libexecdir) \
-	--without-included-gettext
-CONFFLAGS += \
+	--without-included-gettext \
 	--libdir=/$(PF)/$(libdir) \
 	--enable-libstdcxx-time=yes \
 	--with-tune=generic
 # MinGW-w64 flags
-CONFFLAGS += \
-	--enable-version-specific-runtime-libs
 # version-specific-runtime-libs puts target-specific libraries in
 # /usr/lib/gcc rather than /usr/$(target)
+CONFFLAGS += \
+	--enable-version-specific-runtime-libs \
+	--enable-threads=win32 \
+	--enable-fully-dynamic-string \
+	--enable-sjlj-exceptions
+# libgomp needs pthreads
+#	--enable-libgomp
 # Languages
 CONFFLAGS += \
 	--enable-languages=$(languages)
-#CONFFLAGS = --disable-shared --disable-multilib --prefix=/usr --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-languages=c,c++,fortran --with-gnu-ld --with-gnu-as --enable-leading-mingw64-underscores
 # LTO
 CONFFLAGS += \
 	--enable-lto \
 	--with-plugin-ld
-# Dynamic strings (as used upstream)
-CONFFLAGS += \
-	--enable-fully-dynamic-string
 
 # Patches applied or unapplied after the upstream sources have been
 # unpacked and patched using the gcc-4.6-source package's patches
@@ -189,6 +189,16 @@ install-stamp: build-stamp
 				mv $$gnu_upstream_version $(base_version) && \
 				ln -s $(base_version) $$gnu_upstream_version; \
 			done; \
+		fi; \
+	done
+
+	# Move misplaced DLLs and libraries
+	for target in $(targets); do \
+		if [ -f $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/lib/*.a ]; then \
+			mv $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/lib/*.a $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(base_version)/; \
+		fi; \
+		if [ -f $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/*.dll ]; then \
+			mv $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/*.dll $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(base_version)/; \
 		fi; \
 	done
 
