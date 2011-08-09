@@ -16,7 +16,7 @@ Package: gcc-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
  binutils-mingw-w64 (>= 2.21.51.20110523), mingw-w64-dev (>= 1.0)
-Built-Using: gcc-4.6 (= ${binary:Version})
+Built-Using: gcc-4.6 (= ${gcc:Version})
 Conflicts: gcc-mingw-w64-bootstrap
 Replaces: gcc-mingw-w64-bootstrap
 Recommends: libstdc++6-4.6-dev (>= ${local:Version})
