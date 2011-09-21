@@ -228,6 +228,15 @@ endif
 	dh_lintian
 	dh_compress
 	dh_fixperms
+	# Fix permissions further
+	# *.ali files must be read-only
+	for target in $(targets); do \
+		chmod 444 $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/adalib/*.ali; \
+	done
+	# *.dll files shouldn't be executable
+	for target in $(targets); do \
+		chmod 644 $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/*.dll; \
+	done
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)
