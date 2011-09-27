@@ -25,10 +25,13 @@ include debian/rules.variant
 
 targets := i686-w64-mingw32 x86_64-w64-mingw32
 
-CFLAGS = $(shell dpkg-buildflags --get CFLAGS)
+# No hardening support for now
+dpkg_buildflags = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
+
+CFLAGS = $(shell $(dpkg_buildflags) --get CFLAGS)
 CFLAGS += -Wall
 export CFLAGS
-LDFLAGS = $(shell dpkg-buildflags --get LDFLAGS)
+LDFLAGS = $(shell $(dpkg_buildflags) --get LDFLAGS)
 LDFLAGS += -Wl,--as-needed
 export LDFLAGS
 

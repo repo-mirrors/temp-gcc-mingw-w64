@@ -12,8 +12,10 @@ gcc-mingw-w64 (1) unstable; urgency=low
   * Re-organise configure flags and update them as used upstream.
   * Switch to single-number versions and add the gcc-mingw-w64 version to
     the resulting binary package's version.
+  * Disable hardening with dpkg-dev >= 1.16.1 for now (until the gcc-4.6
+    package supports it).
 
- -- Stephen Kitt <steve@sk2.org>  Thu, 21 Jul 2011 08:25:16 +0200
+ -- Stephen Kitt <steve@sk2.org>  Tue, 27 Sep 2011 06:30:03 +0200
 
 gcc-mingw-w64 (0.3) unstable; urgency=low
 
