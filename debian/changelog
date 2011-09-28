@@ -14,6 +14,7 @@ gcc-mingw-w64 (1) unstable; urgency=low
     the resulting binary package's version.
   * Disable hardening with dpkg-dev >= 1.16.1 for now (until the gcc-4.6
     package supports it).
+  * Correct uses of "informations" in output code.
 
  -- Stephen Kitt <steve@sk2.org>  Tue, 27 Sep 2011 06:30:03 +0200
 

@@ -1,0 +1,42 @@
+Description: Use "information" rather than "informations"
+Author: Stephen Kitt <steve@sk2.org>
+Forwarded: http://gcc.gnu.org/ml/gcc-patches/2011-09/msg01216.html
+
+--- gcc-mingw-w64.orig/src/gcc/graphite-poly.c
++++ gcc-mingw-w64/src/gcc/graphite-poly.c
+@@ -1174,7 +1174,7 @@
+   if (VEC_length (poly_dr_p, PBB_DRS (pbb)) == 0)
+     {
+       if (verbosity > 0)
+-	fprintf (file, "# Access informations are not provided\n");\
++	fprintf (file, "# Access information is not provided\n");\
+       fprintf (file, "0\n");
+       return;
+     }
+@@ -1183,7 +1183,7 @@
+     fprintf (file, "# Data references (\n");
+ 
+   if (verbosity > 0)
+-    fprintf (file, "# Access informations are provided\n");
++    fprintf (file, "# Access information is provided\n");
+   fprintf (file, "1\n");
+ 
+   FOR_EACH_VEC_ELT (poly_dr_p, PBB_DRS (pbb), i, pdr)
+@@ -1196,7 +1196,7 @@
+     fprintf (file, "# Read data references (\n");
+ 
+   if (verbosity > 0)
+-    fprintf (file, "# Read access informations\n");
++    fprintf (file, "# Read access information\n");
+   fprintf (file, "%d\n", nb_reads);
+ 
+   FOR_EACH_VEC_ELT (poly_dr_p, PBB_DRS (pbb), i, pdr)
+@@ -1210,7 +1210,7 @@
+     fprintf (file, "# Write data references (\n");
+ 
+   if (verbosity > 0)
+-    fprintf (file, "# Write access informations\n");
++    fprintf (file, "# Write access information\n");
+   fprintf (file, "%d\n", nb_writes);
+ 
+   FOR_EACH_VEC_ELT (poly_dr_p, PBB_DRS (pbb), i, pdr)
