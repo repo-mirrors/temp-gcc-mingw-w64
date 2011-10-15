@@ -164,34 +164,34 @@ install-stamp: build-stamp
 	dh_prep
 	set -e; \
 	for target in $(targets); do \
-		cd $(build_dir)/$$target && $(MAKE) DESTDIR=$(top_dir)/debian/$(package) $(INSTALL_TARGET); \
+		cd $(build_dir)/$$target && $(MAKE) DESTDIR=$(top_dir)/debian/tmp $(INSTALL_TARGET); \
 	done
 
 	# Remove files which conflict with other packages
 	# gcc-$(target_version)-locales
-	rm -rf $(top_dir)/debian/$(package)/usr/share/locale
+	rm -rf $(top_dir)/debian/tmp/usr/share/locale
 	# binutils-dev
-	rm -f $(top_dir)/debian/$(package)/usr/lib/libiberty.a
+	rm -f $(top_dir)/debian/tmp/usr/lib/libiberty.a
 	# libstdc++6-$(target_version)-dbg (potentially)
-	rm -rf $(top_dir)/debian/$(package)/usr/share/gcc-*/python
+	rm -rf $(top_dir)/debian/tmp/usr/share/gcc-*/python
 	# libstdc++6-$(target_version)-dev
-	ls -1 $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/|grep -v w64-mingw32|xargs -I{} rm -rf $(top_dir)/debian/$(package)/usr/include/c++/$(base_version)/{}
+	ls -1 $(top_dir)/debian/tmp/usr/include/c++/$(base_version)/|grep -v w64-mingw32|xargs -I{} rm -rf $(top_dir)/debian/tmp/usr/include/c++/$(base_version)/{}
 	# -doc packages
-	rm -rf $(top_dir)/debian/$(package)/usr/share/info
-	rm -rf $(top_dir)/debian/$(package)/usr/share/man/man7
+	rm -rf $(top_dir)/debian/tmp/usr/share/info
+	rm -rf $(top_dir)/debian/tmp/usr/share/man/man7
 
 	# No need to ship empty manpages
-	rm -rf $(top_dir)/debian/$(package)/usr/share/man/man1
+	rm -rf $(top_dir)/debian/tmp/usr/share/man/man1
 
 	# Drop .la files
-	find $(top_dir)/debian/$(package) -name \*.la -delete
+	find $(top_dir)/debian/tmp -name \*.la -delete
 
 	# Move libraries to base directories and add version-specific links
-	for gnu_upstream_version in $$(basename debian/gcc-mingw-w64/usr/share/gcc-*|cut -d- -f2); do \
+	for gnu_upstream_version in $$(basename debian/tmp/usr/share/gcc-*|cut -d- -f2); do \
 		if [ "$$gnu_upstream_version" != "$(base_version)" ]; then \
-			[ -d $(top_dir)/debian/$(package)/usr/include/c++ ] && cd $(top_dir)/debian/$(package)/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
+			[ -d $(top_dir)/debian/tmp/usr/include/c++ ] && cd $(top_dir)/debian/tmp/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
 			for target in $(targets); do \
-				cd $(top_dir)/debian/$(package)/$(PF)/lib/gcc/$$target && \
+				cd $(top_dir)/debian/tmp/$(PF)/lib/gcc/$$target && \
 				mv $$gnu_upstream_version $(base_version) && \
 				ln -s $(base_version) $$gnu_upstream_version; \
 			done; \
@@ -200,16 +200,16 @@ install-stamp: build-stamp
 
 	# Move misplaced DLLs and libraries
 	for target in $(targets); do \
-		if [ -f $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/lib/*.a ]; then \
-			mv $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/lib/*.a $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(base_version)/; \
+		if [ -f $(top_dir)/debian/tmp/usr/lib/gcc/$$target/lib/*.a ]; then \
+			mv $(top_dir)/debian/tmp/usr/lib/gcc/$$target/lib/*.a $(top_dir)/debian/tmp/usr/lib/gcc/$$target/$(base_version)/; \
 		fi; \
-		if [ -f $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/*.dll ]; then \
-			mv $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/*.dll $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(base_version)/; \
+		if [ -f $(top_dir)/debian/tmp/usr/lib/gcc/$$target/*.dll ]; then \
+			mv $(top_dir)/debian/tmp/usr/lib/gcc/$$target/*.dll $(top_dir)/debian/tmp/usr/lib/gcc/$$target/$(base_version)/; \
 		fi; \
 	done
 
 	for i in 1 2; do \
-		find $(top_dir)/debian/$(package)/ -type d -empty | while read i; do rmdir $$i; done; \
+		find $(top_dir)/debian/tmp/ -type d -empty | while read i; do rmdir $$i; done; \
 	done
 
 	touch $@
@@ -218,16 +218,17 @@ binary-indep:
 binary-arch: build install
 	dh_testdir
 	dh_testroot
+	dh_install --list-missing
 	dh_installdocs
 	dh_installman
 	dh_installchangelogs $(upstream_dir)/ChangeLog
 	# Strip the binaries
 	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib -Xw64-mingw32/$(base_version)/adalib
-	# Special processing for the libraries
+	# Strip the libraries
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
-	strip --remove-section=.comment --remove-section=.note --strip-unneeded $(patsubst %,$(top_dir)/debian/$(package)/usr/lib/gcc/%/$(target_version)/liblto_plugin.so.0.0.0,$(targets))
+	strip --remove-section=.comment --remove-section=.note --strip-unneeded $(patsubst %,$(top_dir)/debian/gcc-mingw-w64/usr/lib/gcc/%/$(target_version)/liblto_plugin.so.0.0.0,$(targets))
 	for target in $(targets); do \
-		$$target-strip --strip-unneeded $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/lib*.a $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/adalib/lib*.a; \
+		$$target-strip --strip-unneeded $(patsubst %,$(top_dir)/debian/%-mingw-w64/usr/lib/gcc/$$target/$(target_version)/lib*.a,gcc g++ gfortran) $(top_dir)/debian/gnat-mingw-w64/usr/lib/gcc/$$target/$(target_version)/adalib/lib*.a; \
 	done
 endif
 	dh_lintian
@@ -236,11 +237,11 @@ endif
 	# Fix permissions further
 	# *.ali files must be read-only
 	for target in $(targets); do \
-		chmod 444 $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/adalib/*.ali; \
+		chmod 444 $(top_dir)/debian/gnat-mingw-w64/usr/lib/gcc/$$target/$(target_version)/adalib/*.ali; \
 	done
 	# *.dll files shouldn't be executable
 	for target in $(targets); do \
-		chmod 644 $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/*.dll; \
+		chmod 644 $(patsubst %,$(top_dir)/debian/%-mingw-w64/usr/lib/gcc/$$target/$(target_version)/*.dll,gcc g++ gfortran); \
 	done
 	dh_installdeb
 	dh_shlibdeps

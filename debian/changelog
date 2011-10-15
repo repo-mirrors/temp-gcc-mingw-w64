@@ -1,3 +1,9 @@
+gcc-mingw-w64 (2) unstable; urgency=low
+
+  * Split package into gcc, g++, gfortran and gnat packages.
+
+ -- Stephen Kitt <steve@sk2.org>  Sat, 15 Oct 2011 23:30:05 +0200
+
 gcc-mingw-w64 (1) unstable; urgency=low
 
   * Include Ada support (Closes: #632375). Build-depend on gcc-4.6-source
