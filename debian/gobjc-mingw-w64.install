@@ -1,0 +1,10 @@
+usr/lib/gcc/i686-w64-mingw32/4.6/include/objc/*
+usr/lib/gcc/x86_64-w64-mingw32/4.6/include/objc/*
+usr/lib/gcc/x86_64-w64-mingw32/4.6/cc1obj
+usr/lib/gcc/x86_64-w64-mingw32/4.6/libobjc-3.dll
+usr/lib/gcc/x86_64-w64-mingw32/4.6/libobjc.dll.a
+usr/lib/gcc/x86_64-w64-mingw32/4.6/libobjc.a
+usr/lib/gcc/i686-w64-mingw32/4.6/cc1obj
+usr/lib/gcc/i686-w64-mingw32/4.6/libobjc-3.dll
+usr/lib/gcc/i686-w64-mingw32/4.6/libobjc.dll.a
+usr/lib/gcc/i686-w64-mingw32/4.6/libobjc.a

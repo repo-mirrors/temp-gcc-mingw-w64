@@ -1,8 +1,9 @@
 gcc-mingw-w64 (2) unstable; urgency=low
 
   * Split package into gcc, g++, gfortran and gnat packages.
+  * Enable the Objective-C and Objective-C++ compilers.
 
- -- Stephen Kitt <steve@sk2.org>  Sat, 15 Oct 2011 23:30:05 +0200
+ -- Stephen Kitt <steve@sk2.org>  Sun, 16 Oct 2011 14:09:03 +0200
 
 gcc-mingw-w64 (1) unstable; urgency=low
 

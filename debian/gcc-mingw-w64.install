@@ -1,6 +1,7 @@
 usr/lib/gcc/x86_64-w64-mingw32/4.6/include-fixed/*
 usr/lib/gcc/x86_64-w64-mingw32/4.6/cc1
-usr/lib/gcc/x86_64-w64-mingw32/4.6/include/*
+usr/lib/gcc/x86_64-w64-mingw32/4.6/include/*.h
+usr/lib/gcc/x86_64-w64-mingw32/4.6/include/ssp/*
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libssp_nonshared.a
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libssp.a
 usr/lib/gcc/x86_64-w64-mingw32/4.6/crtfastmath.o
@@ -23,7 +24,8 @@ usr/lib/gcc/x86_64-w64-mingw32/4.6/lto-wrapper
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libquadmath.dll.a
 usr/lib/gcc/i686-w64-mingw32/4.6/include-fixed/*
 usr/lib/gcc/i686-w64-mingw32/4.6/cc1
-usr/lib/gcc/i686-w64-mingw32/4.6/include/*
+usr/lib/gcc/i686-w64-mingw32/4.6/include/*.h
+usr/lib/gcc/i686-w64-mingw32/4.6/include/ssp/*
 usr/lib/gcc/i686-w64-mingw32/4.6/libssp_nonshared.a
 usr/lib/gcc/i686-w64-mingw32/4.6/libssp.a
 usr/lib/gcc/i686-w64-mingw32/4.6/crtfastmath.o
