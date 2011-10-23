@@ -9,7 +9,6 @@ usr/lib/gcc/x86_64-w64-mingw32/4.6/libquadmath.a
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libgcc_s.a
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libgcc_eh.a
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libssp-0.dll
-usr/lib/gcc/x86_64-w64-mingw32/4.6/libgfortran.a
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libgcc_s_sjlj-1.dll
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libquadmath-0.dll
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libssp.dll.a
