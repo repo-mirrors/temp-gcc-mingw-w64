@@ -1,9 +1,17 @@
-gcc-mingw-w64 (2) unstable; urgency=low
+gcc-mingw-w64 (3) unstable; urgency=low
 
   * Split package into gcc, g++, gfortran and gnat packages.
   * Enable the Objective-C and Objective-C++ compilers.
 
- -- Stephen Kitt <steve@sk2.org>  Sun, 16 Oct 2011 14:09:03 +0200
+ -- Stephen Kitt <steve@sk2.org>  Mon, 31 Oct 2011 00:55:05 +0100
+
+gcc-mingw-w64 (2) unstable; urgency=low
+
+  * Export all relevant flags from dpkg-buildflags; in particular this
+    allows building with a stack-protector-enabling compiler (as on
+    Ubuntu).
+
+ -- Stephen Kitt <steve@sk2.org>  Mon, 24 Oct 2011 01:18:56 +0200
 
 gcc-mingw-w64 (1) unstable; urgency=low
 
