@@ -3,7 +3,7 @@ Section: devel
 Priority: extra
 Maintainer: Stephen Kitt <steve@sk2.org>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev,
- gcc-4.6-source (>= 4.6.1-5), xz-utils, libgmp-dev,
+ gcc-4.6-source (>= 4.6.2-2), xz-utils, libgmp-dev,
  libmpfr-dev (>= 2.3.2), libmpc-dev (>= 0.8.0), zlib1g-dev,
  libelf-dev, libcloog-ppl-dev, gnat-4.6,
  mingw-w64-dev (>= 1.0), binutils-mingw-w64 (>= 2.21.51.20110523)
@@ -31,11 +31,10 @@ Package: g++-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
  gcc-mingw-w64 (= ${binary:Version}),
- binutils-mingw-w64 (>= 2.21.51.20110523), mingw-w64-dev (>= 1.0),
  libstdc++6-4.6-dev (>= ${local:Version})
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< 4.6.1-15)
-Replaces: gcc-mingw-w64 (<< 4.6.1-15)
+Breaks: gcc-mingw-w64 (<< 4.6.2-2+3)
+Replaces: gcc-mingw-w64 (<< 4.6.2-2+3)
 Suggests: gcc-4.6-locales (>= ${local:Version}),
 Description: GNU C++ compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -47,11 +46,10 @@ Description: GNU C++ compiler for MinGW-w64
 Package: gfortran-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
- gcc-mingw-w64 (= ${binary:Version}),
- binutils-mingw-w64 (>= 2.21.51.20110523), mingw-w64-dev (>= 1.0)
+ gcc-mingw-w64 (= ${binary:Version})
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< 4.6.1-15)
-Replaces: gcc-mingw-w64 (<< 4.6.1-15)
+Breaks: gcc-mingw-w64 (<< 4.6.2-2+3)
+Replaces: gcc-mingw-w64 (<< 4.6.2-2+3)
 Suggests: gcc-4.6-locales (>= ${local:Version}),
 Description: GNU Fortran compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -63,11 +61,10 @@ Description: GNU Fortran compiler for MinGW-w64
 Package: gnat-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
- gcc-mingw-w64 (= ${binary:Version}),
- binutils-mingw-w64 (>= 2.21.51.20110523), mingw-w64-dev (>= 1.0)
+ gcc-mingw-w64 (= ${binary:Version})
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< 4.6.1-15)
-Replaces: gcc-mingw-w64 (<< 4.6.1-15)
+Breaks: gcc-mingw-w64 (<< 4.6.2-2+3)
+Replaces: gcc-mingw-w64 (<< 4.6.2-2+3)
 Suggests: gcc-4.6-locales (>= ${local:Version}),
 Description: GNU Ada compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -79,8 +76,7 @@ Description: GNU Ada compiler for MinGW-w64
 Package: gobjc-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
- gcc-mingw-w64 (= ${binary:Version}),
- binutils-mingw-w64 (>= 2.21.51.20110523), mingw-w64-dev (>= 1.0)
+ gcc-mingw-w64 (= ${binary:Version})
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Suggests: gcc-4.6-locales (>= ${local:Version}),
 Description: GNU Objective-C compiler for MinGW-w64
@@ -93,9 +89,7 @@ Description: GNU Objective-C compiler for MinGW-w64
 Package: gobjc++-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
- gcc-mingw-w64 (= ${binary:Version}),
- gobjc-mingw-w64 (= ${binary:Version}),
- binutils-mingw-w64 (>= 2.21.51.20110523), mingw-w64-dev (>= 1.0)
+ gobjc-mingw-w64 (= ${binary:Version})
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Suggests: gcc-4.6-locales (>= ${local:Version}),
 Description: GNU Objective-C++ compiler for MinGW-w64
