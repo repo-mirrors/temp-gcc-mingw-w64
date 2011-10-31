@@ -30,17 +30,13 @@ dpkg_buildflags = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
 
 CFLAGS = $(shell $(dpkg_buildflags) --get CFLAGS)
 CFLAGS += -Wall
-export CFLAGS
 CPPFLAGS = $(shell $(dpkg_buildflags) --get CPPFLAGS)
-export CPPFLAGS
 CXXFLAGS = $(shell $(dpkg_buildflags) --get CXXFLAGS)
 CXXFLAGS += -Wall
-export CXXFLAGS
 FFLAGS = $(shell $(dpkg_buildflags) --get FFLAGS)
-export FFLAGS
 LDFLAGS = $(shell $(dpkg_buildflags) --get LDFLAGS)
 LDFLAGS += -Wl,--as-needed
-export LDFLAGS
+export CFLAGS CPPFLAGS CXXFLAGS FFLAGS LDFLAGS
 
 # Number of jobs to run for build
 ifeq ($(USE_NJOBS),no)
