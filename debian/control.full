@@ -5,7 +5,7 @@ Maintainer: Stephen Kitt <steve@sk2.org>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev,
  gcc-4.6-source (>= 4.6.1-5), xz-utils, libgmp-dev,
  libmpfr-dev (>= 2.3.2), libmpc-dev (>= 0.8.0), zlib1g-dev,
- libelf-dev, libcloog-ppl-dev, gnat-4.6,
+ libelf-dev, libcloog-ppl-dev, gnat-4.6 [!armhf !hurd-i386],
  mingw-w64-dev (>= 1.0), binutils-mingw-w64 (>= 2.21.51.20110523)
 Standards-Version: 3.9.2
 Homepage: http://www.gnu.org/software/gcc/

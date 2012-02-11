@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 # Build gcc-mingw-w64 using gcc-4.6-source.
-# Copyright © 2010 Stephen Kitt <steve@sk2.org>
+# Copyright © 2010-2012 Stephen Kitt <steve@sk2.org>
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
@@ -234,7 +234,7 @@ binary-arch: build install
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
 	strip --remove-section=.comment --remove-section=.note --strip-unneeded $(patsubst %,$(top_dir)/debian/$(package)/usr/lib/gcc/%/$(target_version)/liblto_plugin.so.0.0.0,$(targets))
 	for target in $(targets); do \
-		$$target-strip --strip-unneeded $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/lib*.a $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/adalib/lib*.a; \
+		find $(top_dir)/debian -type f -name lib\*.a | grep $$target | xargs -r $$target-strip --strip-unneeded; \
 	done
 endif
 	dh_lintian
@@ -242,13 +242,9 @@ endif
 	dh_fixperms
 	# Fix permissions further
 	# *.ali files must be read-only
-	for target in $(targets); do \
-		chmod 444 $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/adalib/*.ali; \
-	done
+	find $(top_dir)/debian -name \*.ali | xargs -r chmod 444
 	# *.dll files shouldn't be executable
-	for target in $(targets); do \
-		chmod 644 $(top_dir)/debian/$(package)/usr/lib/gcc/$$target/$(target_version)/*.dll; \
-	done
+	find $(top_dir)/debian -name \*.dll | xargs -r chmod 644
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)

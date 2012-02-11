@@ -1,3 +1,10 @@
+gcc-mingw-w64 (3) unstable; urgency=low
+
+  * Disable Ada support on armhf and hurd-i386 for now, based on a patch
+    by Peter Green (Closes: #658526).
+
+ -- Stephen Kitt <steve@sk2.org>  Sat, 11 Feb 2012 14:11:53 +0100
+
 gcc-mingw-w64 (2) unstable; urgency=low
 
   * Export all relevant flags from dpkg-buildflags; in particular this
