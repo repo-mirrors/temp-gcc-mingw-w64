@@ -1,0 +1,15 @@
+usr/bin/i686-w64-mingw32-gnat
+usr/bin/i686-w64-mingw32-gnatbind
+usr/bin/i686-w64-mingw32-gnatchop
+usr/bin/i686-w64-mingw32-gnatclean
+usr/bin/i686-w64-mingw32-gnatfind
+usr/bin/i686-w64-mingw32-gnatkr
+usr/bin/i686-w64-mingw32-gnatlink
+usr/bin/i686-w64-mingw32-gnatls
+usr/bin/i686-w64-mingw32-gnatmake
+usr/bin/i686-w64-mingw32-gnatname
+usr/bin/i686-w64-mingw32-gnatprep
+usr/bin/i686-w64-mingw32-gnatxref
+usr/lib/gcc/i686-w64-mingw32/4.6/adainclude/*
+usr/lib/gcc/i686-w64-mingw32/4.6/adalib/*
+usr/lib/gcc/i686-w64-mingw32/4.6/gnat1

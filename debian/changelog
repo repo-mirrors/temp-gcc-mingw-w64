@@ -2,6 +2,9 @@ gcc-mingw-w64 (3) unstable; urgency=low
 
   * Split package into gcc, g++, gfortran and gnat packages.
   * Enable the Objective-C and Objective-C++ compilers.
+  * Split package into 32- and 64-bit specific versions (-i686 and
+    -x86-64) - see thread starting at
+    http://lists.debian.org/4EBA730A.7060707@greffrath.com for rationale.
 
  -- Stephen Kitt <steve@sk2.org>  Mon, 31 Oct 2011 00:55:05 +0100
 

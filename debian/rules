@@ -229,9 +229,9 @@ binary-arch: build install
 	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib -Xw64-mingw32/$(base_version)/adalib
 	# Strip the libraries
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
-	strip --remove-section=.comment --remove-section=.note --strip-unneeded $(patsubst %,$(top_dir)/debian/gcc-mingw-w64/usr/lib/gcc/%/$(target_version)/liblto_plugin.so.0.0.0,$(targets))
+	find $(top_dir)/debian -type f -name liblto_plugin.so.\*.\*.\* | xargs strip --remove-section=.comment --remove-section=.note --strip-unneeded
 	for target in $(targets); do \
-		$$target-strip --strip-unneeded $(patsubst %,$(top_dir)/debian/%-mingw-w64/usr/lib/gcc/$$target/$(target_version)/lib*.a,gcc g++ gfortran) $(top_dir)/debian/gnat-mingw-w64/usr/lib/gcc/$$target/$(target_version)/adalib/lib*.a; \
+		find $(top_dir)/debian -type f -name lib\*.a | grep $$target | xargs $$target-strip --strip-unneeded; \
 	done
 endif
 	dh_lintian
@@ -239,13 +239,9 @@ endif
 	dh_fixperms
 	# Fix permissions further
 	# *.ali files must be read-only
-	for target in $(targets); do \
-		chmod 444 $(top_dir)/debian/gnat-mingw-w64/usr/lib/gcc/$$target/$(target_version)/adalib/*.ali; \
-	done
+	find $(top_dir)/debian -name \*.ali | xargs chmod 444
 	# *.dll files shouldn't be executable
-	for target in $(targets); do \
-		chmod 644 $(patsubst %,$(top_dir)/debian/%-mingw-w64/usr/lib/gcc/$$target/$(target_version)/*.dll,gcc g++ gfortran); \
-	done
+	find $(top_dir)/debian -name \*.dll | xargs chmod 644
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)
