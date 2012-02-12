@@ -5,8 +5,10 @@ gcc-mingw-w64 (3) unstable; urgency=low
   * Wrap-and-sort debian/control.full.
   * Check before moving libraries, when bootstrapping there is nothing
     to move.
+  * Update debian/control.bootstrap with changes made to
+    debian/control.full.
 
- -- Stephen Kitt <steve@sk2.org>  Sun, 12 Feb 2012 23:22:26 +0100
+ -- Stephen Kitt <steve@sk2.org>  Sun, 12 Feb 2012 23:23:11 +0100
 
 gcc-mingw-w64 (2) unstable; urgency=low
 
