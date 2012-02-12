@@ -194,16 +194,18 @@ install-stamp: build-stamp
 	find $(top_dir)/debian/$(package) -name \*.la -delete
 
 	# Move libraries to base directories and add version-specific links
-	for gnu_upstream_version in $$(basename debian/gcc-mingw-w64/usr/share/gcc-*|cut -d- -f2); do \
-		if [ "$$gnu_upstream_version" != "$(base_version)" ]; then \
-			[ -d $(top_dir)/debian/$(package)/usr/include/c++ ] && cd $(top_dir)/debian/$(package)/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
-			for target in $(targets); do \
-				cd $(top_dir)/debian/$(package)/$(PF)/lib/gcc/$$target && \
-				mv $$gnu_upstream_version $(base_version) && \
-				ln -s $(base_version) $$gnu_upstream_version; \
-			done; \
-		fi; \
-	done
+	if [ "$$(basename debian/$(package)/usr/share/gcc-*)" != "gcc-*" ]; then \
+		for gnu_upstream_version in $$(basename debian/$(package)/usr/share/gcc-*|cut -d- -f2); do \
+			if [ "$$gnu_upstream_version" != "$(base_version)" ]; then \
+				[ -d $(top_dir)/debian/$(package)/usr/include/c++ ] && cd $(top_dir)/debian/$(package)/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
+				for target in $(targets); do \
+					cd $(top_dir)/debian/$(package)/$(PF)/lib/gcc/$$target && \
+					mv $$gnu_upstream_version $(base_version) && \
+					ln -s $(base_version) $$gnu_upstream_version; \
+				done; \
+			fi; \
+		done; \
+	fi
 
 	# Move misplaced DLLs and libraries
 	for target in $(targets); do \
