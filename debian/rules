@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 # Build gcc-mingw-w64 using gcc-4.6-source.
-# Copyright © 2010 Stephen Kitt <steve@sk2.org>
+# Copyright © 2010-2012 Stephen Kitt <steve@sk2.org>
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
@@ -190,16 +190,18 @@ install-stamp: build-stamp
 	find $(top_dir)/debian/tmp -name \*.la -delete
 
 	# Move libraries to base directories and add version-specific links
-	for gnu_upstream_version in $$(basename debian/tmp/usr/share/gcc-*|cut -d- -f2); do \
-		if [ "$$gnu_upstream_version" != "$(base_version)" ]; then \
-			[ -d $(top_dir)/debian/tmp/usr/include/c++ ] && cd $(top_dir)/debian/tmp/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
-			for target in $(targets); do \
-				cd $(top_dir)/debian/tmp/$(PF)/lib/gcc/$$target && \
-				mv $$gnu_upstream_version $(base_version) && \
-				ln -s $(base_version) $$gnu_upstream_version; \
-			done; \
-		fi; \
-	done
+	if [ "$$(basename debian/tmp/usr/share/gcc-*)" != "gcc-*" ]; then \
+		for gnu_upstream_version in $$(basename debian/tmp/usr/share/gcc-*|cut -d- -f2); do \
+			if [ "$$gnu_upstream_version" != "$(base_version)" ]; then \
+				[ -d $(top_dir)/debian/tmp/usr/include/c++ ] && cd $(top_dir)/debian/tmp/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
+				for target in $(targets); do \
+					cd $(top_dir)/debian/tmp/$(PF)/lib/gcc/$$target && \
+					mv $$gnu_upstream_version $(base_version) && \
+					ln -s $(base_version) $$gnu_upstream_version; \
+				done; \
+			fi; \
+		done; \
+	fi
 
 	# Move misplaced DLLs and libraries
 	for target in $(targets); do \
@@ -231,7 +233,7 @@ binary-arch: build install
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
 	find $(top_dir)/debian -type f -name liblto_plugin.so.\*.\*.\* | xargs strip --remove-section=.comment --remove-section=.note --strip-unneeded
 	for target in $(targets); do \
-		find $(top_dir)/debian -type f -name lib\*.a | grep $$target | xargs $$target-strip --strip-unneeded; \
+		find $(top_dir)/debian -type f -name lib\*.a | grep $$target | xargs -r $$target-strip --strip-unneeded; \
 	done
 endif
 	dh_lintian
@@ -239,9 +241,9 @@ endif
 	dh_fixperms
 	# Fix permissions further
 	# *.ali files must be read-only
-	find $(top_dir)/debian -name \*.ali | xargs chmod 444
+	find $(top_dir)/debian -name \*.ali | xargs -r chmod 444
 	# *.dll files shouldn't be executable
-	find $(top_dir)/debian -name \*.dll | xargs chmod 644
+	find $(top_dir)/debian -name \*.dll | xargs -r chmod 644
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)

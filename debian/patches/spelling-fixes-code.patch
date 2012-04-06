@@ -1,9 +1,10 @@
-Description: Use "information" rather than "informations"
+Description: Spelling fixes ("information", "writing")
 Author: Stephen Kitt <steve@sk2.org>
 Forwarded: http://gcc.gnu.org/ml/gcc-patches/2011-09/msg01216.html
 
---- gcc-mingw-w64.orig/src/gcc/graphite-poly.c
-+++ gcc-mingw-w64/src/gcc/graphite-poly.c
+diff -urN gcc-mingw-w64.orig/src/gcc/graphite-poly.c gcc-mingw-w64/src/gcc/graphite-poly.c
+--- gcc-mingw-w64.orig/src/gcc/graphite-poly.c	2012-02-10 07:01:06.000000000 +0100
++++ gcc-mingw-w64/src/gcc/graphite-poly.c	2012-02-10 07:10:25.000000000 +0100
 @@ -1174,7 +1174,7 @@
    if (VEC_length (poly_dr_p, PBB_DRS (pbb)) == 0)
      {
@@ -40,3 +41,15 @@ Forwarded: http://gcc.gnu.org/ml/gcc-patches/2011-09/msg01216.html
    fprintf (file, "%d\n", nb_writes);
  
    FOR_EACH_VEC_ELT (poly_dr_p, PBB_DRS (pbb), i, pdr)
+diff -urN gcc-mingw-w64.orig/src/gcc/lto/lto.c gcc-mingw-w64/src/gcc/lto/lto.c
+--- gcc-mingw-w64.orig/src/gcc/lto/lto.c	2012-02-10 07:00:32.000000000 +0100
++++ gcc-mingw-w64/src/gcc/lto/lto.c	2012-02-10 07:10:44.000000000 +0100
+@@ -1511,7 +1511,7 @@
+ 	fprintf (stderr, " %s (%s %i insns)", temp_filename, part->name, part->insns);
+       if (cgraph_dump_file)
+ 	{
+-	  fprintf (cgraph_dump_file, "Writting partition %s to file %s, %i insns\n",
++	  fprintf (cgraph_dump_file, "Writing partition %s to file %s, %i insns\n",
+ 		   part->name, temp_filename, part->insns);
+ 	  fprintf (cgraph_dump_file, "cgraph nodes:");
+ 	  dump_cgraph_node_set (cgraph_dump_file, set);
