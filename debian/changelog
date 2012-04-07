@@ -5,8 +5,10 @@ gcc-mingw-w64 (4) unstable; urgency=low
   * Split package into 32- and 64-bit specific versions (-i686 and
     -x86-64) - see thread starting at
     http://lists.debian.org/4EBA730A.7060707@greffrath.com for rationale.
+  * Build with gcc-4.6 explicitly, at least until gnat-4.7 is available
+    (Closes: #667173).
 
- -- Stephen Kitt <steve@sk2.org>  Fri, 06 Apr 2012 07:04:32 +0200
+ -- Stephen Kitt <steve@sk2.org>  Sat, 07 Apr 2012 10:54:03 +0200
 
 gcc-mingw-w64 (3) unstable; urgency=low
 

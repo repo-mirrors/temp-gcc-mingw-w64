@@ -5,6 +5,7 @@ Maintainer: Stephen Kitt <steve@sk2.org>
 Build-Depends: autotools-dev,
                binutils-mingw-w64 (>= 2.20),
                debhelper (>= 7.0.50~),
+	       gcc-4.6,
                gcc-4.6-source,
                libgmp-dev,
                libmpc-dev (>= 0.8.0),

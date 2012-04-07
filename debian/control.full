@@ -5,6 +5,7 @@ Maintainer: Stephen Kitt <steve@sk2.org>
 Build-Depends: autotools-dev,
                binutils-mingw-w64 (>= 2.21.51.20110523),
                debhelper (>= 7.0.50~),
+	       gcc-4.6 (>= 4.6.2-2),
                gcc-4.6-source (>= 4.6.2-2),
                gnat-4.6 [!armhf !hurd-i386],
                libcloog-ppl-dev,

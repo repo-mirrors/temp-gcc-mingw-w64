@@ -28,6 +28,8 @@ targets := i686-w64-mingw32 x86_64-w64-mingw32
 # No hardening support for now
 dpkg_buildflags = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
 
+CC = gcc-4.6
+CXX = g++-4.6
 CFLAGS = $(shell $(dpkg_buildflags) --get CFLAGS)
 CFLAGS += -Wall
 CPPFLAGS = $(shell $(dpkg_buildflags) --get CPPFLAGS)
@@ -36,7 +38,7 @@ CXXFLAGS += -Wall
 FFLAGS = $(shell $(dpkg_buildflags) --get FFLAGS)
 LDFLAGS = $(shell $(dpkg_buildflags) --get LDFLAGS)
 LDFLAGS += -Wl,--as-needed
-export CFLAGS CPPFLAGS CXXFLAGS FFLAGS LDFLAGS
+export CC CXX CFLAGS CPPFLAGS CXXFLAGS FFLAGS LDFLAGS
 
 # Number of jobs to run for build
 ifeq ($(USE_NJOBS),no)
