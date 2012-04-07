@@ -2,4 +2,4 @@
 gfortran-mingw-w64-x86-64: binary-without-manpage
 
 # This isn't a spelling error
-gfortran-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86-64-w64-mingw32/4.6/f951 ment meant
+gfortran-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86_64-w64-mingw32/4.6/f951 ment meant
