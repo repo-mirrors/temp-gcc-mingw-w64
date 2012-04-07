@@ -7,6 +7,7 @@ gcc-mingw-w64 (4) unstable; urgency=low
     http://lists.debian.org/4EBA730A.7060707@greffrath.com for rationale.
   * Build with gcc-4.6 explicitly, at least until gnat-4.7 is available
     (Closes: #667173).
+  * Standards-Version 3.9.3, no change required.
 
  -- Stephen Kitt <steve@sk2.org>  Sat, 07 Apr 2012 10:54:03 +0200
 
