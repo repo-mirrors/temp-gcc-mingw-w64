@@ -85,10 +85,10 @@ $(unpack_stamp):
 	mkdir -p $(stampdir)
 	touch $@
 
-clean:
+clean: control
 	dh_testdir
 	dh_testroot
-	rm -rf $(stampdir) $(build_dir) $(upstream_dir) .pc autotools_files series
+	rm -rf $(stampdir) $(build_dir) $(upstream_dir) .pc autotools_files series *-stamp
 	dh_clean
 
 # Configuration constructed as in the gcc package
@@ -140,9 +140,12 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	touch $@
 
 configure: configure-stamp
-configure-stamp: mingw-w64-patch-stamp
+configure-stamp: control-stamp mingw-w64-patch-stamp
 	dh_testdir
 	set -e; \
+	echo ============= Building with the following debian/control =============
+	cat debian/control
+	echo ======================================================================
 	for target in $(targets); do \
 		dh_auto_configure -B$(build_dir)/$$target -D$(upstream_dir) -- \
 			$(CONFFLAGS) \

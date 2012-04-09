@@ -1,0 +1,22 @@
+Source: gcc-mingw-w64
+Section: devel
+Priority: extra
+Maintainer: Stephen Kitt <steve@sk2.org>
+Build-Depends: autotools-dev,
+               binutils-mingw-w64 (>= 2.21.51.20110523),
+               debhelper (>= 7.0.50~),
+	       gcc-4.6 (>= 4.6.2-2),
+               gcc-4.6-source (>= 4.6.2-2),
+               gnat-4.6 [!armhf !hurd-i386],
+               libcloog-ppl-dev,
+               libelf-dev,
+               libgmp-dev,
+               libmpc-dev (>= 0.8.0),
+               libmpfr-dev (>= 2.3.2),
+               mingw-w64-dev (>= 1.0),
+               xz-utils,
+               zlib1g-dev
+Standards-Version: 3.9.3
+Homepage: http://www.gnu.org/software/gcc/
+Vcs-Git: git://git.debian.org/collab-maint/gcc-mingw-w64.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/gcc-mingw-w64.git;a=summary

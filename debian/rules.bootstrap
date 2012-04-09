@@ -3,3 +3,8 @@ package := gcc-mingw-w64-bootstrap
 languages := c,c++
 BUILD_TARGET := all-gcc
 INSTALL_TARGET := install-gcc
+
+control: control-stamp
+control-stamp:
+	cp debian/control.bootstrap debian/control
+	touch $@

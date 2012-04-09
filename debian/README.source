@@ -4,24 +4,22 @@ gcc-mingw-w64 for Debian
 Building gcc-mingw-w64 from scratch requires several steps.
 
 1. Build the bootstrap gcc package which will allow mingw-w64 to be built:
-	cd debian
-	ln -sf rules.bootstrap rules.variant
-	ln -sf control.bootstrap control
-	cd ..
+	ln -sf rules.bootstrap debian/rules.variant
+	cp debian/control.bootstrap debian/control
 	dpkg-buildpackage
 2. Install the resulting gcc-mingw-w64-bootstrap package.
 3. Build the mingw-w64 package (see its README.source file for more
    details).
 4. Install the mingw-w64 package.
 5. Build the full gcc package:
-	cd debian
-	fakeroot debian/rules clean
-	ln -sf rules.full rules.variant
-	ln -sf control.full control
+	ln -sf rules.full debian/rules.variant
+	debian/rules control
 	dpkg-buildpackage
+
+The debian/bootstrap script handles steps 1 and 5.
 
 Note that once mingw-w64 is available (it's an architecture "all"
 package), building the gcc package no longer requires this series of
 steps.
 
- -- Stephen Kitt <steve@sk2.org>, Mon, 15 Nov 2010 19:36:23 +0100
+ -- Stephen Kitt <steve@sk2.org>, Tue, 10 Apr 2012 07:03:23 +0200

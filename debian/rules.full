@@ -9,3 +9,18 @@ ifneq ($(DEB_HOST_ARCH),armhf)
 endif
 BUILD_TARGET :=
 INSTALL_TARGET := install install-lto-plugin
+
+comma := ,
+space :=
+space +=
+control: control-stamp
+control-stamp:
+	cat debian/control.source > debian/control
+	for language in $(subst $(comma),$(space),$(languages)); do \
+		echo >> debian/control; \
+		sed -f debian/control.$$language.sed debian/control.template >> debian/control; \
+	done
+	sed -i '/^Breaks: $$/d' debian/control
+	sed -i '/^Conflicts: $$/d' debian/control
+	sed -i '/^Replaces: $$/d' debian/control
+	touch $@

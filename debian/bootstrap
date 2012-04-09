@@ -15,9 +15,9 @@
 # from the full build).
 fakeroot debian/rules clean
 
-# Set the links up.
-ln -sf control.bootstrap debian/control
+# Set the control file and rules variant up.
 ln -sf rules.bootstrap debian/rules.variant
+cp debian/control.bootstrap debian/control
 
 # Build.
 if [ -z "$1" ]; then
@@ -28,5 +28,5 @@ fi
 
 # Clean up...
 fakeroot debian/rules clean
-ln -sf control.full debian/control
 ln -sf rules.full debian/rules.variant
+debian/rules control
