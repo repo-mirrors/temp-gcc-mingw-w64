@@ -229,7 +229,7 @@ binary-arch: build install
 	dh_testdir
 	dh_testroot
 	dh_install --list-missing
-	dh_installdocs
+	dh_installdocs --link-doc=gcc-mingw-w64-base
 	dh_installman
 	dh_installchangelogs $(upstream_dir)/ChangeLog
 	# Strip the binaries
