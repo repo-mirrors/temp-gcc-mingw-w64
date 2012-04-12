@@ -242,6 +242,7 @@ ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
 	done
 endif
 	dh_lintian
+	dh_link
 	dh_compress
 	dh_fixperms
 	# Fix permissions further

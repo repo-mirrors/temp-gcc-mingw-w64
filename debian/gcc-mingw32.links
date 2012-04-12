@@ -1,0 +1,7 @@
+usr/bin/i686-w64-mingw32-c++ usr/bin/i586-mingw32msvc-c++
+usr/bin/i686-w64-mingw32-gcc usr/bin/i586-mingw32msvc-cc
+usr/bin/i686-w64-mingw32-cpp usr/bin/i586-mingw32msvc-cpp
+usr/bin/i686-w64-mingw32-g++ usr/bin/i586-mingw32msvc-g++
+usr/bin/i686-w64-mingw32-gcc usr/bin/i586-mingw32msvc-gcc
+usr/bin/i686-w64-mingw32-gcov usr/bin/i586-mingw32msvc-gcov
+usr/bin/i686-w64-mingw32-gfortran usr/bin/i586-mingw32msvc-gfortran

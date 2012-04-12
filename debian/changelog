@@ -8,8 +8,18 @@ gcc-mingw-w64 (4) unstable; urgency=low
   * Build with gcc-4.6 explicitly, at least until gnat-4.7 is available
     (Closes: #667173).
   * Standards-Version 3.9.3, no change required.
+  * Provide a transitional gcc-mingw32 package for backwards-
+    compatibility (Closes: #644769); in addition, with regards to bugs
+    filed against gcc-mingw32:
+    - gcc-mingw-w64's version of mm_malloc.h is correct (Closes: #651300);
+    - gcc-mingw-w64 compiles programs (Closes: #658619);
+    - gcc-mingw-w64 provides shared versions of libgcc and libstdc++
+      (Closes: #540783);
+    - the packages' dependency structure ensures that the various compiler
+      packages depend on the appropriate development packages (Closes:
+      #567698).
 
- -- Stephen Kitt <steve@sk2.org>  Sat, 07 Apr 2012 10:54:03 +0200
+ -- Stephen Kitt <steve@sk2.org>  Thu, 12 Apr 2012 20:51:58 +0200
 
 gcc-mingw-w64 (3) unstable; urgency=low
 

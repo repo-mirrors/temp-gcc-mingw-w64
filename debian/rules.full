@@ -20,6 +20,8 @@ control-stamp:
 		echo >> debian/control; \
 		sed -f debian/control.$$language.sed debian/control.template >> debian/control; \
 	done
+	echo >> debian/control
+	cat debian/control.gcc-mingw32 >> debian/control
 	sed -i '/^Breaks: $$/d' debian/control
 	sed -i '/^Conflicts: $$/d' debian/control
 	sed -i '/^Replaces: $$/d' debian/control
