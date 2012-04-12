@@ -18,8 +18,9 @@ gcc-mingw-w64 (4) unstable; urgency=low
     - the packages' dependency structure ensures that the various compiler
       packages depend on the appropriate development packages (Closes:
       #567698).
+  * Update debian/copyright using the version provided by gcc-4.6.
 
- -- Stephen Kitt <steve@sk2.org>  Thu, 12 Apr 2012 20:51:58 +0200
+ -- Stephen Kitt <steve@sk2.org>  Thu, 12 Apr 2012 23:45:42 +0200
 
 gcc-mingw-w64 (3) unstable; urgency=low
 
