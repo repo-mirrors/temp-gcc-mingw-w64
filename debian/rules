@@ -156,17 +156,21 @@ configure-stamp: control-stamp mingw-w64-patch-stamp
 	done
 	touch $@
 
-build: build-stamp
-build-stamp: configure-stamp
+build: build-arch build-indep
+build-arch: build-arch-stamp
+build-arch-stamp: configure-stamp
 	dh_testdir
 	set -e; \
 	for target in $(targets); do \
 		cd $(build_dir)/$$target && $(MAKE) $(NJOBS) $(BUILD_TARGET); \
 	done
 	touch $@
+build-indep: build-indep-stamp
+build-indep-stamp:
+	touch $@
 
-install: install-stamp
-install-stamp: build-stamp
+install-arch: install-arch-stamp
+install-arch-stamp: build-arch-stamp
 	dh_testdir
 	dh_testroot
 	dh_prep
@@ -224,16 +228,29 @@ install-stamp: build-stamp
 
 	touch $@
 
-binary-indep:
-binary-arch: build install
+binary-indep: build-indep
 	dh_testdir
 	dh_testroot
-	dh_install --list-missing
-	dh_installdocs --link-doc=gcc-mingw-w64-base
-	dh_installman
-	dh_installchangelogs $(upstream_dir)/ChangeLog
+	dh_installdocs -i --link-doc=gcc-mingw-w64-base
+	dh_installchangelogs -i $(upstream_dir)/ChangeLog
+	dh_lintian -i
+	dh_link -i
+	dh_compress -i
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)
+	dh_md5sums -i
+	dh_builddeb -i
+
+binary-arch: build-arch install-arch
+	dh_testdir
+	dh_testroot
+	dh_install -a --list-missing
+	dh_installdocs -a --link-doc=gcc-mingw-w64-base
+	dh_installman -a
+	dh_installchangelogs -a $(upstream_dir)/ChangeLog
 	# Strip the binaries
-	dh_strip -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib -Xw64-mingw32/$(base_version)/adalib
+	dh_strip -a -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib -Xw64-mingw32/$(base_version)/adalib
 	# Strip the libraries
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
 	find $(top_dir)/debian -type f -name liblto_plugin.so.\*.\*.\* | xargs strip --remove-section=.comment --remove-section=.note --strip-unneeded
@@ -241,21 +258,21 @@ ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
 		find $(top_dir)/debian -type f -name lib\*.a | grep $$target | xargs -r $$target-strip --strip-unneeded; \
 	done
 endif
-	dh_lintian
-	dh_link
-	dh_compress
-	dh_fixperms
+	dh_lintian -a
+	dh_link -a
+	dh_compress -a
+	dh_fixperms -a
 	# Fix permissions further
 	# *.ali files must be read-only
 	find $(top_dir)/debian -name \*.ali | xargs -r chmod 444
 	# *.dll files shouldn't be executable
 	find $(top_dir)/debian -name \*.dll | xargs -r chmod 644
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)
-	dh_md5sums
-	dh_builddeb
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)
+	dh_md5sums -a
+	dh_builddeb -a
 
 binary: binary-indep binary-arch
 
-.PHONY: binary-indep binary-arch binary clean build install configure mingw-w64-patch
+.PHONY: binary-indep binary-arch binary clean build-indep build-arch build install-arch configure mingw-w64-patch

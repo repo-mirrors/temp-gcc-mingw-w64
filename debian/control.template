@@ -1,5 +1,5 @@
 Package: @@PACKAGE@@-mingw-w64
-Architecture: any
+Architecture: all
 Depends: @@PACKAGE@@-mingw-w64-i686, @@PACKAGE@@-mingw-w64-x86-64, ${misc:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Description: GNU @@LANGUAGE@@ compiler for MinGW-w64

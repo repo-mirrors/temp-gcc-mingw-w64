@@ -1,5 +1,5 @@
 Package: gcc-mingw32
-Architecture: any
+Architecture: all
 Depends: gcc-mingw-w64-i686, g++-mingw-w64-i686, gfortran-mingw-w64-i686, ${misc:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Description: GNU Compiler Collection for MinGW32 (transition package)
