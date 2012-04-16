@@ -1,5 +1,6 @@
 gcc-mingw-w64 (4) unstable; urgency=low
 
+  [ Stephen Kitt ]
   * Split package into gcc, g++, gfortran and gnat packages.
   * Enable the Objective-C and Objective-C++ compilers.
   * Split package into 32- and 64-bit specific versions (-i686 and
@@ -20,7 +21,10 @@ gcc-mingw-w64 (4) unstable; urgency=low
       #567698).
   * Update debian/copyright using the version provided by gcc-4.6.
 
- -- Stephen Kitt <steve@sk2.org>  Sat, 14 Apr 2012 17:40:46 +0200
+  [ Didier Raboud ]
+  * Confidently set the DM-Upload-Allowed flag to yes.
+
+ -- Stephen Kitt <steve@sk2.org>  Mon, 16 Apr 2012 08:46:45 +0200
 
 gcc-mingw-w64 (3) unstable; urgency=low
 
