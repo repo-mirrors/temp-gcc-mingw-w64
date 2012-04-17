@@ -1,3 +1,4 @@
+# This file is generated using debian/rules control, do not edit
 Source: gcc-mingw-w64
 Section: devel
 Priority: extra

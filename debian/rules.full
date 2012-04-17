@@ -15,7 +15,8 @@ space :=
 space +=
 control: control-stamp
 control-stamp:
-	cat debian/control.source > debian/control
+	echo \# This file is generated using debian/rules control, do not edit > debian/control
+	cat debian/control.source >> debian/control
 	for language in $(subst $(comma),$(space),$(languages)); do \
 		echo >> debian/control; \
 		sed -f debian/control.$$language.sed debian/control.template >> debian/control; \
