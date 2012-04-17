@@ -1,3 +1,9 @@
+gcc-mingw-w64 (5) unstable; urgency=low
+
+  * Add the DMUA flag set by Didier Raboud to the control.source file.
+
+ -- Stephen Kitt <steve@sk2.org>  Wed, 18 Apr 2012 00:59:20 +0200
+
 gcc-mingw-w64 (4) unstable; urgency=low
 
   [ Stephen Kitt ]
