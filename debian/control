@@ -42,8 +42,8 @@ Depends: binutils-mingw-w64-i686, mingw-w64-i686-dev | mingw-w64-dev, gcc-mingw-
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Conflicts: gcc-mingw-w64-bootstrap
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version}), gcc-mingw-w64-bootstrap
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4), gcc-mingw-w64-bootstrap
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU C compiler for MinGW-w64 targeting Win32
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -60,8 +60,8 @@ Depends: binutils-mingw-w64-x86-64, mingw-w64-x86-64-dev | mingw-w64-dev, gcc-mi
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Conflicts: gcc-mingw-w64-bootstrap
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version}), gcc-mingw-w64-bootstrap
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4), gcc-mingw-w64-bootstrap
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU C compiler for MinGW-w64 targeting Win64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -89,8 +89,8 @@ Depends: gcc-mingw-w64-i686 (= ${binary:Version}), libstdc++6-4.6-dev (>= ${loca
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version})
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4)
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU C++ compiler for MinGW-w64 targeting Win32
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -106,8 +106,8 @@ Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}), libstdc++6-4.6-dev (>= ${lo
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version})
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4)
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU C++ compiler for MinGW-w64 targeting Win64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -135,8 +135,8 @@ Depends: gcc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version})
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4)
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU Fortran compiler for MinGW-w64 targeting Win32
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -152,8 +152,8 @@ Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version})
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4)
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU Fortran compiler for MinGW-w64 targeting Win64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -265,8 +265,8 @@ Depends: gcc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version})
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4)
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU Ada compiler for MinGW-w64 targeting Win32
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -282,8 +282,8 @@ Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${binary:Version})
-Replaces: gcc-mingw-w64 (<< ${binary:Version})
+Breaks: gcc-mingw-w64 (<< 4.6.3-3+4)
+Replaces: gcc-mingw-w64 (<< 4.6.3-3+4)
 Suggests: gcc-4.6-locales (>= ${local:Version})
 Description: GNU Ada compiler for MinGW-w64 targeting Win64
  MinGW-w64 provides a development and runtime environment for 32- and

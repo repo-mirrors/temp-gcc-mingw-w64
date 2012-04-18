@@ -3,8 +3,11 @@ gcc-mingw-w64 (5) unstable; urgency=low
   * Add the DMUA flag set by Didier Raboud to the control.source file.
   * Add a warning to the generated debian/control file indicating that
     it shouldn't be modified directly.
+  * Fix the version for Breaks/Replaces at 4.6.3-3+4, since this is the
+    earliest version of the post-split package in the archive. Fixing
+    the version avoids making the package set uninstallable.
 
- -- Stephen Kitt <steve@sk2.org>  Wed, 18 Apr 2012 01:00:34 +0200
+ -- Stephen Kitt <steve@sk2.org>  Wed, 18 Apr 2012 15:04:47 +0200
 
 gcc-mingw-w64 (4) unstable; urgency=low
 
