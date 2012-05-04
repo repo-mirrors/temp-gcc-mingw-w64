@@ -17,6 +17,13 @@ source_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version
 deb_version := $(source_version)+$(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
+distribution := $(shell lsb_release -is)
+
+# First split version
+first_split_version := 4.6.3-3+4
+ifeq ($(distribution),Ubuntu)
+  first_split_version := 4.6.3-1ubuntu5+5ubuntu1
+endif
 
 # Include the rules variant - symlink rules.bootstrap to produce the
 # minimal gcc required to build mingw-w64, or rules.full to produce
@@ -238,7 +245,7 @@ binary-indep: build-indep
 	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
-	dh_gencontrol -i -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)
+	dh_gencontrol -i -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
 	dh_md5sums -i
 	dh_builddeb -i
 
@@ -269,7 +276,7 @@ endif
 	find $(top_dir)/debian -name \*.dll | xargs -r chmod 644
 	dh_installdeb -a
 	dh_shlibdeps -a
-	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version)
+	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
 	dh_md5sums -a
 	dh_builddeb -a
 

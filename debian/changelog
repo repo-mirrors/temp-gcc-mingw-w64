@@ -1,3 +1,9 @@
+gcc-mingw-w64 (6) unstable; urgency=low
+
+  * Handle the different split-package versions in Ubuntu and Debian.
+
+ -- Stephen Kitt <steve@sk2.org>  Thu, 03 May 2012 22:59:55 +0200
+
 gcc-mingw-w64 (5) unstable; urgency=low
 
   * Add the DMUA flag set by Didier Raboud to the control.source file.
