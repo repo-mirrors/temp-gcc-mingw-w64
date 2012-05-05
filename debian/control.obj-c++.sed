@@ -2,6 +2,7 @@ s/@@PACKAGE@@/gobjc++/g
 s/@@LANGUAGE@@/Objective-C++/g
 s/@@DEPENDS32@@/gobjc-mingw-w64-i686 (= ${binary:Version})/g
 s/@@DEPENDS64@@/gobjc-mingw-w64-x86-64 (= ${binary:Version})/g
+s/@@RECOMMENDS@@//g
 s/@@REPLACES32@@//g
 s/@@REPLACES64@@//g
 s/@@CONFLICTS32@@//g

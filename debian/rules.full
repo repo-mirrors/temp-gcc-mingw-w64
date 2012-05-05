@@ -25,6 +25,7 @@ control-stamp:
 	cat debian/control.gcc-mingw32 >> debian/control
 	echo >> debian/control
 	cat debian/control.base >> debian/control
+	sed -i '/^Recommends: $$/d' debian/control
 	sed -i '/^Breaks: $$/d' debian/control
 	sed -i '/^Conflicts: $$/d' debian/control
 	sed -i '/^Replaces: $$/d' debian/control

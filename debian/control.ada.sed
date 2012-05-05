@@ -2,6 +2,7 @@ s/@@PACKAGE@@/gnat/g
 s/@@LANGUAGE@@/Ada/g
 s/@@DEPENDS32@@/gcc-mingw-w64-i686 (= ${binary:Version})/g
 s/@@DEPENDS64@@/gcc-mingw-w64-x86-64 (= ${binary:Version})/g
+s/@@RECOMMENDS@@//g
 s/@@REPLACES32@@/gcc-mingw-w64 (<< ${split:Version})/g
 s/@@REPLACES64@@/gcc-mingw-w64 (<< ${split:Version})/g
 s/@@CONFLICTS32@@//g

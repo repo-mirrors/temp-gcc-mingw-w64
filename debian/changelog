@@ -1,8 +1,10 @@
 gcc-mingw-w64 (6) unstable; urgency=low
 
   * Handle the different split-package versions in Ubuntu and Debian.
+  * Add transitional "Recommends" so that gcc-mingw-w64 pulls in the
+    compilers it used to provide (LP: #992217).
 
- -- Stephen Kitt <steve@sk2.org>  Thu, 03 May 2012 22:59:55 +0200
+ -- Stephen Kitt <steve@sk2.org>  Fri, 04 May 2012 07:48:52 +0200
 
 gcc-mingw-w64 (5) unstable; urgency=low
 

@@ -27,6 +27,7 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/gcc-mingw-w64.git;a=summary
 Package: gcc-mingw-w64
 Architecture: all
 Depends: gcc-mingw-w64-i686, gcc-mingw-w64-x86-64, ${misc:Depends}
+Recommends: g++-mingw-w64, gfortran-mingw-w64, gnat-mingw-w64
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Description: GNU C compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
