@@ -1,6 +1,10 @@
 Package: gcc-mingw32
 Architecture: all
-Depends: gcc-mingw-w64-i686, g++-mingw-w64-i686, gfortran-mingw-w64-i686, ${misc:Depends}
+Depends: binutils-mingw-w64-i686,
+         gcc-mingw-w64-i686,
+         g++-mingw-w64-i686,
+         gfortran-mingw-w64-i686,
+         ${misc:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Conflicts: mingw32-binutils
 Description: GNU Compiler Collection for MinGW32 (transition package)
