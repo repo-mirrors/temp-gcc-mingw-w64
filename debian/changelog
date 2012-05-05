@@ -5,8 +5,10 @@ gcc-mingw-w64 (6) unstable; urgency=low
     compilers it used to provide (LP: #992217).
   * Install compatibility symlinks for binaries and manpages formerly
     provided by mingw32-binutils (LP: #992161).
+  * Enable Ada support on armhf and hurd-i386 now that gnat-4.6 is
+    available there.
 
- -- Stephen Kitt <steve@sk2.org>  Sat, 05 May 2012 11:52:08 +0200
+ -- Stephen Kitt <steve@sk2.org>  Sat, 05 May 2012 12:33:32 +0200
 
 gcc-mingw-w64 (5) unstable; urgency=low
 
