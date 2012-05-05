@@ -9,7 +9,7 @@ Build-Depends: autotools-dev,
                debhelper (>= 7.0.50~),
                gcc-4.6 (>= 4.6.2-2),
                gcc-4.6-source (>= 4.6.2-2),
-               gnat-4.6 [!armhf !hurd-i386],
+               gnat-4.6,
                libcloog-ppl-dev,
                libelf-dev,
                libgmp-dev,
@@ -299,6 +299,7 @@ Package: gcc-mingw32
 Architecture: all
 Depends: gcc-mingw-w64-i686, g++-mingw-w64-i686, gfortran-mingw-w64-i686, ${misc:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
+Conflicts: mingw32-binutils
 Description: GNU Compiler Collection for MinGW32 (transition package)
  MinGW-w64 provides a development and runtime environment for 32- and
  64-bit (x86 and x64) Windows applications using the Windows API and
@@ -306,7 +307,8 @@ Description: GNU Compiler Collection for MinGW32 (transition package)
  .
  This transition package replaces the old gcc-4.4.4-based gcc-mingw32
  package and allows building software using the old i586-mingw32msvc
- triplet.
+ triplet. It also includes compatibility symlinks for i586-mingw32msvc
+ binutils binaries.
 
 Package: gcc-mingw-w64-base
 Architecture: any
