@@ -17,11 +17,11 @@ source_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version
 deb_version := $(source_version)+$(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
-distribution := $(shell lsb_release -is)
+derives_from_ubuntu := $(shell (dpkg-vendor --derives-from Ubuntu && echo "yes") || echo "no")
 
 # First split version
 first_split_version := 4.6.3-3+4
-ifeq ($(distribution),Ubuntu)
+ifeq ($(derives_from_ubuntu),yes)
   first_split_version := 4.6.3-1ubuntu5+5ubuntu1
 endif
 
