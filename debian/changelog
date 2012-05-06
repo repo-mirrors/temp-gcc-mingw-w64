@@ -1,3 +1,10 @@
+gcc-mingw-w64 (9) unstable; urgency=low
+
+  * Use dpkg-vendor instead of lsb-release; thanks to Didier 'OdyX' Raboud
+    for the patch (Closes: #671725).
+
+ -- Stephen Kitt <steve@sk2.org>  Sun, 06 May 2012 14:26:40 +0200
+
 gcc-mingw-w64 (8) unstable; urgency=low
 
   * Replace /usr/share/doc/gcc-mingw32 with a symlink when necessary
