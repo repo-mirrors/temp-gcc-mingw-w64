@@ -14,7 +14,6 @@ Build-Depends: autotools-dev,
                libgmp-dev,
                libmpc-dev (>= 0.8.0),
                libmpfr-dev (>= 2.3.2),
-               lsb-release,
                mingw-w64-dev (>= 1.0),
                xz-utils,
                zlib1g-dev
