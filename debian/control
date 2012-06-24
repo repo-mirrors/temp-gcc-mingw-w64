@@ -15,7 +15,8 @@ Build-Depends: autotools-dev,
                libgmp-dev,
                libmpc-dev (>= 0.8.0),
                libmpfr-dev (>= 2.3.2),
-               mingw-w64-dev (>= 1.0),
+               mingw-w64-i686-dev,
+               mingw-w64-x86-64-dev,
                xz-utils,
                zlib1g-dev
 Standards-Version: 3.9.3
@@ -38,7 +39,7 @@ Description: GNU C compiler for MinGW-w64
 
 Package: gcc-mingw-w64-i686
 Architecture: any
-Depends: binutils-mingw-w64-i686, mingw-w64-i686-dev | mingw-w64-dev, gcc-mingw-w64-base (= ${binary:Version}),
+Depends: binutils-mingw-w64-i686, mingw-w64-i686-dev, gcc-mingw-w64-base (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
@@ -56,7 +57,7 @@ Description: GNU C compiler for MinGW-w64 targeting Win32
 
 Package: gcc-mingw-w64-x86-64
 Architecture: any
-Depends: binutils-mingw-w64-x86-64, mingw-w64-x86-64-dev | mingw-w64-dev, gcc-mingw-w64-base (= ${binary:Version}),
+Depends: binutils-mingw-w64-x86-64, mingw-w64-x86-64-dev, gcc-mingw-w64-base (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
