@@ -133,9 +133,6 @@ CONFFLAGS += \
 CONFFLAGS += \
 	--enable-lto \
 	--with-plugin-ld
-# Locale support using iconv
-CONFFLAGS += \
-	--enable-clocale=ieee_1003.1-2001
 
 # Patches applied or unapplied after the upstream sources have been
 # unpacked and patched using the gcc-4.6-source package's patches
