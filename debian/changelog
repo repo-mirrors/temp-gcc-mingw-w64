@@ -1,10 +1,17 @@
-gcc-mingw-w64 (7) unstable; urgency=low
+gcc-mingw-w64 (8) unstable; urgency=low
 
   * Use dpkg-vendor instead of lsb-release; thanks to Didier 'OdyX' Raboud
     for the patch (Closes: #671725).
   * Drop references to mingw-w64-dev.
 
- -- Stephen Kitt <steve@sk2.org>  Sun, 06 May 2012 14:26:40 +0200
+ -- Stephen Kitt <steve@sk2.org>  Fri, 17 Aug 2012 00:08:55 +0200
+
+gcc-mingw-w64 (7) unstable; urgency=low
+
+  * When upgrading from versions where /usr/share/doc/gcc-mingw-w64 is a
+    directory, force its replacement with a symlink (Closes: #683617).
+
+ -- Stephen Kitt <steve@sk2.org>  Wed, 08 Aug 2012 08:21:56 +0200
 
 gcc-mingw-w64 (6) unstable; urgency=low
 
