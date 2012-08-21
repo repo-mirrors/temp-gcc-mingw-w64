@@ -123,9 +123,8 @@ CONFFLAGS += \
 	--enable-version-specific-runtime-libs \
 	--enable-threads=win32 \
 	--enable-fully-dynamic-string \
-	--enable-sjlj-exceptions
-# libgomp needs pthreads
-#	--enable-libgomp
+	--enable-sjlj-exceptions \
+	--enable-libgomp
 # Languages
 CONFFLAGS += \
 	--enable-languages=$(languages)
