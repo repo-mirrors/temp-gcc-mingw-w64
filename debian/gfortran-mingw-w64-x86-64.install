@@ -1,5 +1,6 @@
 usr/bin/x86_64-w64-mingw32-gfortran
 usr/lib/gcc/x86_64-w64-mingw32/4.6/f951
+usr/lib/gcc/x86_64-w64-mingw32/4.6/finclude/*
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libgfortran-3.dll
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libgfortran.a
 usr/lib/gcc/x86_64-w64-mingw32/4.6/libgfortran.dll.a
