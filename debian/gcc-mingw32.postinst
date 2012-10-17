@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+# Replace documentation directory with symlink
+if [ -d /usr/share/doc/gcc-mingw32 ] && [ ! -L /usr/share/doc/gcc-mingw32 ]; then
+    if rmdir /usr/share/doc/gcc-mingw32 2>/dev/null; then
+        ln -sf gcc-mingw-w64-base /usr/share/doc/gcc-mingw32
+    fi
+fi
+
+#DEBHELPER#
+
+exit 0
