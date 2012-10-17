@@ -1,4 +1,4 @@
-gcc-mingw-w64 (8) UNRELEASED; urgency=low
+gcc-mingw-w64 (8) unstable; urgency=low
 
   * Replace /usr/share/doc/gcc-mingw32 with a symlink when necessary
     (Closes: #690148).
@@ -6,7 +6,7 @@ gcc-mingw-w64 (8) UNRELEASED; urgency=low
     functionality of the Squeeze version; add g++ compatibility symlink
     (Closes: #682257).
 
- -- Stephen Kitt <steve@sk2.org>  Wed, 17 Oct 2012 07:06:42 +0200
+ -- Stephen Kitt <steve@sk2.org>  Wed, 17 Oct 2012 07:49:14 +0200
 
 gcc-mingw-w64 (7) unstable; urgency=low
 
