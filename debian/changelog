@@ -2,6 +2,9 @@ gcc-mingw-w64 (8) UNRELEASED; urgency=low
 
   * Replace /usr/share/doc/gcc-mingw32 with a symlink when necessary
     (Closes: #690148).
+  * Provide amd64 compatibility symlinks in gcc-mingw32, preserving the
+    functionality of the Squeeze version; add g++ compatibility symlink
+    (Closes: #682257).
 
  -- Stephen Kitt <steve@sk2.org>  Wed, 17 Oct 2012 07:06:42 +0200
 

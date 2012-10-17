@@ -298,9 +298,13 @@ Description: GNU Ada compiler for MinGW-w64 targeting Win64
 Package: gcc-mingw32
 Architecture: all
 Depends: binutils-mingw-w64-i686,
+         binutils-mingw-w64-x86-64,
          gcc-mingw-w64-i686,
+         gcc-mingw-w64-x86-64,
          g++-mingw-w64-i686,
+         g++-mingw-w64-x86-64,
          gfortran-mingw-w64-i686,
+         gfortran-mingw-w64-x86-64,
          ${misc:Depends}
 Built-Using: gcc-4.6 (= ${gcc:Version})
 Conflicts: mingw32-binutils
@@ -310,9 +314,9 @@ Description: GNU Compiler Collection for MinGW32 (transition package)
  the GNU Compiler Collection (gcc).
  .
  This transition package replaces the old gcc-4.4.4-based gcc-mingw32
- package and allows building software using the old i586-mingw32msvc
- triplet. It also includes compatibility symlinks for i586-mingw32msvc
- binutils binaries.
+ package and allows building software using the amd64-mingw32msvc and
+ i586-mingw32msvc triplets. It also includes compatibility symlinks
+ for amd64-mingw32msvc and i586-mingw32msvc binutils binaries.
 
 Package: gcc-mingw-w64-base
 Architecture: any
