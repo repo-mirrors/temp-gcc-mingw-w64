@@ -24,4 +24,4 @@ appropriate target:
 * i686-w64-mingw32 for 32-bit Windows;
 * x86_64-w64-mingw32 for 64-bit Windows.
 
- -- Stephen Kitt <steve@sk2.org>, Mon, 24 Dec 2012 21:58:47 +0100
+ -- Stephen Kitt <steve@sk2.org>, Mon, 24 Dec 2012 23:56:05 +0100
