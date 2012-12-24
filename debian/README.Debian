@@ -10,10 +10,12 @@ gcc is configured as follows:
 * static and shared builds are supported;
 * multilib is not supported (use explicit 32- or 64-bit targets
   instead);
-* the threading model used is Windows' native threads (no POSIX
-  support for now);
+* the threading model used is Windows' native threads, with POSIX
+  support available via the libpthreads-mingw-w64 package;
 * exceptions use setjump/longjump ("SJLJ exceptions");
 * LTO is supported;
+* OpenMP is supported (resulting dynamically-linked binaries require
+  libgomp-1.dll and pthreadGC2.dll);
 * language front-ends are built for C, C++, Fortran, Ada, Objective-C
   and Objective-C++.
 
@@ -22,4 +24,4 @@ appropriate target:
 * i686-w64-mingw32 for 32-bit Windows;
 * x86_64-w64-mingw32 for 64-bit Windows.
 
- -- Stephen Kitt <steve@sk2.org>, Fri, 17 Aug 2012 07:52:43 +0200
+ -- Stephen Kitt <steve@sk2.org>, Mon, 24 Dec 2012 21:58:47 +0100

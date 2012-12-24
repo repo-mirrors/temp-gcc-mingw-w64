@@ -4,8 +4,10 @@ gcc-mingw-w64 (9) unstable; urgency=low
     for the patch (Closes: #671725).
   * Drop references to mingw-w64-dev.
   * Add README.Debian describing the gcc configuration (Closes: #540733).
+  * Build-depend on libpthreads-mingw-w64 for pthreads support.
+  * Enable libgomp (Closes: #571773).
 
- -- Stephen Kitt <steve@sk2.org>  Fri, 17 Aug 2012 07:53:29 +0200
+ -- Stephen Kitt <steve@sk2.org>  Mon, 24 Dec 2012 18:30:01 +0100
 
 gcc-mingw-w64 (8) unstable; urgency=low
 
