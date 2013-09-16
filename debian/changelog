@@ -1,11 +1,21 @@
-gcc-mingw-w64 (8) unstable; urgency=low
-
+gcc-mingw-w64 (9) unstable; urgency=low
+  
   * Use dpkg-vendor instead of lsb-release; thanks to Didier 'OdyX' Raboud
     for the patch (Closes: #671725).
   * Drop references to mingw-w64-dev.
   * Add README.Debian describing the gcc configuration (Closes: #540733).
 
- -- Stephen Kitt <steve@sk2.org>  Fri, 17 Aug 2012 07:53:29 +0200
+ -- Stephen Kitt <skitt@debian.org>  Mon, 16 Sep 2013 19:24:56 +0200
+
+gcc-mingw-w64 (8) unstable; urgency=low
+
+  * Replace /usr/share/doc/gcc-mingw32 with a symlink when necessary
+    (Closes: #690148).
+  * Provide amd64 compatibility symlinks in gcc-mingw32, preserving the
+    functionality of the Squeeze version (Closes: #695736); add g++
+    compatibility symlink (Closes: #682257).
+
+ -- Stephen Kitt <steve@sk2.org>  Wed, 12 Dec 2012 07:30:14 +0100
 
 gcc-mingw-w64 (7) unstable; urgency=low
 
