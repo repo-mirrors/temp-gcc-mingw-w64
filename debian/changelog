@@ -5,6 +5,7 @@ gcc-mingw-w64 (9) unstable; urgency=low
   * Drop references to mingw-w64-dev (Closes: #726283).
   * Add README.Debian describing the gcc configuration (Closes: #540733).
   * Switch to my Debian address and drop DMUA.
+  * Use canonical VCS URIs.
   * Standards-Version 3.9.4, no change required.
 
  -- Stephen Kitt <skitt@debian.org>  Mon, 14 Oct 2013 07:22:06 +0200
