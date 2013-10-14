@@ -33,4 +33,4 @@ Note that once mingw-w64 is available (it's an architecture "all"
 package), building the gcc package no longer requires this series of
 steps.
 
- -- Stephen Kitt <steve@sk2.org>, Wed, 18 Apr 2012 07:51:58 +0200
+ -- Stephen Kitt <skitt@debian.org>, Mon, 14 Oct 2013 07:18:21 +0200

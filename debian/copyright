@@ -1,6 +1,6 @@
 This work was packaged for Debian by:
 
-    Stephen Kitt <steve@sk2.org> on Tue, 07 Sep 2010 15:57:34 +0200
+    Stephen Kitt <skitt@debian.org> on Tue, 07 Sep 2010 15:57:34 +0200
 
 It is based on the gcc-4.6-source package maintained by the Debian GCC
 Maintainers <debian-gcc@lists.debian.org>.
@@ -579,6 +579,6 @@ underneath the "Written by" line would be adequate.
 
 The Debian packaging is:
 
-    Copyright © 2010-2012 Stephen Kitt <steve@sk2.org>
+    Copyright © 2010-2013 Stephen Kitt <skitt@debian.org>
 
 and is licensed under the GPL version 3, see above.

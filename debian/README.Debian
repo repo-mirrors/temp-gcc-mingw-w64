@@ -22,4 +22,4 @@ appropriate target:
 * i686-w64-mingw32 for 32-bit Windows;
 * x86_64-w64-mingw32 for 64-bit Windows.
 
- -- Stephen Kitt <steve@sk2.org>, Fri, 17 Aug 2012 07:52:43 +0200
+ -- Stephen Kitt <skitt@debian.org>, Mon, 14 Oct 2013 07:18:02 +0200

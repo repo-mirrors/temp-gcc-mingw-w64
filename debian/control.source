@@ -1,8 +1,7 @@
 Source: gcc-mingw-w64
 Section: devel
 Priority: extra
-Maintainer: Stephen Kitt <steve@sk2.org>
-DM-Upload-Allowed: yes
+Maintainer: Stephen Kitt <skitt@debian.org>
 Build-Depends: autotools-dev,
                binutils-mingw-w64 (>= 2.21.51.20110523),
                debhelper (>= 7.0.50~),
