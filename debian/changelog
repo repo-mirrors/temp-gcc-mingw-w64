@@ -1,6 +1,7 @@
 gcc-mingw-w64 (10) UNRELEASED; urgency=low
 
-  * Build with gcc 4.8.
+  * Build with gcc 4.8:
+    - stringstream ignores _GLIBCXX_DEBUG (Closes: #703935).
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 01 Nov 2013 15:41:53 +0100
 
