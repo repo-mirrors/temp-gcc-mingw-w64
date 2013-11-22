@@ -10,10 +10,11 @@ gcc is configured as follows:
 * static and shared builds are supported;
 * multilib is not supported (use explicit 32- or 64-bit targets
   instead);
-* the threading model used is Windows' native threads (no POSIX
-  support for now);
+* the threading model used is POSIX using MinGW-64's winpthreads
+  library;
 * exceptions use setjump/longjump ("SJLJ exceptions");
 * LTO is supported;
+* GOMP is enabled;
 * language front-ends are built for C, C++, Fortran, Ada, Objective-C
   and Objective-C++.
 
@@ -22,4 +23,4 @@ appropriate target:
 * i686-w64-mingw32 for 32-bit Windows;
 * x86_64-w64-mingw32 for 64-bit Windows.
 
- -- Stephen Kitt <skitt@debian.org>, Mon, 14 Oct 2013 07:18:02 +0200
+ -- Stephen Kitt <skitt@debian.org>, Sat, 23 Nov 2013 00:14:55 +0100

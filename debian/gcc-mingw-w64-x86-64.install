@@ -18,6 +18,10 @@ usr/lib/gcc/x86_64-w64-mingw32/4.8/libgcc_eh.a
 usr/lib/gcc/x86_64-w64-mingw32/4.8/libgcc_s.a
 usr/lib/gcc/x86_64-w64-mingw32/4.8/libgcc_s_sjlj-1.dll
 usr/lib/gcc/x86_64-w64-mingw32/4.8/libgcov.a
+usr/lib/gcc/x86_64-w64-mingw32/4.8/libgomp.a
+usr/lib/gcc/x86_64-w64-mingw32/4.8/libgomp-1.dll
+usr/lib/gcc/x86_64-w64-mingw32/4.8/libgomp.dll.a
+usr/lib/gcc/x86_64-w64-mingw32/4.8/libgomp.spec
 usr/lib/gcc/x86_64-w64-mingw32/4.8/liblto_plugin.so
 usr/lib/gcc/x86_64-w64-mingw32/4.8/liblto_plugin.so.0
 usr/lib/gcc/x86_64-w64-mingw32/4.8/liblto_plugin.so.0.0.0
