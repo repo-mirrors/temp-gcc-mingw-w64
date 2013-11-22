@@ -9,7 +9,7 @@ Depends: binutils-mingw-w64-i686,
          gfortran-mingw-w64-i686,
          gfortran-mingw-w64-x86-64,
          ${misc:Depends}
-Built-Using: gcc-4.6 (= ${gcc:Version})
+Built-Using: gcc-4.8 (= ${gcc:Version})
 Conflicts: mingw32-binutils
 Description: GNU Compiler Collection for MinGW32 (transition package)
  MinGW-w64 provides a development and runtime environment for 32- and

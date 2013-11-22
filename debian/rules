@@ -1,18 +1,18 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gcc-mingw-w64 using gcc-4.6-source.
+# Build gcc-mingw-w64 using gcc-4.8-source.
 # Copyright © 2010-2012 Stephen Kitt <steve@sk2.org>
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-target_version := 4.6
+target_version := 4.8
 
 top_dir := $(shell pwd)
 gcc_dir := /usr/src/gcc-$(target_version)
 upstream_dir := $(top_dir)/src
 build_dir := $(top_dir)/build
-stampdir := $(top_dir)/stamp
+stampdir := $(top_dir)/stamps
 source_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version)-source)
 deb_version := $(source_version)+$(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
@@ -35,8 +35,8 @@ targets := i686-w64-mingw32 x86_64-w64-mingw32
 # No hardening support for now
 dpkg_buildflags = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
 
-CC = gcc-4.6
-CXX = g++-4.6
+CC = gcc-$(target_version)
+CXX = g++-$(target_version)
 CFLAGS = $(shell $(dpkg_buildflags) --get CFLAGS)
 CFLAGS += -Wall
 CPPFLAGS = $(shell $(dpkg_buildflags) --get CPPFLAGS)
@@ -86,8 +86,7 @@ $(unpack_stamp):
 	mv gcc-$(deb_upstream_version) $(upstream_dir)
 	# Apply our extra patches here...
 	# We can't use a separate target for this because the patches
-	# need to be applied before gcc-4.6-source's
-	patch -p0 < debian/patches/mingw-include.patch
+	# need to be applied before gcc-4.8-source's
 	patch -p0 < debian/patches/disable-multilib.patch
 	mkdir -p $(stampdir)
 	touch $@
@@ -135,15 +134,11 @@ CONFFLAGS += \
 	--with-plugin-ld
 
 # Patches applied or unapplied after the upstream sources have been
-# unpacked and patched using the gcc-4.6-source package's patches
+# unpacked and patched using the gcc-4.8-source package's patches
 mingw-w64-patch: mingw-w64-patch-stamp
 mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring
 	patch -R -p2 -d$(upstream_dir) < $(gcc_dir)/debian/patches/libstdc++-pic.diff
-	# Add extern "C" blocks around intrinsics
-	patch -p1 -d$(upstream_dir) < debian/patches/cpp-intrinsics.patch
-	# Spelling fixes
-	patch -p2 -d$(upstream_dir) < debian/patches/spelling-fixes-code.patch
 	touch $@
 
 configure: configure-stamp
