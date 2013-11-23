@@ -4,10 +4,9 @@ gcc-mingw-w64 for Debian
 IMPORTANT: debian/control is regenerated during every build, and must
 not be modified directly. The global stanzas are in
 debian/control.source, gcc-mingw-w64-base is described in
-debian/control.base, gcc-mingw32 in debian/control.gcc-mingw32, and
-the remaining packages' descriptions are built from
-debian/control.template using the various per-language sed scripts.
-debian/control.bootstrap is used when bootstrapping.
+debian/control.base, the remaining packages' descriptions are built
+from debian/control.template using the various per-language sed
+scripts. debian/control.bootstrap is used when bootstrapping.
 
 To rebuild debian/control manually, run
 	debian/rules control
@@ -33,4 +32,4 @@ Note that once mingw-w64 is available (it's an architecture "all"
 package), building the gcc package no longer requires this series of
 steps.
 
- -- Stephen Kitt <skitt@debian.org>, Mon, 14 Oct 2013 07:18:21 +0200
+ -- Stephen Kitt <skitt@debian.org>, Sat, 23 Nov 2013 10:35:12 +0100

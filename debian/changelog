@@ -4,6 +4,7 @@ gcc-mingw-w64 (10) UNRELEASED; urgency=low
     - stringstream ignores _GLIBCXX_DEBUG (Closes: #703935).
   * Enable POSIX threads support using winpthreads (Closes: #697220).
   * Enable OpenMP support (Closes: #571773).
+  * Drop the transitional gcc-mingw32 package.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 22 Nov 2013 23:42:15 +0100
 

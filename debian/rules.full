@@ -16,8 +16,6 @@ control-stamp:
 		sed -f debian/control.$$language.sed debian/control.template >> debian/control; \
 	done
 	echo >> debian/control
-	cat debian/control.gcc-mingw32 >> debian/control
-	echo >> debian/control
 	cat debian/control.base >> debian/control
 	sed -i '/^Recommends: $$/d' debian/control
 	sed -i '/^Breaks: $$/d' debian/control
