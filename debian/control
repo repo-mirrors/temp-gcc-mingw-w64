@@ -14,8 +14,8 @@ Build-Depends: autotools-dev,
                libgmp-dev,
                libmpc-dev (>= 0.8.0),
                libmpfr-dev (>= 2.3.2),
-               mingw-w64-i686-dev (>= 3.0~svn5915-1),
-               mingw-w64-x86-64-dev (>= 3.0~svn5915-1),
+               mingw-w64-i686-dev (>= 3.0~svn5915),
+               mingw-w64-x86-64-dev (>= 3.0~svn5915),
                xz-utils,
                zlib1g-dev
 Standards-Version: 3.9.4
