@@ -1,7 +1,8 @@
 gcc-mingw-w64 (10) UNRELEASED; urgency=low
 
   * Build with gcc 4.8:
-    - stringstream ignores _GLIBCXX_DEBUG (Closes: #703935).
+    - stringstream ignores _GLIBCXX_DEBUG (Closes: #703935);
+    - update debian/copyright using that from gcc-4.8.
   * Enable POSIX threads support using winpthreads (Closes: #697220).
   * Enable OpenMP support (Closes: #571773).
   * Drop the transitional gcc-mingw32 package.
