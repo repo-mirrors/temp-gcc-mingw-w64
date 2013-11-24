@@ -1,4 +1,4 @@
-gcc-mingw-w64 (10) UNRELEASED; urgency=low
+gcc-mingw-w64 (10) unstable; urgency=low
 
   * Build with gcc 4.8:
     - stringstream ignores _GLIBCXX_DEBUG (Closes: #703935);
@@ -8,7 +8,7 @@ gcc-mingw-w64 (10) UNRELEASED; urgency=low
   * Enable OpenMP support (Closes: #571773).
   * Drop the transitional gcc-mingw32 package.
 
- -- Stephen Kitt <skitt@debian.org>  Fri, 22 Nov 2013 23:42:15 +0100
+ -- Stephen Kitt <skitt@debian.org>  Sun, 24 Nov 2013 00:04:30 +0100
 
 gcc-mingw-w64 (9) unstable; urgency=low
   
