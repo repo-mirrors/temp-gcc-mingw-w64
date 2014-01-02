@@ -1,6 +1,10 @@
 # Build the full GCC.
 package := gcc-mingw-w64
-languages := c,c++,fortran,objc,obj-c++,ada
+languages := c,c++,fortran,objc,obj-c++
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+ifneq ($(DEB_HOST_ARCH),armhf)
+  languages := $(languages),ada
+endif
 BUILD_TARGET :=
 INSTALL_TARGET := install install-lto-plugin
 

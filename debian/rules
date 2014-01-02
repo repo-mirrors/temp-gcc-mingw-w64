@@ -264,7 +264,11 @@ binary-arch: build-arch install-arch
 	dh_installman -a
 	dh_installchangelogs -a $(upstream_dir)/ChangeLog
 	# Strip the binaries
+ifneq (,$(findstring ada,$(languages)))
 	dh_strip -a -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib -Xw64-mingw32/$(base_version)/adalib
+else
+	dh_strip -a -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib
+endif
 	# Strip the libraries
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
 	find $(top_dir)/debian -type f -name liblto_plugin.so.\*.\*.\* | xargs strip --remove-section=.comment --remove-section=.note --strip-unneeded
@@ -277,8 +281,10 @@ endif
 	dh_compress -a
 	dh_fixperms -a
 	# Fix permissions further
+ifneq (,$(findstring ada,$(languages)))
 	# *.ali files must be read-only
 	find $(top_dir)/debian -name \*.ali | xargs -r chmod 444
+endif
 	# *.dll files shouldn't be executable
 	find $(top_dir)/debian -name \*.dll | xargs -r chmod 644
 	dh_installdeb -a

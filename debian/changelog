@@ -1,3 +1,9 @@
+gcc-mingw-w64 (11) UNRELEASED; urgency=medium
+
+  * Stop building gnat on armhf, it doesn't work currently.
+
+ -- Stephen Kitt <skitt@debian.org>  Thu, 02 Jan 2014 08:00:43 +0100
+
 gcc-mingw-w64 (10) unstable; urgency=low
 
   * Build with gcc 4.8:
