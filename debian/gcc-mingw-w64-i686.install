@@ -36,4 +36,3 @@ usr/lib/gcc/i686-w64-mingw32/4.8/libssp.dll.a
 usr/lib/gcc/i686-w64-mingw32/4.8/libssp_nonshared.a
 usr/lib/gcc/i686-w64-mingw32/4.8/lto-wrapper
 usr/lib/gcc/i686-w64-mingw32/4.8/lto1
-usr/lib/gcc/i686-w64-mingw32/4.8/plugin/*
