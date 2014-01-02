@@ -3,6 +3,7 @@ gcc-mingw-w64 (11) UNRELEASED; urgency=medium
   * Stop building gnat on armhf, it doesn't work currently.
   * Stop installing the plugin development headers, they break the build
     on ia64 and aren't used anywhere.
+  * Standards-Version 3.9.5, no change required.
 
  -- Stephen Kitt <skitt@debian.org>  Thu, 02 Jan 2014 08:00:43 +0100
 

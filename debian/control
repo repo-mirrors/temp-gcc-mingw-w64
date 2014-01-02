@@ -18,7 +18,7 @@ Build-Depends: autotools-dev,
                mingw-w64-x86-64-dev (>= 3.0~svn5915),
                xz-utils,
                zlib1g-dev
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 Homepage: http://www.gnu.org/software/gcc/
 Vcs-Git: git://anonscm.debian.org/collab-maint/gcc-mingw-w64.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/gcc-mingw-w64.git;a=summary
