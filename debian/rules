@@ -121,7 +121,6 @@ CONFFLAGS = \
 	--enable-shared \
 	--enable-static \
 	--disable-multilib \
-	--enable-linker-build-id \
 	--with-system-zlib \
 	--libexecdir=/$(libexecdir) \
 	--without-included-gettext \

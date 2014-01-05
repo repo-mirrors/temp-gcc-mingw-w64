@@ -3,6 +3,8 @@ gcc-mingw-w64 (12) UNRELEASED; urgency=medium
   * Move the Ada packages to a new source package, to reduce the porting
     burden required to make gcc-mingw-w64 available on a new
     architecture (and the packages that build-depend on it).
+  * The Windows linker doesn't support build ids, stop trying to enable
+    them.
 
  -- Stephen Kitt <skitt@debian.org>  Sun, 05 Jan 2014 15:14:02 +0100
 
