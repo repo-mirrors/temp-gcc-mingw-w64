@@ -1,4 +1,4 @@
-Source: gcc-mingw-w64
+Source: gnat-mingw-w64
 Section: devel
 Priority: extra
 Maintainer: Stephen Kitt <skitt@debian.org>
@@ -9,6 +9,7 @@ Build-Depends: autotools-dev,
                flex,
                g++-4.9,
                gcc-4.9-source,
+               gnat-4.9,
                libcloog-isl-dev,
                libelf-dev,
                libgmp-dev,
