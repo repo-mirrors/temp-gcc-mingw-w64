@@ -1,6 +1,8 @@
 # Build the full GCC.
 package := gcc-mingw-w64
 languages := c,c++,fortran,objc,obj-c++
+debian_extra_langs := ada
+export debian_extra_langs
 BUILD_TARGET :=
 INSTALL_TARGET := install install-lto-plugin
 
