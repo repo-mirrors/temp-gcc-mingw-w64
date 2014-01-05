@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gcc-mingw-w64 using gcc-4.8-source.
+# Build gnat-mingw-w64 using gcc-4.8-source.
 # Copyright © 2010-2014 Stephen Kitt <skitt@debian.org>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -29,6 +29,7 @@ stampdir := $(top_dir)/stamps
 source_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version)-source)
 deb_version := $(source_version)+$(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
+deb_upstream_nextversion := $(shell echo $(deb_upstream_version) | awk -F. "{ for (i = 1; i < NF; i++) { printf \"%d.\",\$$i; }; print (\$$NF + 1); }")
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 derives_from_ubuntu := $(shell (dpkg-vendor --derives-from Ubuntu && echo "yes") || echo "no")
 
@@ -244,14 +245,14 @@ install-arch-stamp: build-arch-stamp
 binary-indep: build-indep
 	dh_testdir
 	dh_testroot
-	dh_installdocs -i --link-doc=gcc-mingw-w64-base
+	dh_installdocs -i --link-doc=gnat-mingw-w64-base
 	dh_installchangelogs -i $(upstream_dir)/ChangeLog
 	dh_lintian -i
 	dh_link -i
 	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
-	dh_gencontrol -i -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
+	dh_gencontrol -i -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vlocal:NextVersion=$(deb_upstream_nextversion) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
 	dh_md5sums -i
 	dh_builddeb -i
 
@@ -259,7 +260,7 @@ binary-arch: build-arch install-arch
 	dh_testdir
 	dh_testroot
 	dh_install -a --list-missing
-	dh_installdocs -a --link-doc=gcc-mingw-w64-base
+	dh_installdocs -a --link-doc=gnat-mingw-w64-base
 	dh_installman -a
 	dh_installchangelogs -a $(upstream_dir)/ChangeLog
 	# Strip the binaries
@@ -288,7 +289,7 @@ endif
 	find $(top_dir)/debian -name \*.dll | xargs -r chmod 644
 	dh_installdeb -a
 	dh_shlibdeps -a
-	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
+	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vlocal:NextVersion=$(deb_upstream_nextversion) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
 	dh_md5sums -a
 	dh_builddeb -a
 

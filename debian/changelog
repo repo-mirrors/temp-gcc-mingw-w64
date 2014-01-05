@@ -1,8 +1,6 @@
-gcc-mingw-w64 (12) unstable; urgency=medium
+gnat-mingw-w64 (12) unstable; urgency=medium
 
-  * Move the Ada packages to a new source package, to reduce the porting
-    burden required to make gcc-mingw-w64 available on a new
-    architecture (and the packages that build-depend on it).
+  * New Ada-specific source-package.
   * The Windows linker doesn't support build ids, stop trying to enable
     them.
 
