@@ -1,3 +1,10 @@
+gnat-mingw-w64 (12.1) unstable; urgency=medium
+
+  * gcc-4.8-source 4.8.2-12 has the correct fix for #734028, so build-
+    depend on that and drop the patch from this package.
+
+ -- Stephen Kitt <skitt@debian.org>  Mon, 06 Jan 2014 22:14:34 +0100
+
 gnat-mingw-w64 (12) unstable; urgency=medium
 
   * New Ada-specific source-package.
