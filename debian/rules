@@ -102,6 +102,7 @@ $(unpack_stamp):
 	# We can't use a separate target for this because the patches
 	# need to be applied before gcc-4.9-source's
 	patch -p0 < debian/patches/disable-multilib.patch
+	patch -p1 < debian/patches/ada-s-memory-mingw.patch
 	mkdir -p $(stampdir)
 	touch $@
 
