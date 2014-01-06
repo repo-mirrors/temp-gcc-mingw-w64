@@ -1,0 +1,37 @@
+Description: Implement __gnat_malloc when targeting Windows
+
+--- a/src/gcc/ada/s-memory-mingw.adb
++++ b/src/gcc/ada/s-memory-mingw.adb
+@@ -40,6 +40,7 @@
+ 
+ with Ada.Exceptions;
+ with System.Soft_Links;
++with Ada.Unchecked_Conversion;
+ 
+ package body System.Memory is
+ 
+@@ -125,7 +126,23 @@
+ 
+       return Result;
+    end Alloc;
+-
++
++   type Char_Ptr is access all Character;
++   pragma Convention (C, Char_Ptr);
++   pragma No_Strict_Aliasing (Char_Ptr);
++
++   function To_Char_Ptr is
++      new Ada.Unchecked_Conversion (System.Address, Char_Ptr);
++
++   --  The function exported as __gnat_malloc MUST return a pointer type.
++   function Gnat_Malloc (Size : size_t) return Char_Ptr;
++   pragma Export (C, Gnat_Malloc, "__gnat_malloc");
++
++   function Gnat_Malloc (Size : size_t) return Char_Ptr is
++   begin
++      return To_Char_Ptr (Alloc (Size));
++   end Gnat_Malloc;
++
+    ----------------------------
+    -- Check_Available_Memory --
+    ----------------------------

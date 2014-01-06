@@ -3,8 +3,10 @@ gnat-mingw-w64 (12) unstable; urgency=medium
   * New Ada-specific source-package.
   * The Windows linker doesn't support build ids, stop trying to enable
     them.
+  * Copy __gnat_malloc implementation from s-memory.adb in
+    s-memory-mingw.adb (Closes: #734028).
 
- -- Stephen Kitt <skitt@debian.org>  Sun, 05 Jan 2014 15:40:32 +0100
+ -- Stephen Kitt <skitt@debian.org>  Mon, 06 Jan 2014 01:09:57 +0100
 
 gcc-mingw-w64 (11) unstable; urgency=medium
 
