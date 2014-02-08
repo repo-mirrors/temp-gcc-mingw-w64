@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gcc-mingw-w64 using gcc-4.8-source.
+# Build gcc-mingw-w64 using gcc-4.9-source.
 # Copyright © 2010-2014 Stephen Kitt <skitt@debian.org>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-target_version := 4.8
+target_version := 4.9
 
 top_dir := $(shell pwd)
 gcc_dir := /usr/src/gcc-$(target_version)
@@ -96,10 +96,10 @@ unpack: $(unpack_stamp)
 $(unpack_stamp):
 	tar xf $(gcc_dir)/gcc-*.tar.*
 	rm -rf $(upstream_dir)
-	mv gcc-$(deb_upstream_version) $(upstream_dir)
+	mv gcc-* $(upstream_dir)
 	# Apply our extra patches here...
 	# We can't use a separate target for this because the patches
-	# need to be applied before gcc-4.8-source's
+	# need to be applied before gcc-4.9-source's
 	patch -p0 < debian/patches/disable-multilib.patch
 	mkdir -p $(stampdir)
 	touch $@
@@ -145,7 +145,7 @@ CONFFLAGS += \
 	--with-plugin-ld
 
 # Patches applied or unapplied after the upstream sources have been
-# unpacked and patched using the gcc-4.8-source package's patches
+# unpacked and patched using the gcc-4.9-source package's patches
 mingw-w64-patch: mingw-w64-patch-stamp
 mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring

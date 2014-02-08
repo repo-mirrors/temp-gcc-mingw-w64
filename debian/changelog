@@ -1,3 +1,9 @@
+gcc-mingw-w64 (12+exp1) experimental; urgency=medium
+
+  * Build with gcc 4.9.
+
+ -- Stephen Kitt <skitt@debian.org>  Thu, 06 Feb 2014 22:59:48 +0100
+
 gcc-mingw-w64 (12) unstable; urgency=medium
 
   * Move the Ada packages to a new source package, to reduce the porting
