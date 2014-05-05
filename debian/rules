@@ -27,8 +27,10 @@ upstream_dir := $(top_dir)/src
 build_dir := $(top_dir)/build
 stampdir := $(top_dir)/stamps
 source_version := $(shell dpkg-query -W -f="\$${Version}\n" gcc-$(target_version)-source)
-deb_version := $(source_version)+$(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
+our_version := $(shell dpkg-parsechangelog | sed -ne "s/^Version: \(.*\)/\1/p")
+deb_version := $(source_version)+$(our_version)
 deb_upstream_version := $(shell echo $(deb_version) | cut -d- -f1)
+deb_upstream_nextversion := $(shell echo $(deb_upstream_version) | awk -F. "{ for (i = 1; i < NF; i++) { printf \"%d.\",\$$i; }; print (\$$NF + 1); }")
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 derives_from_ubuntu := $(shell (dpkg-vendor --derives-from Ubuntu && echo "yes") || echo "no")
 
@@ -245,6 +247,8 @@ binary-indep: build-indep
 	dh_testdir
 	dh_testroot
 	dh_installdocs -i --link-doc=gcc-mingw-w64-base
+# Until #747141 is fixed, undo the versioned dependency
+	sed -i 's/(= $(our_version))//g' debian/*.substvars
 	dh_installchangelogs -i $(upstream_dir)/ChangeLog
 	dh_lintian -i
 	dh_link -i
@@ -260,6 +264,8 @@ binary-arch: build-arch install-arch
 	dh_testroot
 	dh_install -a --list-missing
 	dh_installdocs -a --link-doc=gcc-mingw-w64-base
+# Until #747141 is fixed, undo the versioned dependency
+	sed -i 's/(= $(our_version))//g' debian/*.substvars
 	dh_installman -a
 	dh_installchangelogs -a $(upstream_dir)/ChangeLog
 	# Strip the binaries
