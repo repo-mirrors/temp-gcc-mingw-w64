@@ -1,3 +1,9 @@
+gcc-mingw-w64 (13) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stephen Kitt <skitt@debian.org>  Mon, 05 May 2014 20:39:11 +0200
+
 gcc-mingw-w64 (12+exp1) experimental; urgency=medium
 
   * Build with gcc 4.9.
