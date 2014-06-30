@@ -1,3 +1,9 @@
+gnat-mingw-w64 (14) UNRELEASED; urgency=medium
+
+  * Specify the correct branch in the VCS stanzas.
+
+ -- Stephen Kitt <skitt@debian.org>  Mon, 30 Jun 2014 21:44:18 +0200
+
 gnat-mingw-w64 (13) unstable; urgency=medium
 
   * Build with gcc 4.9.

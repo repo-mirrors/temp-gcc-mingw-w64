@@ -22,8 +22,8 @@ Build-Depends: autotools-dev,
                zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://www.gnu.org/software/gcc/
-Vcs-Git: git://anonscm.debian.org/collab-maint/gcc-mingw-w64.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/gcc-mingw-w64.git;a=summary
+Vcs-Git: git://anonscm.debian.org/collab-maint/gcc-mingw-w64.git -b gnat
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/gcc-mingw-w64.git;a=shortlog;h=refs/heads/gnat
 
 Package: gnat-mingw-w64
 Architecture: all
