@@ -3,6 +3,8 @@ gcc-mingw-w64 (14) UNRELEASED; urgency=medium
   * Provide compilers using Windows and POSIX threads. The default setup
     uses Windows threads, thus avoiding the dependency on the pthreads DLL
     (Closes: #748353, #750741).
+  * Use the default exception-handling (SJLJ on 32-bit Windows, SEH on
+    64-bit Windows). (With the above, LP: #1338043.)
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 25 Jul 2014 07:55:53 +0200
 

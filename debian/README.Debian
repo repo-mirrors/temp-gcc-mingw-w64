@@ -10,7 +10,8 @@ gcc is configured as follows:
 * static and shared builds are supported;
 * multilib is not supported (use explicit 32- or 64-bit targets
   instead);
-* exceptions use setjump/longjump ("SJLJ exceptions");
+* exceptions use setjump/longjump ("SJLJ exceptions") on 32-bit
+  Windows, structured exception handling (SEH) on 64-bit Windows;
 * LTO is supported;
 * GOMP is enabled;
 * language front-ends are built for C, C++, Fortran, Ada, Objective-C
@@ -28,4 +29,4 @@ appropriate target:
 * i686-w64-mingw32 for 32-bit Windows;
 * x86_64-w64-mingw32 for 64-bit Windows.
 
- -- Stephen Kitt <skitt@debian.org>, Sat, 26 Jul 2014 18:29:13 +0200
+ -- Stephen Kitt <skitt@debian.org>, Sat, 26 Jul 2014 19:23:46 +0200

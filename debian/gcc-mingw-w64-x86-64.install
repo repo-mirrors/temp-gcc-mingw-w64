@@ -17,7 +17,7 @@ usr/lib/gcc/x86_64-w64-mingw32/4.9*/libcaf_single.a
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgcc.a
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgcc_eh.a
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgcc_s.a
-usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgcc_s_sjlj-1.dll
+usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgcc_s_seh-1.dll
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgcov.a
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgomp.a
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libgomp-1.dll

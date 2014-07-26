@@ -136,7 +136,6 @@ CONFFLAGS = \
 CONFFLAGS += \
 	--enable-version-specific-runtime-libs \
 	--enable-fully-dynamic-string \
-	--enable-sjlj-exceptions \
 	--enable-libgomp
 # Languages
 CONFFLAGS += \
