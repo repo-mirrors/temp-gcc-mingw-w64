@@ -10,17 +10,22 @@ gcc is configured as follows:
 * static and shared builds are supported;
 * multilib is not supported (use explicit 32- or 64-bit targets
   instead);
-* the threading model used is POSIX using MinGW-64's winpthreads
-  library;
 * exceptions use setjump/longjump ("SJLJ exceptions");
 * LTO is supported;
 * GOMP is enabled;
 * language front-ends are built for C, C++, Fortran, Ada, Objective-C
   and Objective-C++.
 
+Both Windows and POSIX threading models are supported; the default
+model is Windows, but it can be changed using alternatives. The
+threading model can also be selected explicitly by specifying the
+appropriate compiler; for example, i686-w64-mingw32-gcc-posix for
+POSIX-threaded 32-bit C code, x86_64-w64-mingw32-g++-win32 for
+Windows-threaded 64-bit C++ code.
+
 To use this package to build Windows software, simply use the
 appropriate target:
 * i686-w64-mingw32 for 32-bit Windows;
 * x86_64-w64-mingw32 for 64-bit Windows.
 
- -- Stephen Kitt <skitt@debian.org>, Sat, 23 Nov 2013 00:14:55 +0100
+ -- Stephen Kitt <skitt@debian.org>, Sat, 26 Jul 2014 18:29:13 +0200

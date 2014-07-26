@@ -1,7 +1,7 @@
 s/@@PACKAGE@@/g++/g
 s/@@LANGUAGE@@/C++/g
-s/@@DEPENDS32@@/gcc-mingw-w64-i686 (= ${binary:Version}), libstdc++-4.9-dev (>= ${local:Version})/g
-s/@@DEPENDS64@@/gcc-mingw-w64-x86-64 (= ${binary:Version}), libstdc++-4.9-dev (>= ${local:Version})/g
+s/@@DEPENDS32@@/gcc-mingw-w64-i686 (= ${binary:Version}), g++-mingw-w64-common (= ${binary:Version})/g
+s/@@DEPENDS64@@/gcc-mingw-w64-x86-64 (= ${binary:Version}), g++-mingw-w64-common (= ${binary:Version})/g
 s/@@RECOMMENDS@@//g
 s/@@REPLACES32@@/gcc-mingw-w64 (<< ${split:Version})/g
 s/@@REPLACES64@@/gcc-mingw-w64 (<< ${split:Version})/g

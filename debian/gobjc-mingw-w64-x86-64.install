@@ -1,5 +1,5 @@
-usr/lib/gcc/x86_64-w64-mingw32/4.9/cc1obj
-usr/lib/gcc/x86_64-w64-mingw32/4.9/include/objc/*
-usr/lib/gcc/x86_64-w64-mingw32/4.9/libobjc-4.dll
-usr/lib/gcc/x86_64-w64-mingw32/4.9/libobjc.a
-usr/lib/gcc/x86_64-w64-mingw32/4.9/libobjc.dll.a
+usr/lib/gcc/x86_64-w64-mingw32/4.9*/cc1obj
+usr/lib/gcc/x86_64-w64-mingw32/4.9*/include/objc/*
+usr/lib/gcc/x86_64-w64-mingw32/4.9*/libobjc-4.dll
+usr/lib/gcc/x86_64-w64-mingw32/4.9*/libobjc.a
+usr/lib/gcc/x86_64-w64-mingw32/4.9*/libobjc.dll.a
