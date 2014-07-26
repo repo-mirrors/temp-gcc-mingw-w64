@@ -5,6 +5,25 @@ gcc-mingw-w64 (14) UNRELEASED; urgency=medium
     (Closes: #748353, #750741).
   * Use the default exception-handling (SJLJ on 32-bit Windows, SEH on
     64-bit Windows). (With the above, LP: #1338043.)
+  * Build a mingw32 transition package (Closes: #756142):
+    - C++ code with interface/implementation pragmas links correctly
+      (Closes: #179760);
+    - libstdc++.la is no longer shipped (Closes: #281030);
+    - the libstdc++ DLL is provided (Closes: #317146);
+    - _NO_OLD_NAMES doesn't break unistd.h (Closes: #338412);
+    - the gccbug manpage is no longer linked to (Closes: #351790);
+    - the package description doesn't mention "freedom through
+      obsolescence" (Closes: #403720);
+    - g77 is provided (Closes: #418167);
+    - nothing is installed in /usr/libexec (Closes: #470574);
+    - Lintian overrides are correct (Closes: #470873);
+    - powf and sinf can be used in the same project (Closes: #484299);
+    - there's no "it's"/"its" typo in the Debian-specific files (Closes:
+      #498400);
+    - the package builds gcc 4.9 (Closes: #514186);
+    - a 64-bit compiler is available (Closes: #514187);
+    - powf is defined correctly (Closes: #525016);
+    - no compilercache symlinks are shipped (Closes: #583262).
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 25 Jul 2014 07:55:53 +0200
 

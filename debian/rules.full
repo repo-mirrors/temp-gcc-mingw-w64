@@ -23,6 +23,8 @@ control-stamp:
 		echo >> debian/control; \
 		cat $$file >> debian/control; \
 	done
+	echo >> debian/control
+	cat debian/control.mingw32 >> debian/control
 	sed -i '/^Recommends: $$/d' debian/control
 	sed -i '/^Breaks: $$/d' debian/control
 	sed -i '/^Conflicts: $$/d' debian/control
