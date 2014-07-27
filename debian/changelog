@@ -27,6 +27,7 @@ gcc-mingw-w64 (14) UNRELEASED; urgency=medium
   * Ship the C++ header files in the default location instead of
     /usr/include/c++/; this avoids having to introduce a new package for
     the target-independent headers.
+  * Remove obsolete gnat files.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 25 Jul 2014 07:55:53 +0200
 
