@@ -1,8 +1,7 @@
 usr/bin/x86_64-w64-mingw32-c++*
 usr/bin/x86_64-w64-mingw32-g++*
-usr/include/c++/*/x86_64-w64-mingw32/bits/*
-usr/include/c++/*/x86_64-w64-mingw32/ext/*
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/cc1plus
+usr/lib/gcc/x86_64-w64-mingw32/4.9*/include/c++/*
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libstdc++-6.dll
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libstdc++.a
 usr/lib/gcc/x86_64-w64-mingw32/4.9*/libstdc++.dll.a

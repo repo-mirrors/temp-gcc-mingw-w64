@@ -19,10 +19,6 @@ control-stamp:
 	done
 	echo >> debian/control
 	cat debian/control.base >> debian/control
-	for file in debian/control.*common; do \
-		echo >> debian/control; \
-		cat $$file >> debian/control; \
-	done
 	echo >> debian/control
 	cat debian/control.mingw32 >> debian/control
 	sed -i '/^Recommends: $$/d' debian/control

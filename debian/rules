@@ -147,8 +147,7 @@ CONFFLAGS += \
 # Thread-model-dependent
 CONFFLAGS += \
 	--enable-threads=$$threads \
-	--program-suffix=-$$threads \
-	--with-gxx-include-dir=/$(PF)/include/c++/$(base_version)-$$threads
+	--program-suffix=-$$threads
 # Target-dependent
 CONFFLAGS += \
 	--program-prefix=$$target- \

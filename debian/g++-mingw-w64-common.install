@@ -1,6 +1,0 @@
-#!/bin/sh
-
-cd debian/tmp
-for file in usr/include/c++/*/*; do
-    echo $file
-done | grep -v w64-mingw32

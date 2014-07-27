@@ -6,7 +6,7 @@ Maintainer: Stephen Kitt <skitt@debian.org>
 Build-Depends: autotools-dev,
                binutils-mingw-w64 (>= 2.21.51.20110523),
                bison,
-               debhelper (>= 9),
+               debhelper (>= 7.0.50~),
                flex,
                g++-4.9,
                gcc-4.9-source,
@@ -87,7 +87,7 @@ Description: GNU C++ compiler for MinGW-w64
 
 Package: g++-mingw-w64-i686
 Architecture: any
-Depends: gcc-mingw-w64-i686 (= ${binary:Version}), g++-mingw-w64-common (= ${binary:Version}),
+Depends: gcc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.9 (= ${gcc:Version})
@@ -104,7 +104,7 @@ Description: GNU C++ compiler for MinGW-w64 targeting Win32
 
 Package: g++-mingw-w64-x86-64
 Architecture: any
-Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}), g++-mingw-w64-common (= ${binary:Version}),
+Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-4.9 (= ${gcc:Version})
@@ -260,18 +260,6 @@ Description: GNU Compiler Collection for MinGW-w64 (base package)
  .
  This empty package contains the documentation common to all
  gcc-mingw-w64 packages.
-
-Package: g++-mingw-w64-common
-Architecture: any
-Depends: ${misc:Depends}
-Built-Using: gcc-4.9 (= ${gcc:Version})
-Description: GNU C++ compiler for MinGW-w64 (common files)
- MinGW-w64 provides a development and runtime environment for 32- and
- 64-bit (x86 and x64) Windows applications using the Windows API and
- the GNU Compiler Collection (gcc).
- .
- This package contains the headers common to all g++-mingw-w64
- packages.
 
 Package: mingw32
 Architecture: all
