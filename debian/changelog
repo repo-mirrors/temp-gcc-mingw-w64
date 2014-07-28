@@ -1,4 +1,4 @@
-gcc-mingw-w64 (14) UNRELEASED; urgency=medium
+gcc-mingw-w64 (14) unstable; urgency=medium
 
   * Provide compilers using Windows and POSIX threads. The default setup
     uses Windows threads, thus avoiding the dependency on the pthreads DLL
@@ -29,7 +29,7 @@ gcc-mingw-w64 (14) UNRELEASED; urgency=medium
     the target-independent headers.
   * Remove obsolete gnat files.
 
- -- Stephen Kitt <skitt@debian.org>  Fri, 25 Jul 2014 07:55:53 +0200
+ -- Stephen Kitt <skitt@debian.org>  Mon, 28 Jul 2014 01:41:35 +0200
 
 gcc-mingw-w64 (13) unstable; urgency=medium
 
