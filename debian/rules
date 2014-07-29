@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gnat-mingw-w64 using gcc-4.8-source.
+# Build gnat-mingw-w64 using gcc-4.9-source.
 # Copyright © 2010-2014 Stephen Kitt <skitt@debian.org>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -46,6 +46,7 @@ endif
 include debian/rules.variant
 
 targets := i686-w64-mingw32 x86_64-w64-mingw32
+threads := posix win32
 
 # No hardening support for now
 dpkg_buildflags = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
@@ -134,9 +135,7 @@ CONFFLAGS = \
 # /usr/lib/gcc rather than /usr/$(target)
 CONFFLAGS += \
 	--enable-version-specific-runtime-libs \
-	--enable-threads=posix \
 	--enable-fully-dynamic-string \
-	--enable-sjlj-exceptions \
 	--enable-libgomp
 # Languages
 CONFFLAGS += \
@@ -145,6 +144,16 @@ CONFFLAGS += \
 CONFFLAGS += \
 	--enable-lto \
 	--with-plugin-ld
+# Thread-model-dependent
+CONFFLAGS += \
+	--enable-threads=$$threads \
+	--program-suffix=-$$threads
+# Target-dependent
+CONFFLAGS += \
+	--program-prefix=$$target- \
+	--target=$$target \
+	--with-as=/usr/bin/$$target-as \
+	--with-ld=/usr/bin/$$target-ld
 
 # Patches applied or unapplied after the upstream sources have been
 # unpacked and patched using the gcc-4.9-source package's patches
@@ -162,12 +171,13 @@ configure-stamp: control-stamp mingw-w64-patch-stamp
 	cat debian/control
 	echo ======================================================================
 	for target in $(targets); do \
-		dh_auto_configure -B$(build_dir)/$$target -D$(upstream_dir) -- \
-			$(CONFFLAGS) \
-			--target=$$target \
-			--with-gxx-include-dir=/$(PF)/include/c++/$(base_version) \
-			--with-as=/usr/bin/$$target-as \
-			--with-ld=/usr/bin/$$target-ld; \
+		for threads in $(threads); do \
+			echo $(target_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
+			dh_auto_configure \
+				-B$(build_dir)/$$target-$$threads \
+				-D$(upstream_dir) -- \
+				$(CONFFLAGS); \
+		done; \
 	done
 	touch $@
 
@@ -177,7 +187,11 @@ build-arch-stamp: configure-stamp
 	dh_testdir
 	set -e; \
 	for target in $(targets); do \
-		cd $(build_dir)/$$target && $(MAKE) $(NJOBS) $(BUILD_TARGET); \
+		for threads in $(threads); do \
+			echo $(target_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
+			cd $(build_dir)/$$target-$$threads && \
+			$(MAKE) $(NJOBS) $(BUILD_TARGET); \
+		done; \
 	done
 	touch $@
 build-indep: build-indep-stamp
@@ -189,9 +203,21 @@ install-arch-stamp: build-arch-stamp
 	dh_testdir
 	dh_testroot
 	dh_prep
+
+# Base installation, move misplaced DLLs and libraries
 	set -e; \
 	for target in $(targets); do \
-		cd $(build_dir)/$$target && $(MAKE) DESTDIR=$(top_dir)/debian/tmp $(INSTALL_TARGET); \
+		for threads in $(threads); do \
+			echo $(target_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
+			cd $(build_dir)/$$target-$$threads && \
+			$(MAKE) DESTDIR=$(top_dir)/debian/tmp $(INSTALL_TARGET); \
+			if [ -f $(top_dir)/debian/tmp/usr/lib/gcc/$$target/lib/*.a ]; then \
+				mv $(top_dir)/debian/tmp/usr/lib/gcc/$$target/lib/*.a $(top_dir)/debian/tmp/usr/lib/gcc/$$target/$(base_version)-$$threads/; \
+			fi; \
+			if [ -f $(top_dir)/debian/tmp/usr/lib/gcc/$$target/*.dll ]; then \
+				mv $(top_dir)/debian/tmp/usr/lib/gcc/$$target/*.dll $(top_dir)/debian/tmp/usr/lib/gcc/$$target/$(base_version)-$$threads/; \
+			fi; \
+		done; \
 	done
 
 	# Remove files which conflict with other packages
@@ -201,8 +227,6 @@ install-arch-stamp: build-arch-stamp
 	rm -f $(top_dir)/debian/tmp/usr/lib/libiberty.a
 	# libstdc++6-$(target_version)-dbg (potentially)
 	rm -rf $(top_dir)/debian/tmp/usr/share/gcc-*/python
-	# libstdc++6-$(target_version)-dev
-	ls -1 $(top_dir)/debian/tmp/usr/include/c++/$(base_version)/|grep -v w64-mingw32|xargs -I{} rm -rf $(top_dir)/debian/tmp/usr/include/c++/$(base_version)/{}
 	# -doc packages
 	rm -rf $(top_dir)/debian/tmp/usr/share/info
 	rm -rf $(top_dir)/debian/tmp/usr/share/man/man7
@@ -212,30 +236,6 @@ install-arch-stamp: build-arch-stamp
 
 	# Drop .la files
 	find $(top_dir)/debian/tmp -name \*.la -delete
-
-	# Move libraries to base directories and add version-specific links
-	if [ "$$(basename debian/tmp/usr/share/gcc-*)" != "gcc-*" ]; then \
-		for gnu_upstream_version in $$(basename debian/tmp/usr/share/gcc-*|cut -d- -f2); do \
-			if [ "$$gnu_upstream_version" != "$(base_version)" ]; then \
-				[ -d $(top_dir)/debian/tmp/usr/include/c++ ] && cd $(top_dir)/debian/tmp/usr/include/c++ && ln -s $(base_version) $$gnu_upstream_version || true; \
-				for target in $(targets); do \
-					cd $(top_dir)/debian/tmp/$(PF)/lib/gcc/$$target && \
-					mv $$gnu_upstream_version $(base_version) && \
-					ln -s $(base_version) $$gnu_upstream_version; \
-				done; \
-			fi; \
-		done; \
-	fi
-
-	# Move misplaced DLLs and libraries
-	for target in $(targets); do \
-		if [ -f $(top_dir)/debian/tmp/usr/lib/gcc/$$target/lib/*.a ]; then \
-			mv $(top_dir)/debian/tmp/usr/lib/gcc/$$target/lib/*.a $(top_dir)/debian/tmp/usr/lib/gcc/$$target/$(base_version)/; \
-		fi; \
-		if [ -f $(top_dir)/debian/tmp/usr/lib/gcc/$$target/*.dll ]; then \
-			mv $(top_dir)/debian/tmp/usr/lib/gcc/$$target/*.dll $(top_dir)/debian/tmp/usr/lib/gcc/$$target/$(base_version)/; \
-		fi; \
-	done
 
 	for i in 1 2; do \
 		find $(top_dir)/debian/tmp/ -type d -empty | while read i; do rmdir $$i; done; \
