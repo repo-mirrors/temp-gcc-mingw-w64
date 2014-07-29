@@ -1,5 +1,0 @@
-# gcc manpages are non-free
-gfortran-mingw-w64-i686: binary-without-manpage
-
-# This isn't a spelling error
-gfortran-mingw-w64-i686: spelling-error-in-binary usr/lib/gcc/i686-w64-mingw32/4.6/f951 ment meant

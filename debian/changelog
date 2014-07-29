@@ -5,6 +5,7 @@ gnat-mingw-w64 (14) UNRELEASED; urgency=medium
     uses Windows threads, thus avoiding the dependency on the pthreads DLL.
   * Use the default exception-handling (SJLJ on 32-bit Windows, SEH on
     64-bit Windows).
+  * Drop all non-gnat-relevant packaging.
 
  -- Stephen Kitt <skitt@debian.org>  Mon, 30 Jun 2014 21:44:18 +0200
 
