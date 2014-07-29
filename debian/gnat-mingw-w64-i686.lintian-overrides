@@ -2,11 +2,15 @@
 gnat-mingw-w64-i686: binary-without-manpage
 
 # These aren't spelling errors
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnat ment meant
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnat Nam Name
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatclean ment meant
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatclean Nam Name
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatlink nam name
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatmake ment meant
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatmake Nam Name
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatname nam name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnat-posix Nam Name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnat-win32 Nam Name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatclean-posix Nam Name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatclean-win32 Nam Name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatlink-posix nam name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatlink-win32 nam name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatmake-posix Nam Name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatmake-win32 Nam Name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatname-posix nam name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatname-win32 nam name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/lib/gcc/i686-w64-mingw32/4.9-posix/gnat1 Nam Name
+gnat-mingw-w64-i686: spelling-error-in-binary usr/lib/gcc/i686-w64-mingw32/4.9-win32/gnat1 Nam Name
