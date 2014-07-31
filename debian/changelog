@@ -1,4 +1,4 @@
-gnat-mingw-w64 (14) UNRELEASED; urgency=medium
+gnat-mingw-w64 (14) unstable; urgency=medium
 
   * Specify the correct branch in the VCS stanzas.
   * Provide compilers using Windows and POSIX threads. The default setup
@@ -7,7 +7,7 @@ gnat-mingw-w64 (14) UNRELEASED; urgency=medium
     64-bit Windows).
   * Drop all non-gnat-relevant packaging.
 
- -- Stephen Kitt <skitt@debian.org>  Mon, 30 Jun 2014 21:44:18 +0200
+ -- Stephen Kitt <skitt@debian.org>  Wed, 30 Jul 2014 20:13:29 +0200
 
 gnat-mingw-w64 (13) unstable; urgency=medium
 
