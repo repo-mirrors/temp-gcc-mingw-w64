@@ -1,8 +1,8 @@
-gcc-mingw-w64 (14.1) UNRELEASED; urgency=medium
+gcc-mingw-w64 (14.1) unstable; urgency=medium
 
   * Take the threading model into account when stripping libraries.
 
- -- Stephen Kitt <skitt@debian.org>  Thu, 31 Jul 2014 07:26:41 +0200
+ -- Stephen Kitt <skitt@debian.org>  Thu, 31 Jul 2014 07:27:45 +0200
 
 gcc-mingw-w64 (14) unstable; urgency=medium
 
