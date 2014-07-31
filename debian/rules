@@ -270,9 +270,9 @@ binary-arch: build-arch install-arch
 	dh_installchangelogs -a $(upstream_dir)/ChangeLog
 	# Strip the binaries
 ifneq (,$(findstring ada,$(languages)))
-	dh_strip -a -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib -Xw64-mingw32/$(base_version)/adalib
+	dh_strip -a -Xw64-mingw32/lib $(patsubst %,-Xw64-mingw32/$(base_version)-%/lib,$(threads)) $(patsubst %,-Xw64-mingw32/$(base_version)-%/adalib,$(threads))
 else
-	dh_strip -a -Xw64-mingw32/lib -Xw64-mingw32/$(base_version)/lib
+	dh_strip -a -Xw64-mingw32/lib $(patsubst %,-Xw64-mingw32/$(base_version)-%/lib,$(threads))
 endif
 	# Strip the libraries
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
