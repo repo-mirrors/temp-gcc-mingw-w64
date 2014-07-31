@@ -1,3 +1,9 @@
+gcc-mingw-w64 (14.1) UNRELEASED; urgency=medium
+
+  * Take the threading model into account when stripping libraries.
+
+ -- Stephen Kitt <skitt@debian.org>  Thu, 31 Jul 2014 07:26:41 +0200
+
 gcc-mingw-w64 (14) unstable; urgency=medium
 
   * Provide compilers using Windows and POSIX threads. The default setup
