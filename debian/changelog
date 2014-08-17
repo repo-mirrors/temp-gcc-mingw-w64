@@ -1,3 +1,10 @@
+gcc-mingw-w64 (14.2) unstable; urgency=medium
+
+  * Ensure README.Debian is installed in gcc-mingw-w64-base (Closes:
+    #757259).
+
+ -- Stephen Kitt <skitt@debian.org>  Sun, 17 Aug 2014 19:00:16 +0200
+
 gcc-mingw-w64 (14.1) unstable; urgency=medium
 
   * Take the threading model into account when stripping libraries.
