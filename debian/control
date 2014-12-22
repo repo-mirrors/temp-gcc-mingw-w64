@@ -263,6 +263,7 @@ Description: GNU Compiler Collection for MinGW-w64 (base package)
 
 Package: mingw32
 Architecture: all
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, gcc-mingw-w64-i686, g++-mingw-w64-i686, mingw32-binutils
 Built-Using: gcc-4.9 (= ${gcc:Version})
 Description: Minimalist GNU win32 (cross) compiler (transition package)

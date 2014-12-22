@@ -1,3 +1,12 @@
+gcc-mingw-w64 (14.3) testing-proposed-updates; urgency=medium
+
+  * Properly replace /usr/share/doc/mingw32 with a symlink to
+    /usr/share/doc/gcc-mingw-w64-base (Closes: #773342).
+  * Upload directly to testing-proposed-updates as requested by the
+    release team (see #773490).
+
+ -- Stephen Kitt <skitt@debian.org>  Thu, 18 Dec 2014 07:23:13 +0100
+
 gcc-mingw-w64 (14.2) unstable; urgency=medium
 
   * Ensure README.Debian is installed in gcc-mingw-w64-base (Closes:
