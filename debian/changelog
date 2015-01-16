@@ -3,6 +3,7 @@ gcc-mingw-w64 (15) UNRELEASED; urgency=medium
   * Drop mingw32 transitional package (Closes: #773342).
   * Adjust the gfortran lintian overrides to work regardless of the
     exact version.
+  * Standards-Version 3.9.6, no change required.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 26 Dec 2014 18:25:27 +0100
 
