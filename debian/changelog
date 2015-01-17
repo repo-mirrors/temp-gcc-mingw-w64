@@ -1,4 +1,4 @@
-gcc-mingw-w64 (15) UNRELEASED; urgency=medium
+gcc-mingw-w64 (15) unstable; urgency=medium
 
   * Drop mingw32 transitional package (Closes: #773342).
   * Adjust the gfortran lintian overrides to work regardless of the
@@ -8,7 +8,7 @@ gcc-mingw-w64 (15) UNRELEASED; urgency=medium
   * Override lintian's hardening warnings, hardening isn't supported
     yet.
 
- -- Stephen Kitt <skitt@debian.org>  Fri, 26 Dec 2014 18:25:27 +0100
+ -- Stephen Kitt <skitt@debian.org>  Sat, 17 Jan 2015 18:33:36 +0100
 
 gcc-mingw-w64 (14.3) testing-proposed-updates; urgency=medium
 
