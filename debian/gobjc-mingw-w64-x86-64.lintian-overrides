@@ -1,0 +1,6 @@
+# This isn't a spelling error
+gobjc-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86_64-w64-mingw32/*/cc1obj tEH the
+
+# Hardening isn't supported (yet)
+gobjc-mingw-w64-x86-64: hardening-no-relro
+gobjc-mingw-w64-x86-64: hardening-no-fortify-functions

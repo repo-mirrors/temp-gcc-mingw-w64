@@ -4,6 +4,9 @@ gcc-mingw-w64 (15) UNRELEASED; urgency=medium
   * Adjust the gfortran lintian overrides to work regardless of the
     exact version.
   * Standards-Version 3.9.6, no change required.
+  * Update spelling fixes.
+  * Override lintian's hardening warnings, hardening isn't supported
+    yet.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 26 Dec 2014 18:25:27 +0100
 
