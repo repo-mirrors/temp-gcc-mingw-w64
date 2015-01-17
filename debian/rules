@@ -161,6 +161,8 @@ mingw-w64-patch: mingw-w64-patch-stamp
 mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring
 	patch -R -p2 -d$(upstream_dir) < $(gcc_dir)/debian/patches/libstdc++-pic.diff
+	# Spelling fixes
+	patch -p1 -d$(upstream_dir) < debian/patches/spelling-fixes-code.patch
 	touch $@
 
 configure: configure-stamp
