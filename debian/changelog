@@ -1,11 +1,11 @@
-gnat-mingw-w64 (15) UNRELEASED; urgency=medium
+gnat-mingw-w64 (15) unstable; urgency=medium
 
   * Standards-Version 3.9.6, no change required.
   * Update spelling fixes.
   * Override lintian's hardening warnings, hardening isn't supported
     yet.
 
- -- Stephen Kitt <skitt@debian.org>  Sun, 18 Jan 2015 18:42:11 +0100
+ -- Stephen Kitt <skitt@debian.org>  Mon, 19 Jan 2015 07:30:22 +0100
 
 gnat-mingw-w64 (14) unstable; urgency=medium
 
