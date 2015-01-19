@@ -1,5 +1,6 @@
 gnat-mingw-w64 (15) UNRELEASED; urgency=medium
 
+  * Standards-Version 3.9.6, no change required.
   * Update spelling fixes.
   * Override lintian's hardening warnings, hardening isn't supported
     yet.
