@@ -6,3 +6,9 @@ gnat-mingw-w64-x86-64: spelling-error-in-binary usr/bin/x86_64-w64-mingw32-gnatl
 gnat-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86_64-w64-mingw32/*/gnat1 Nam Name
 gnat-mingw-w64-x86-64: spelling-error-in-binary usr/bin/x86_64-w64-mingw32-gnatmake-* proces process
 gnat-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86_64-w64-mingw32/*/gnat1 tEH the
+
+# Hardening isn't supported (yet)
+gnat-mingw-w64-x86-64: hardening-no-relro usr/bin/x86_64-w64-mingw32-gnat*
+gnat-mingw-w64-x86-64: hardening-no-fortify-functions usr/bin/x86_64-w64-mingw32-gnat*
+gnat-mingw-w64-x86-64: hardening-no-relro usr/lib/gcc/x86_64-w64-mingw32/*/gnat1
+gnat-mingw-w64-x86-64: hardening-no-fortify-functions usr/lib/gcc/x86_64-w64-mingw32/*/gnat1

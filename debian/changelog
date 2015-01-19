@@ -1,6 +1,8 @@
 gnat-mingw-w64 (15) UNRELEASED; urgency=medium
 
   * Update spelling fixes.
+  * Override lintian's hardening warnings, hardening isn't supported
+    yet.
 
  -- Stephen Kitt <skitt@debian.org>  Sun, 18 Jan 2015 18:42:11 +0100
 
