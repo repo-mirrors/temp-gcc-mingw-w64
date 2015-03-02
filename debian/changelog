@@ -1,3 +1,9 @@
+gcc-mingw-w64 (16) unstable; urgency=medium
+
+  * Build with gcc-5.
+
+ -- Stephen Kitt <skitt@debian.org>  Thu, 19 Feb 2015 07:36:37 +0100
+
 gcc-mingw-w64 (15.2) unstable; urgency=medium
 
   * debhelper 9.20150501 fixes #747141, the binary dependencies no longer
