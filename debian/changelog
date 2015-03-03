@@ -1,3 +1,9 @@
+gcc-mingw-w64 (15.1) unstable; urgency=medium
+
+  * Add upstream patch to fix symtab (Closes: #779526).
+
+ -- Stephen Kitt <skitt@debian.org>  Mon, 02 Mar 2015 20:54:25 +0100
+
 gcc-mingw-w64 (15) unstable; urgency=medium
 
   * Drop mingw32 transitional package (Closes: #773342).
