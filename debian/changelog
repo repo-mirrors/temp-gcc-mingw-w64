@@ -2,6 +2,7 @@ gcc-mingw-w64 (16) UNRELEASED; urgency=medium
 
   * Build with gcc-5.
   * Use base_version for BASE-VER (gcc-5 is actually gcc-5.1).
+  * Disable libatomic, it doesn't build currently.
 
  -- Stephen Kitt <skitt@debian.org>  Thu, 19 Feb 2015 07:36:37 +0100
 

@@ -155,6 +155,9 @@ CONFFLAGS += \
 	--target=$$target \
 	--with-as=/usr/bin/$$target-as \
 	--with-ld=/usr/bin/$$target-ld
+# Disable libatomic
+CONFFLAGS += \
+	--disable-libatomic
 
 # Patches applied or unapplied after the upstream sources have been
 # unpacked and patched using the gcc-5-source package's patches
