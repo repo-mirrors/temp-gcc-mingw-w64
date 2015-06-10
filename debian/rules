@@ -176,7 +176,7 @@ configure-stamp: control-stamp mingw-w64-patch-stamp
 	echo ======================================================================
 	for target in $(targets); do \
 		for threads in $(threads); do \
-			echo $(target_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
+			echo $(base_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
 			dh_auto_configure \
 				-B$(build_dir)/$$target-$$threads \
 				-D$(upstream_dir) -- \
@@ -192,7 +192,7 @@ build-arch-stamp: configure-stamp
 	set -e; \
 	for target in $(targets); do \
 		for threads in $(threads); do \
-			echo $(target_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
+			echo $(base_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
 			cd $(build_dir)/$$target-$$threads && \
 			$(MAKE) $(NJOBS) $(BUILD_TARGET); \
 		done; \
@@ -212,7 +212,7 @@ install-arch-stamp: build-arch-stamp
 	set -e; \
 	for target in $(targets); do \
 		for threads in $(threads); do \
-			echo $(target_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
+			echo $(base_version)-$$threads > $(upstream_dir)/gcc/BASE-VER && \
 			cd $(build_dir)/$$target-$$threads && \
 			$(MAKE) DESTDIR=$(top_dir)/debian/tmp $(INSTALL_TARGET); \
 			if [ -f $(top_dir)/debian/tmp/usr/lib/gcc/$$target/lib/*.a ]; then \
