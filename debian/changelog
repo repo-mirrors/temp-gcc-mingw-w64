@@ -2,6 +2,7 @@ gcc-mingw-w64 (15.2) UNRELEASED; urgency=medium
 
   * debhelper 9.20150501 fixes #747141, the binary dependencies no longer
     need fixing.
+  * Specify the PE timestamp using the changelog's date.
 
  -- Stephen Kitt <skitt@debian.org>  Tue, 09 Jun 2015 20:35:14 +0200
 
