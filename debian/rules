@@ -251,7 +251,7 @@ install-arch-stamp: build-arch-stamp
 binary-indep: build-indep
 	dh_testdir
 	dh_testroot
-	dh_installdocs -i --link-doc=gcc-mingw-w64-base
+	dh_installdocs -i
 	dh_installchangelogs -i $(upstream_dir)/ChangeLog
 	dh_lintian -i
 	dh_link -i

@@ -1,3 +1,10 @@
+gcc-mingw-w64 (15.3) UNRELEASED; urgency=medium
+
+  * Don't link the arch-indep packages to gcc-mingw-w64-base (Closes:
+    #789024).
+
+ -- Stephen Kitt <skitt@debian.org>  Wed, 17 Jun 2015 23:04:08 +0200
+
 gcc-mingw-w64 (15.2) unstable; urgency=medium
 
   * debhelper 9.20150501 fixes #747141, the binary dependencies no longer
