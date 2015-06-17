@@ -24,9 +24,14 @@ appropriate compiler; for example, i686-w64-mingw32-gcc-posix for
 POSIX-threaded 32-bit C code, x86_64-w64-mingw32-g++-win32 for
 Windows-threaded 64-bit C++ code.
 
+The POSIX threading model enables support for C++11 threads and GOMP,
+but produces binaries which need the libwinpthread-1.dll at runtime.
+The Windows threading doesn't support C++11 threads currently but
+produces binaries with no requirement for the pthreads DLL.
+
 To use this package to build Windows software, simply use the
 appropriate target:
 * i686-w64-mingw32 for 32-bit Windows;
 * x86_64-w64-mingw32 for 64-bit Windows.
 
- -- Stephen Kitt <skitt@debian.org>, Sat, 26 Jul 2014 19:23:46 +0200
+ -- Stephen Kitt <skitt@debian.org>, Wed, 17 Jun 2015 23:10:53 +0200
