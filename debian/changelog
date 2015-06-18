@@ -1,3 +1,10 @@
+gcc-mingw-w64 (15.4) UNRELEASED; urgency=medium
+
+  * The arch-independent packages no longer link to /usr/share/doc/gcc-
+    mingw-w64-base.
+
+ -- Stephen Kitt <skitt@debian.org>  Thu, 18 Jun 2015 22:48:26 +0200
+
 gcc-mingw-w64 (15.3) unstable; urgency=medium
 
   * Don't link the arch-indep packages to gcc-mingw-w64-base (Closes:
