@@ -2,6 +2,8 @@ gcc-mingw-w64 (15.4) UNRELEASED; urgency=medium
 
   * The arch-independent packages no longer link to /usr/share/doc/gcc-
     mingw-w64-base.
+  * Support appropriate versions of binutils-mingw-w64 in Ubuntu
+    (Closes: #789159).
 
  -- Stephen Kitt <skitt@debian.org>  Thu, 18 Jun 2015 22:48:26 +0200
 
