@@ -8,3 +8,6 @@ gcc-mingw-w64-i686: spelling-error-in-binary usr/lib/gcc/i686-w64-mingw32/*/lto1
 # Hardening isn't supported (yet)
 gcc-mingw-w64-i686: hardening-no-relro
 gcc-mingw-w64-i686: hardening-no-fortify-functions
+
+# DLLs exported via Samba need to be executable (see #796223)
+gcc-mingw-w64-i686: executable-not-elf-or-script usr/lib/gcc/i686-w64-mingw32/*/*.dll
