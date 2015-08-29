@@ -1,10 +1,10 @@
-gcc-mingw-w64 (15.5) UNRELEASED; urgency=medium
+gcc-mingw-w64 (15.5) unstable; urgency=medium
 
   * Sort macro_list reproducibly.
   * Ship executable DLLs (Closes: #796223).
   * Lintian no longer complains about "tEH", so remove the override.
 
- -- Stephen Kitt <skitt@debian.org>  Sat, 20 Jun 2015 11:12:41 +0200
+ -- Stephen Kitt <skitt@debian.org>  Sat, 29 Aug 2015 23:23:18 +0200
 
 gcc-mingw-w64 (15.4) unstable; urgency=medium
 
