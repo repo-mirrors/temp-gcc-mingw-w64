@@ -2,6 +2,7 @@ gcc-mingw-w64 (15.5) UNRELEASED; urgency=medium
 
   * Sort macro_list reproducibly.
   * Ship executable DLLs (Closes: #796223).
+  * Lintian no longer complains about "tEH", so remove the override.
 
  -- Stephen Kitt <skitt@debian.org>  Sat, 20 Jun 2015 11:12:41 +0200
 

@@ -1,6 +1,3 @@
-# This isn't a spelling error
-gobjc++-mingw-w64-i686: spelling-error-in-binary usr/lib/gcc/i686-w64-mingw32/*/cc1objplus tEH the
-
 # Hardening isn't supported (yet)
 gobjc++-mingw-w64-i686: hardening-no-relro
 gobjc++-mingw-w64-i686: hardening-no-fortify-functions

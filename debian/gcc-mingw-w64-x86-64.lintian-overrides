@@ -1,10 +1,6 @@
 # gcc manpages are non-free
 gcc-mingw-w64-x86-64: binary-without-manpage
 
-# These aren't spelling errors
-gcc-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86_64-w64-mingw32/*/cc1 tEH the
-gcc-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86_64-w64-mingw32/*/lto1 tEH the
-
 # Hardening isn't supported (yet)
 gcc-mingw-w64-x86-64: hardening-no-relro
 gcc-mingw-w64-x86-64: hardening-no-fortify-functions
