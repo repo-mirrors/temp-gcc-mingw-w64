@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 # Build gnat-mingw-w64 using gcc-4.9-source.
-# Copyright © 2010-2014 Stephen Kitt <skitt@debian.org>
+# Copyright © 2010-2015 Stephen Kitt <skitt@debian.org>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -249,8 +249,6 @@ binary-indep: build-indep
 	dh_testdir
 	dh_testroot
 	dh_installdocs -i --link-doc=gnat-mingw-w64-base
-# Until #747141 is fixed, undo the versioned dependency
-	sed -i 's/(= $(our_version))//g' debian/*.substvars
 	dh_installchangelogs -i $(upstream_dir)/ChangeLog
 	dh_lintian -i
 	dh_link -i
@@ -266,8 +264,6 @@ binary-arch: build-arch install-arch
 	dh_testroot
 	dh_install -a --list-missing
 	dh_installdocs -a --link-doc=gnat-mingw-w64-base
-# Until #747141 is fixed, undo the versioned dependency
-	sed -i 's/(= $(our_version))//g' debian/*.substvars
 	dh_installman -a
 	dh_installchangelogs -a $(upstream_dir)/ChangeLog
 	# Strip the binaries

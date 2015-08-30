@@ -1,3 +1,11 @@
+gnat-mingw-w64 (15.1) UNRELEASED; urgency=medium
+
+  * Merge changes up to gcc-mingw-w64 15.6:
+    - debhelper 9.20150501 fixes #747141, the binary dependencies no
+      longer need fixing.
+
+ -- Stephen Kitt <skitt@debian.org>  Sun, 30 Aug 2015 23:21:12 +0200
+
 gnat-mingw-w64 (15) unstable; urgency=medium
 
   * Standards-Version 3.9.6, no change required.
