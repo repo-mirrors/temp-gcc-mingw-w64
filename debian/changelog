@@ -1,8 +1,8 @@
-gcc-mingw-w64 (15.6) UNRELEASED; urgency=medium
+gcc-mingw-w64 (15.6) unstable; urgency=medium
 
   * Allow building the architecture-independent packages on their own.
 
- -- Stephen Kitt <skitt@debian.org>  Sun, 30 Aug 2015 15:06:36 +0200
+ -- Stephen Kitt <skitt@debian.org>  Sun, 30 Aug 2015 15:06:54 +0200
 
 gcc-mingw-w64 (15.5) unstable; urgency=medium
 
