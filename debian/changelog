@@ -1,6 +1,6 @@
 gnat-mingw-w64 (15.1) UNRELEASED; urgency=medium
 
-  * Merge changes up to gcc-mingw-w64 15.6:
+  * Merge changes up to gcc-mingw-w64 15.7:
     - debhelper 9.20150501 fixes #747141, the binary dependencies no
       longer need fixing;
     - specify the PE timestamp using the changelog's date;
@@ -10,7 +10,8 @@ gnat-mingw-w64 (15.1) UNRELEASED; urgency=medium
     - ensure README.Debian is installed in gnat-mingw-w64-base;
     - sort macro_list reproducibly;
     - Lintian no longer complains about "tEH", so remove the override;
-    - allow building the architecture-independent packages on their own.
+    - allow building the architecture-independent packages on their own;
+    - build-depend on gcc 4.9.3 which includes the symtab fix.
 
  -- Stephen Kitt <skitt@debian.org>  Sun, 30 Aug 2015 23:21:12 +0200
 
