@@ -290,8 +290,6 @@ ifneq (,$(findstring ada,$(languages)))
 	# *.ali files must be read-only
 	find $(top_dir)/debian -name \*.ali | xargs -r chmod 444
 endif
-	# *.dll files shouldn't be executable
-	find $(top_dir)/debian -name \*.dll | xargs -r chmod 644
 	dh_installdeb -a
 	dh_shlibdeps -a
 	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vlocal:NextVersion=$(deb_upstream_nextversion) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)

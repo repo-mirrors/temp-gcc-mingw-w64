@@ -11,7 +11,8 @@ gnat-mingw-w64 (15.1) UNRELEASED; urgency=medium
     - sort macro_list reproducibly;
     - Lintian no longer complains about "tEH", so remove the override;
     - allow building the architecture-independent packages on their own;
-    - build-depend on gcc 4.9.3 which includes the symtab fix.
+    - build-depend on gcc 4.9.3 which includes the symtab fix;
+    - ship executable DLLs.
 
  -- Stephen Kitt <skitt@debian.org>  Sun, 30 Aug 2015 23:21:12 +0200
 
