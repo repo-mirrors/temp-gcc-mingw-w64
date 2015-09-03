@@ -9,7 +9,8 @@ gnat-mingw-w64 (15.1) UNRELEASED; urgency=medium
       variants;
     - ensure README.Debian is installed in gnat-mingw-w64-base;
     - sort macro_list reproducibly;
-    - Lintian no longer complains about "tEH", so remove the override.
+    - Lintian no longer complains about "tEH", so remove the override;
+    - allow building the architecture-independent packages on their own.
 
  -- Stephen Kitt <skitt@debian.org>  Sun, 30 Aug 2015 23:21:12 +0200
 
