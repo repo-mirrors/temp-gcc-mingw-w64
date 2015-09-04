@@ -1,4 +1,4 @@
-gnat-mingw-w64 (15.1) UNRELEASED; urgency=medium
+gnat-mingw-w64 (15.1) unstable; urgency=medium
 
   * Merge changes up to gcc-mingw-w64 15.7:
     - debhelper 9.20150501 fixes #747141, the binary dependencies no
@@ -14,7 +14,7 @@ gnat-mingw-w64 (15.1) UNRELEASED; urgency=medium
     - build-depend on gcc 4.9.3 which includes the symtab fix;
     - ship executable DLLs.
 
- -- Stephen Kitt <skitt@debian.org>  Sun, 30 Aug 2015 23:21:12 +0200
+ -- Stephen Kitt <skitt@debian.org>  Thu, 03 Sep 2015 23:54:43 +0200
 
 gnat-mingw-w64 (15) unstable; urgency=medium
 
