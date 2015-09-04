@@ -2,6 +2,8 @@ gcc-mingw-w64 (15.7) UNRELEASED; urgency=medium
 
   * Use LC_ALL to fix sort's collation order in all cases (LC_COLLATE
     isn't sufficient since LC_ALL overrides it).
+  * Build-depend on gcc-4.9 4.9.3 or later, which includes the symtab
+    fix.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 04 Sep 2015 08:00:05 +0200
 
