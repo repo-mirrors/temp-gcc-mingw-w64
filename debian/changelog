@@ -1,3 +1,12 @@
+gnat-mingw-w64 (16) unstable; urgency=medium
+
+  * Merge changes up to gcc-mingw-w64 16:
+    - build with gcc-5 and gnat-5 (Closes: #807857);
+    - use base_version for BASE-VER (gcc-5 is actually gcc-5.3.1);
+    - disable libatomic, it doesn't build currently.
+
+ -- Stephen Kitt <skitt@debian.org>  Sun, 13 Dec 2015 22:25:27 +0100
+
 gnat-mingw-w64 (15.1) unstable; urgency=medium
 
   * Merge changes up to gcc-mingw-w64 15.7:
