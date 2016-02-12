@@ -40,6 +40,12 @@ ifeq ($(derives_from_ubuntu),yes)
   first_split_version := 4.6.3-1ubuntu5+5ubuntu1
 endif
 
+# libcaf migration version
+libcaf_migration_version := 5.3.1-8+17
+ifeq ($(derives_from_ubuntu),yes)
+  libcaf_migration_version := 5.3.1-8ubuntu2+17
+endif
+
 # Include the rules variant - symlink rules.bootstrap to produce the
 # minimal gcc required to build mingw-w64, or rules.full to produce
 # the full gcc.
@@ -260,7 +266,7 @@ binary-indep: build-indep
 	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
-	dh_gencontrol -i -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
+	dh_gencontrol -i -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version) -Vlibcaf:Version=$(libcaf_migration_version)
 	dh_md5sums -i
 	dh_builddeb -i
 
@@ -295,7 +301,7 @@ ifneq (,$(findstring ada,$(languages)))
 endif
 	dh_installdeb -a
 	dh_shlibdeps -a
-	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version)
+	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vgcc:Version=$(source_version) -Vsplit:Version=$(first_split_version) -Vlibcaf:Version=$(libcaf_migration_version)
 	dh_md5sums -a
 	dh_builddeb -a
 

@@ -13,7 +13,6 @@ usr/lib/gcc/x86_64-w64-mingw32/5*/include-fixed/*
 usr/lib/gcc/x86_64-w64-mingw32/5*/include/*.h
 usr/lib/gcc/x86_64-w64-mingw32/5*/include/ssp/*
 usr/lib/gcc/x86_64-w64-mingw32/5*/install-tools/*
-usr/lib/gcc/x86_64-w64-mingw32/5*/libcaf_single.a
 usr/lib/gcc/x86_64-w64-mingw32/5*/libgcc.a
 usr/lib/gcc/x86_64-w64-mingw32/5*/libgcc_eh.a
 usr/lib/gcc/x86_64-w64-mingw32/5*/libgcc_s.a

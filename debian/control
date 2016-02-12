@@ -144,8 +144,8 @@ Depends: gcc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-5 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${split:Version})
-Replaces: gcc-mingw-w64 (<< ${split:Version})
+Breaks: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-i686 (<< ${libcaf:Version})
+Replaces: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-i686 (<< ${libcaf:Version})
 Suggests: gcc-5-locales (>= ${local:Version})
 Description: GNU Fortran compiler for MinGW-w64 targeting Win32
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -161,8 +161,8 @@ Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Built-Using: gcc-5 (= ${gcc:Version})
-Breaks: gcc-mingw-w64 (<< ${split:Version})
-Replaces: gcc-mingw-w64 (<< ${split:Version})
+Breaks: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-x86-64 (<< ${libcaf:Version})
+Replaces: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-x86-64 (<< ${libcaf:Version})
 Suggests: gcc-5-locales (>= ${local:Version})
 Description: GNU Fortran compiler for MinGW-w64 targeting Win64
  MinGW-w64 provides a development and runtime environment for 32- and
