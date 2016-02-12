@@ -4,12 +4,14 @@ Section: devel
 Priority: extra
 Maintainer: Stephen Kitt <skitt@debian.org>
 Build-Depends: autotools-dev,
-# Allow binutils-mingw-w64 2.25-8ubuntu<n>+6.2 or later,
-# or 2.25-8+6.2 or later, disallowing 2.25-8+6.1
-               binutils-mingw-w64-i686 (>= 2.25-8ubuntu1+6.2),
-               binutils-mingw-w64-i686 (<< 2.25-8v) | binutils-mingw-w64-i686 (>=2.25-8+6.2),
-               binutils-mingw-w64-x86-64 (>= 2.25-8ubuntu1+6.2),
-               binutils-mingw-w64-x86-64 (<< 2.25-8v) | binutils-mingw-w64-x86-64 (>=2.25-8+6.2),
+# Allow binutils-mingw-w64 2.26-3ubuntu<n>+6.6 or later,
+# or 2.26-3+6.6 or later, disallowing 2.26-3+6.5
+# (the first dependency matches the Ubuntu version, the disjunction excludes
+# non-Ubuntu versions or versions older than 2.26-3+6.6)
+               binutils-mingw-w64-i686 (>= 2.26-3ubuntu1+6.6),
+               binutils-mingw-w64-i686 (<< 2.26-3v) | binutils-mingw-w64-i686 (>=2.26-3+6.6),
+               binutils-mingw-w64-x86-64 (>= 2.26-3ubuntu1+6.2),
+               binutils-mingw-w64-x86-64 (<< 2.26-3v) | binutils-mingw-w64-x86-64 (>=2.26-3+6.6),
                bison,
                debhelper (>= 9.20150501),
                flex,
