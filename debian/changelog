@@ -1,11 +1,11 @@
-gcc-mingw-w64 (17) UNRELEASED; urgency=medium
+gcc-mingw-w64 (17) unstable; urgency=medium
 
   * Switch to https: VCS URIs (see #810378).
   * Rebuild with binutils-mingw-w64 6.6, to ensure that DLLs are built
     correctly (Closes: #814425).
   * Move libcaf_single.a to the Fortran packages.
 
- -- Stephen Kitt <skitt@debian.org>  Fri, 22 Jan 2016 18:56:24 +0100
+ -- Stephen Kitt <skitt@debian.org>  Fri, 12 Feb 2016 12:45:44 +0100
 
 gcc-mingw-w64 (16) unstable; urgency=medium
 
