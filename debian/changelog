@@ -1,3 +1,9 @@
+gcc-mingw-w64 (18) UNRELEASED; urgency=medium
+
+  * Use build-profiles for bootstrapping.
+
+ -- Stephen Kitt <skitt@debian.org>  Fri, 03 Jun 2016 15:02:45 +0200
+
 gcc-mingw-w64 (17) unstable; urgency=medium
 
   * Switch to https: VCS URIs (see #810378).

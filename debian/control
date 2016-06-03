@@ -14,6 +14,7 @@ Build-Depends: autotools-dev,
                binutils-mingw-w64-x86-64 (<< 2.26-3v) | binutils-mingw-w64-x86-64 (>=2.26-3+6.6),
                bison,
                debhelper (>= 9.20150501),
+               dpkg-dev (>= 1.17.14),
                flex,
                g++-5,
                gcc-5-source,
@@ -22,8 +23,8 @@ Build-Depends: autotools-dev,
                libgmp-dev,
                libmpc-dev (>= 0.8.0),
                libmpfr-dev (>= 2.3.2),
-               mingw-w64-i686-dev (>= 3.0~svn5915),
-               mingw-w64-x86-64-dev (>= 3.0~svn5915),
+               mingw-w64-i686-dev (>= 3.0~svn5915) <!stage1>,
+               mingw-w64-x86-64-dev (>= 3.0~svn5915) <!stage1>,
                xz-utils,
                zlib1g-dev
 Standards-Version: 3.9.6
@@ -35,6 +36,7 @@ Package: gcc-mingw-w64
 Architecture: all
 Depends: gcc-mingw-w64-i686, gcc-mingw-w64-x86-64, ${misc:Depends}
 Recommends: g++-mingw-w64, gfortran-mingw-w64, gnat-mingw-w64
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Description: GNU C compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -49,6 +51,7 @@ Architecture: any
 Depends: binutils-mingw-w64-i686, mingw-w64-i686-dev, gcc-mingw-w64-base (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Conflicts: gcc-mingw-w64-bootstrap
 Breaks: gcc-mingw-w64 (<< ${split:Version})
@@ -67,6 +70,7 @@ Architecture: any
 Depends: binutils-mingw-w64-x86-64, mingw-w64-x86-64-dev, gcc-mingw-w64-base (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Conflicts: gcc-mingw-w64-bootstrap
 Breaks: gcc-mingw-w64 (<< ${split:Version})
@@ -83,6 +87,7 @@ Description: GNU C compiler for MinGW-w64 targeting Win64
 Package: g++-mingw-w64
 Architecture: all
 Depends: g++-mingw-w64-i686, g++-mingw-w64-x86-64, ${misc:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Description: GNU C++ compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -97,6 +102,7 @@ Architecture: any
 Depends: gcc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Breaks: gcc-mingw-w64 (<< ${split:Version})
 Replaces: gcc-mingw-w64 (<< ${split:Version})
@@ -114,6 +120,7 @@ Architecture: any
 Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Breaks: gcc-mingw-w64 (<< ${split:Version})
 Replaces: gcc-mingw-w64 (<< ${split:Version})
@@ -129,6 +136,7 @@ Description: GNU C++ compiler for MinGW-w64 targeting Win64
 Package: gfortran-mingw-w64
 Architecture: all
 Depends: gfortran-mingw-w64-i686, gfortran-mingw-w64-x86-64, ${misc:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Description: GNU Fortran compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -143,6 +151,7 @@ Architecture: any
 Depends: gcc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Breaks: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-i686 (<< ${libcaf:Version})
 Replaces: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-i686 (<< ${libcaf:Version})
@@ -160,6 +169,7 @@ Architecture: any
 Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Breaks: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-x86-64 (<< ${libcaf:Version})
 Replaces: gcc-mingw-w64 (<< ${split:Version}), gcc-mingw-w64-x86-64 (<< ${libcaf:Version})
@@ -175,6 +185,7 @@ Description: GNU Fortran compiler for MinGW-w64 targeting Win64
 Package: gobjc-mingw-w64
 Architecture: all
 Depends: gobjc-mingw-w64-i686, gobjc-mingw-w64-x86-64, ${misc:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Description: GNU Objective-C compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -189,6 +200,7 @@ Architecture: any
 Depends: gcc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Suggests: gcc-5-locales (>= ${local:Version})
 Description: GNU Objective-C compiler for MinGW-w64 targeting Win32
@@ -204,6 +216,7 @@ Architecture: any
 Depends: gcc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Suggests: gcc-5-locales (>= ${local:Version})
 Description: GNU Objective-C compiler for MinGW-w64 targeting Win64
@@ -217,6 +230,7 @@ Description: GNU Objective-C compiler for MinGW-w64 targeting Win64
 Package: gobjc++-mingw-w64
 Architecture: all
 Depends: gobjc++-mingw-w64-i686, gobjc++-mingw-w64-x86-64, ${misc:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Description: GNU Objective-C++ compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
@@ -231,6 +245,7 @@ Architecture: any
 Depends: gobjc-mingw-w64-i686 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Suggests: gcc-5-locales (>= ${local:Version})
 Description: GNU Objective-C++ compiler for MinGW-w64 targeting Win32
@@ -246,6 +261,7 @@ Architecture: any
 Depends: gobjc-mingw-w64-x86-64 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
+Build-Profiles: <!stage1>
 Built-Using: gcc-5 (= ${gcc:Version})
 Suggests: gcc-5-locales (>= ${local:Version})
 Description: GNU Objective-C++ compiler for MinGW-w64 targeting Win64
@@ -267,3 +283,17 @@ Description: GNU Compiler Collection for MinGW-w64 (base package)
  .
  This empty package contains the documentation common to all
  gcc-mingw-w64 packages.
+
+Package: gcc-mingw-w64-bootstrap
+Architecture: any
+Depends: binutils-mingw-w64, ${misc:Depends}, ${shlibs:Depends}
+Build-Profiles: <stage1>
+Built-Using: gcc-5 (= ${gcc:Version})
+Description: GNU Compiler Collection for MinGW-w64
+ MinGW-w64 provides a development and runtime environment for 32- and
+ 64-bit Windows applications using the GNU Compiler Collection (gcc).
+ .
+ This package contains the GNU Compiler Collection, supporting
+ cross-compiling to 32- and 64-bit MinGW-w64 targets. The bootstrap
+ version of the package contains only the minimal C compiler required
+ to build MinGW-w64.
