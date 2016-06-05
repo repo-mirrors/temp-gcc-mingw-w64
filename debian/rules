@@ -196,6 +196,8 @@ CONFFLAGS += \
 CONFFLAGS += \
 	--disable-libatomic
 
+spelling = grep -rl "$(1)" $(upstream_dir) | xargs sed -i "s/$(1)/$(2)/g"
+
 # Patches applied or unapplied after the upstream sources have been
 # unpacked and patched using the gcc-5-source package's patches
 mingw-w64-patch: mingw-w64-patch-stamp
@@ -203,7 +205,19 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring
 	patch -R -p2 -d$(upstream_dir) < $(gcc_dir)/debian/patches/libstdc++-pic.diff
 	# Spelling fixes
-#	patch -p1 -d$(upstream_dir) < debian/patches/spelling-fixes-code.patch
+	$(call spelling,adress,address)
+	$(call spelling,Allow to,Allow one to)
+	$(call spelling,Choosen,Chosen)
+	$(call spelling,containg,containing)
+	$(call spelling,endianess,endianness)
+	$(call spelling,eroneous,erroneous)
+	$(call spelling,informations,information)
+	$(call spelling,intrument,instrument)
+	$(call spelling,invokations,invocations)
+	$(call spelling,occured,occurred)
+	$(call spelling,refrence,reference)
+	$(call spelling,splitted,split)
+	$(call spelling,Staticly,Statically)
 	touch $@
 
 configure: configure-stamp
