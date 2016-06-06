@@ -2,6 +2,8 @@ gcc-mingw-w64 (18) UNRELEASED; urgency=medium
 
   * Use build-profiles for bootstrapping.
   * Fix the spelling mistakes flagged by Lintian.
+  * Clean up debian/control with cme.
+  * Standards-Version 3.9.8, no further change required.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 03 Jun 2016 15:02:45 +0200
 

@@ -1,16 +1,16 @@
 Source: gcc-mingw-w64
+Maintainer: Stephen Kitt <skitt@debian.org>
 Section: devel
 Priority: extra
-Maintainer: Stephen Kitt <skitt@debian.org>
 Build-Depends: autotools-dev,
 # Allow binutils-mingw-w64 2.26-3ubuntu<n>+6.6 or later,
 # or 2.26-3+6.6 or later, disallowing 2.26-3+6.5
 # (the first dependency matches the Ubuntu version, the disjunction excludes
 # non-Ubuntu versions or versions older than 2.26-3+6.6)
                binutils-mingw-w64-i686 (>= 2.26-3ubuntu1+6.6),
-               binutils-mingw-w64-i686 (<< 2.26-3v) | binutils-mingw-w64-i686 (>=2.26-3+6.6),
+               binutils-mingw-w64-i686 (<< 2.26-3v) | binutils-mingw-w64-i686 (>= 2.26-3+6.6),
                binutils-mingw-w64-x86-64 (>= 2.26-3ubuntu1+6.2),
-               binutils-mingw-w64-x86-64 (<< 2.26-3v) | binutils-mingw-w64-x86-64 (>=2.26-3+6.6),
+               binutils-mingw-w64-x86-64 (<< 2.26-3v) | binutils-mingw-w64-x86-64 (>= 2.26-3+6.6),
                bison,
                debhelper (>= 9.20150501),
                dpkg-dev (>= 1.17.14),
@@ -20,13 +20,13 @@ Build-Depends: autotools-dev,
                libcloog-isl-dev,
                libelf-dev,
                libgmp-dev,
-               libmpc-dev (>= 0.8.0),
-               libmpfr-dev (>= 2.3.2),
+               libmpc-dev,
+               libmpfr-dev,
                mingw-w64-i686-dev (>= 3.0~svn5915) <!stage1>,
                mingw-w64-x86-64-dev (>= 3.0~svn5915) <!stage1>,
                xz-utils,
                zlib1g-dev
-Standards-Version: 3.9.6
-Homepage: http://www.gnu.org/software/gcc/
-Vcs-Git: https://anonscm.debian.org/git/collab-maint/gcc-mingw-w64.git
+Standards-Version: 3.9.8
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/gcc-mingw-w64.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/gcc-mingw-w64.git
+Homepage: http://www.gnu.org/software/gcc/
