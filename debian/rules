@@ -84,21 +84,32 @@ control-stamp:
 targets := i686-w64-mingw32 x86_64-w64-mingw32
 threads := posix win32
 
-# No hardening support for now
-dpkg_buildflags = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
+# Hardening on the host, none on the target
+# Format fails the build currently
+dpkg_buildflags_host = DEB_BUILD_MAINT_OPTIONS="hardening=+all,-format" dpkg-buildflags
+dpkg_buildflags_target = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
 
 CC = gcc-$(target_version)
 CXX = g++-$(target_version)
-CFLAGS = $(shell $(dpkg_buildflags) --get CFLAGS)
+CFLAGS = $(shell $(dpkg_buildflags_host) --get CFLAGS)
 CFLAGS += -Wall
-CPPFLAGS = $(shell $(dpkg_buildflags) --get CPPFLAGS)
-CXXFLAGS = $(shell $(dpkg_buildflags) --get CXXFLAGS)
+CFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get CFLAGS)
+CFLAGS_FOR_TARGET += -Wall
+CPPFLAGS = $(shell $(dpkg_buildflags_host) --get CPPFLAGS)
+CPPFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get CPPFLAGS)
+CXXFLAGS = $(shell $(dpkg_buildflags_host) --get CXXFLAGS)
 CXXFLAGS += -Wall
-FFLAGS = $(shell $(dpkg_buildflags) --get FFLAGS)
-LDFLAGS = $(shell $(dpkg_buildflags) --get LDFLAGS)
+CXXFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get CXXFLAGS)
+CXXFLAGS_FOR_TARGET += -Wall
+FFLAGS = $(shell $(dpkg_buildflags_host) --get FFLAGS)
+FFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get FFLAGS)
+LDFLAGS = $(shell $(dpkg_buildflags_host) --get LDFLAGS)
 LDFLAGS += -Wl,--as-needed
-LDFLAGS_FOR_TARGET = $(LDFLAGS) -Xlinker --insert-timestamp=$(shell date -d "$(shell dpkg-parsechangelog -S Date)" +%s)
-export CC CXX CFLAGS CPPFLAGS CXXFLAGS FFLAGS LDFLAGS LDFLAGS_FOR_TARGET
+LDFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get LDFLAGS)
+LDFLAGS_FOR_TARGET += -Wl,--as-needed
+LDFLAGS_FOR_TARGET = -Xlinker --insert-timestamp=$(shell date -d "$(shell dpkg-parsechangelog -S Date)" +%s)
+export CC CXX CFLAGS CFLAGS_FOR_TARGET CPPFLAGS CPPFLAGS_FOR_TARGET
+export CXXFLAGS CXXFLAGS_FOR_TARGET FFLAGS FFLAGS_FOR_TARGET LDFLAGS LDFLAGS_FOR_TARGET
 
 # Number of jobs to run for build
 ifeq ($(USE_NJOBS),no)

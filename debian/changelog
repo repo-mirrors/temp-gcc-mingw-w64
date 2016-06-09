@@ -5,6 +5,7 @@ gcc-mingw-w64 (18) UNRELEASED; urgency=medium
   * Clean up debian/control with cme.
   * Standards-Version 3.9.8, no further change required.
   * Switch to debhelper compatibility level 9.
+  * Enable hardening for host binaries.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 03 Jun 2016 15:02:45 +0200
 
