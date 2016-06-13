@@ -69,8 +69,8 @@ targets := i686-w64-mingw32 x86_64-w64-mingw32
 threads := posix win32
 
 # Hardening on the host, none on the target
-# Format fails the build currently
-dpkg_buildflags_host = DEB_BUILD_MAINT_OPTIONS="hardening=+all,-format" dpkg-buildflags
+# Format and PIE fail the build currently
+dpkg_buildflags_host = DEB_BUILD_MAINT_OPTIONS="hardening=+all,-format,-pie" dpkg-buildflags
 dpkg_buildflags_target = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
 
 CC = gcc-$(target_version)

@@ -6,7 +6,8 @@ gnat-mingw-w64 (18) UNRELEASED; urgency=medium
     - fix the spelling mistakes flagged by Lintian;
     - clean up debian/control with cme;
     - switch to debhelper compatibility level 9;
-    - enable hardening for host binaries.
+    - enable hardening for host binaries (except PIE which breaks the
+      build).
   * Standards-Version 3.9.8, no further change required.
 
  -- Stephen Kitt <skitt@debian.org>  Mon, 13 Jun 2016 23:13:16 +0200
