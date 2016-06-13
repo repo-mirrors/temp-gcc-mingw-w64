@@ -6,6 +6,8 @@ gcc-mingw-w64 (18) UNRELEASED; urgency=medium
   * Standards-Version 3.9.8, no further change required.
   * Switch to debhelper compatibility level 9.
   * Enable hardening for host binaries.
+  * Hard-code the shell in mkheaders (this should make the build
+    reproducible again).
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 03 Jun 2016 15:02:45 +0200
 

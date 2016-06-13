@@ -229,6 +229,8 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	$(call spelling,refrence,reference)
 	$(call spelling,splitted,split)
 	$(call spelling,Staticly,Statically)
+	# Force /bin/sh in mkheaders
+	sed -i sX@SHELL@X/bin/shX $(upstream_dir)/fixincludes/mkheaders.in
 	touch $@
 
 configure: configure-stamp
