@@ -40,29 +40,60 @@ ifeq ($(derives_from_ubuntu),yes)
   first_split_version := 4.6.3-1ubuntu5+5ubuntu1
 endif
 
-# Include the rules variant - symlink rules.bootstrap to produce the
-# minimal gcc required to build mingw-w64, or rules.full to produce
-# the full gcc.
-include debian/rules.variant
+# Build the full GCC.
+package := gnat-mingw-w64
+languages := ada
+BUILD_TARGET :=
+INSTALL_TARGET := install
+
+comma := ,
+space :=
+space +=
+control: control-stamp
+control-stamp:
+	echo \# This file is generated using debian/rules control, do not edit > debian/control
+	cat debian/control.source >> debian/control
+	for language in $(subst $(comma),$(space),$(languages)); do \
+		echo >> debian/control; \
+		sed -f debian/control.$$language.sed debian/control.template >> debian/control; \
+	done
+	echo >> debian/control
+	cat debian/control.base >> debian/control
+	sed -i '/^Recommends: $$/d' debian/control
+	sed -i '/^Breaks: $$/d' debian/control
+	sed -i '/^Conflicts: $$/d' debian/control
+	sed -i '/^Replaces: $$/d' debian/control
+	touch $@
 
 targets := i686-w64-mingw32 x86_64-w64-mingw32
 threads := posix win32
 
-# No hardening support for now
-dpkg_buildflags = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
+# Hardening on the host, none on the target
+# Format fails the build currently
+dpkg_buildflags_host = DEB_BUILD_MAINT_OPTIONS="hardening=+all,-format" dpkg-buildflags
+dpkg_buildflags_target = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
 
 CC = gcc-$(target_version)
 CXX = g++-$(target_version)
-CFLAGS = $(shell $(dpkg_buildflags) --get CFLAGS)
+CFLAGS = $(shell $(dpkg_buildflags_host) --get CFLAGS)
 CFLAGS += -Wall
-CPPFLAGS = $(shell $(dpkg_buildflags) --get CPPFLAGS)
-CXXFLAGS = $(shell $(dpkg_buildflags) --get CXXFLAGS)
+CFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get CFLAGS)
+CFLAGS_FOR_TARGET += -Wall
+CPPFLAGS = $(shell $(dpkg_buildflags_host) --get CPPFLAGS)
+CPPFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get CPPFLAGS)
+CXXFLAGS = $(shell $(dpkg_buildflags_host) --get CXXFLAGS)
 CXXFLAGS += -Wall
-FFLAGS = $(shell $(dpkg_buildflags) --get FFLAGS)
-LDFLAGS = $(shell $(dpkg_buildflags) --get LDFLAGS)
+CXXFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get CXXFLAGS)
+CXXFLAGS_FOR_TARGET += -Wall
+FFLAGS = $(shell $(dpkg_buildflags_host) --get FFLAGS)
+FFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get FFLAGS)
+LDFLAGS = $(shell $(dpkg_buildflags_host) --get LDFLAGS)
 LDFLAGS += -Wl,--as-needed
-LDFLAGS_FOR_TARGET = $(LDFLAGS) -Xlinker --insert-timestamp=$(shell date -d "$(shell dpkg-parsechangelog -S Date)" +%s)
-export CC CXX CFLAGS CPPFLAGS CXXFLAGS FFLAGS LDFLAGS LDFLAGS_FOR_TARGET
+LDFLAGS_FOR_TARGET = $(shell $(dpkg_buildflags_target) --get LDFLAGS)
+LDFLAGS_FOR_TARGET += -Wl,--as-needed
+LDFLAGS_FOR_TARGET = -Xlinker --insert-timestamp=$(shell date -d "$(shell dpkg-parsechangelog -S Date)" +%s)
+export CC CXX CFLAGS CFLAGS_FOR_TARGET CPPFLAGS CPPFLAGS_FOR_TARGET
+export CXXFLAGS CXXFLAGS_FOR_TARGET FFLAGS FFLAGS_FOR_TARGET LDFLAGS LDFLAGS_FOR_TARGET
 
 # Number of jobs to run for build
 ifeq ($(USE_NJOBS),no)
@@ -160,6 +191,8 @@ CONFFLAGS += \
 CONFFLAGS += \
 	--disable-libatomic
 
+spelling = grep -rl "$(1)" $(upstream_dir) | xargs sed -i "s/$(1)/$(2)/g"
+
 # Patches applied or unapplied after the upstream sources have been
 # unpacked and patched using the gcc-5-source package's patches
 mingw-w64-patch: mingw-w64-patch-stamp
@@ -167,7 +200,21 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring
 	patch -R -p2 -d$(upstream_dir) < $(gcc_dir)/debian/patches/libstdc++-pic.diff
 	# Spelling fixes
-#	patch -p1 -d$(upstream_dir) < debian/patches/spelling-fixes-code.patch
+	$(call spelling,adress,address)
+	$(call spelling,Allow to,Allow one to)
+	$(call spelling,Choosen,Chosen)
+	$(call spelling,containg,containing)
+	$(call spelling,endianess,endianness)
+	$(call spelling,eroneous,erroneous)
+	$(call spelling,informations,information)
+	$(call spelling,intrument,instrument)
+	$(call spelling,invokations,invocations)
+	$(call spelling,occured,occurred)
+	$(call spelling,refrence,reference)
+	$(call spelling,splitted,split)
+	$(call spelling,Staticly,Statically)
+	# Force /bin/sh in mkheaders
+	sed -i sX@SHELL@X/bin/shX $(upstream_dir)/fixincludes/mkheaders.in
 	touch $@
 
 configure: configure-stamp

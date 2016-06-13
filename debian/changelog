@@ -1,3 +1,16 @@
+gnat-mingw-w64 (18) UNRELEASED; urgency=medium
+
+  * Merge changes up to gcc-mingw-w64 18:
+    - switch to https: VCS URIs;
+    - rebuild with binutils-mingw-w64 6.6;
+    - fix the spelling mistakes flagged by Lintian;
+    - clean up debian/control with cme;
+    - switch to debhelper compatibility level 9;
+    - enable hardening for host binaries.
+  * Standards-Version 3.9.8, no further change required.
+
+ -- Stephen Kitt <skitt@debian.org>  Mon, 13 Jun 2016 23:13:16 +0200
+
 gnat-mingw-w64 (16) unstable; urgency=medium
 
   * Merge changes up to gcc-mingw-w64 16:
