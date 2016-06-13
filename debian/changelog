@@ -1,4 +1,4 @@
-gcc-mingw-w64 (18) UNRELEASED; urgency=medium
+gcc-mingw-w64 (18) unstable; urgency=medium
 
   * Use build-profiles for bootstrapping.
   * Fix the spelling mistakes flagged by Lintian.
@@ -9,7 +9,7 @@ gcc-mingw-w64 (18) UNRELEASED; urgency=medium
   * Hard-code the shell in mkheaders (this should make the build
     reproducible again).
 
- -- Stephen Kitt <skitt@debian.org>  Fri, 03 Jun 2016 15:02:45 +0200
+ -- Stephen Kitt <skitt@debian.org>  Mon, 13 Jun 2016 21:41:48 +0200
 
 gcc-mingw-w64 (17) unstable; urgency=medium
 
