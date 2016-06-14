@@ -223,12 +223,14 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	$(call spelling,endianess,endianness)
 	$(call spelling,eroneous,erroneous)
 	$(call spelling,informations,information)
+	$(call spelling,intial,initial)
 	$(call spelling,intrument,instrument)
 	$(call spelling,invokations,invocations)
 	$(call spelling,occured,occurred)
 	$(call spelling,refrence,reference)
 	$(call spelling,splitted,split)
 	$(call spelling,Staticly,Statically)
+	$(call spelling,wihout,without)
 	# Force /bin/sh in mkheaders
 	sed -i sX@SHELL@X/bin/shX $(upstream_dir)/fixincludes/mkheaders.in
 	touch $@
