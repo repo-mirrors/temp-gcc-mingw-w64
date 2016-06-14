@@ -1,3 +1,9 @@
+gcc-mingw-w64 (19) UNRELEASED; urgency=medium
+
+  * Build with gcc-6.
+
+ -- Stephen Kitt <skitt@debian.org>  Tue, 14 Jun 2016 18:41:17 +0200
+
 gcc-mingw-w64 (18) unstable; urgency=medium
 
   * Use build-profiles for bootstrapping.

@@ -4,7 +4,7 @@ Depends: @@PACKAGE@@-mingw-w64-i686,
          @@PACKAGE@@-mingw-w64-x86-64,
          ${misc:Depends}
 Recommends: @@RECOMMENDS@@
-Built-Using: gcc-5 (= ${gcc:Version})
+Built-Using: gcc-6 (= ${gcc:Version})
 Description: GNU @@LANGUAGE@@ compiler for MinGW-w64
  MinGW-w64 provides a development and runtime environment for 32- and
  64-bit (x86 and x64) Windows applications using the Windows API and
@@ -19,11 +19,11 @@ Architecture: any
 Depends: @@DEPENDS32@@,
          ${misc:Depends},
          ${shlibs:Depends}
-Suggests: gcc-5-locales (>= ${local:Version})
+Suggests: gcc-6-locales (>= ${local:Version})
 Breaks: @@BREAKS32@@
 Conflicts: @@CONFLICTS32@@
 Replaces: @@REPLACES32@@
-Built-Using: gcc-5 (= ${gcc:Version})
+Built-Using: gcc-6 (= ${gcc:Version})
 Description: GNU @@LANGUAGE@@ compiler for MinGW-w64 targeting Win32
  MinGW-w64 provides a development and runtime environment for 32- and
  64-bit (x86 and x64) Windows applications using the Windows API and
@@ -38,11 +38,11 @@ Architecture: any
 Depends: @@DEPENDS64@@,
          ${misc:Depends},
          ${shlibs:Depends}
-Suggests: gcc-5-locales (>= ${local:Version})
+Suggests: gcc-6-locales (>= ${local:Version})
 Breaks: @@BREAKS64@@
 Conflicts: @@CONFLICTS64@@
 Replaces: @@REPLACES64@@
-Built-Using: gcc-5 (= ${gcc:Version})
+Built-Using: gcc-6 (= ${gcc:Version})
 Description: GNU @@LANGUAGE@@ compiler for MinGW-w64 targeting Win64
  MinGW-w64 provides a development and runtime environment for 32- and
  64-bit (x86 and x64) Windows applications using the Windows API and

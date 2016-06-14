@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gcc-mingw-w64 using gcc-5-source.
-# Copyright © 2010-2015 Stephen Kitt <skitt@debian.org>
+# Build gcc-mingw-w64 using gcc-6-source.
+# Copyright © 2010-2016 Stephen Kitt <skitt@debian.org>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-target_version := 5
+target_version := 6
 
 top_dir := $(shell pwd)
 gcc_dir := /usr/src/gcc-$(target_version)
@@ -150,7 +150,7 @@ $(unpack_stamp):
 	mv gcc-* $(upstream_dir)
 	# Apply our extra patches here...
 	# We can't use a separate target for this because the patches
-	# need to be applied before gcc-5-source's
+	# need to be applied before gcc-6-source's
 	patch -p0 < debian/patches/disable-multilib.patch
 	patch -p2 -d$(upstream_dir) < debian/patches/reproducible-sort.patch
 	mkdir -p $(stampdir)
@@ -207,10 +207,10 @@ CONFFLAGS += \
 CONFFLAGS += \
 	--disable-libatomic
 
-spelling = grep -rl "$(1)" $(upstream_dir) | xargs sed -i "s/$(1)/$(2)/g"
+spelling = grep -rl "$(1)" $(upstream_dir) | xargs -r sed -i "s/$(1)/$(2)/g"
 
 # Patches applied or unapplied after the upstream sources have been
-# unpacked and patched using the gcc-5-source package's patches
+# unpacked and patched using the gcc-6-source package's patches
 mingw-w64-patch: mingw-w64-patch-stamp
 mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring
@@ -300,6 +300,8 @@ install-arch-stamp: build-arch-stamp
 	# -doc packages
 	rm -rf $(top_dir)/debian/tmp/usr/share/info
 	rm -rf $(top_dir)/debian/tmp/usr/share/man/man7
+	# libcc1-0
+	rm -f $(top_dir)/debian/tmp/usr/lib/libcc1*
 
 	# No need to ship empty manpages
 	rm -rf $(top_dir)/debian/tmp/usr/share/man/man1
