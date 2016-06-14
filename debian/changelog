@@ -1,4 +1,4 @@
-gnat-mingw-w64 (18) UNRELEASED; urgency=medium
+gnat-mingw-w64 (18) unstable; urgency=medium
 
   * Merge changes up to gcc-mingw-w64 18:
     - switch to https: VCS URIs;
@@ -10,7 +10,7 @@ gnat-mingw-w64 (18) UNRELEASED; urgency=medium
       build).
   * Standards-Version 3.9.8, no further change required.
 
- -- Stephen Kitt <skitt@debian.org>  Mon, 13 Jun 2016 23:13:16 +0200
+ -- Stephen Kitt <skitt@debian.org>  Mon, 13 Jun 2016 23:56:34 +0200
 
 gnat-mingw-w64 (16) unstable; urgency=medium
 
