@@ -4,9 +4,5 @@ gfortran-mingw-w64-x86-64: binary-without-manpage
 # This isn't a spelling error
 gfortran-mingw-w64-x86-64: spelling-error-in-binary usr/lib/gcc/x86_64-w64-mingw32/*/f951 ment meant
 
-# Hardening isn't supported (yet)
-gfortran-mingw-w64-x86-64: hardening-no-relro
-gfortran-mingw-w64-x86-64: hardening-no-fortify-functions
-
 # DLLs exported via Samba need to be executable (see #796223)
 gfortran-mingw-w64-x86-64: executable-not-elf-or-script usr/lib/gcc/x86_64-w64-mingw32/*/*.dll
