@@ -300,6 +300,8 @@ install-arch-stamp: build-arch-stamp
 	# -doc packages
 	rm -rf $(top_dir)/debian/tmp/usr/share/info
 	rm -rf $(top_dir)/debian/tmp/usr/share/man/man7
+	# libcc1-0
+	rm -f $(top_dir)/debian/tmp/usr/lib/libcc1*
 
 	# No need to ship empty manpages
 	rm -rf $(top_dir)/debian/tmp/usr/share/man/man1
