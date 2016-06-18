@@ -8,6 +8,8 @@ usr/bin/x86_64-w64-mingw32-gcc-ranlib*
 usr/bin/x86_64-w64-mingw32-gcov*
 usr/lib/gcc/x86_64-w64-mingw32/5*/cc1
 usr/lib/gcc/x86_64-w64-mingw32/5*/collect2
+usr/lib/gcc/x86_64-w64-mingw32/5*/crtbegin.o
+usr/lib/gcc/x86_64-w64-mingw32/5*/crtend.o
 usr/lib/gcc/x86_64-w64-mingw32/5*/crtfastmath.o
 usr/lib/gcc/x86_64-w64-mingw32/5*/include-fixed/*
 usr/lib/gcc/x86_64-w64-mingw32/5*/include/*.h
@@ -18,10 +20,9 @@ usr/lib/gcc/x86_64-w64-mingw32/5*/libgcc_eh.a
 usr/lib/gcc/x86_64-w64-mingw32/5*/libgcc_s.a
 usr/lib/gcc/x86_64-w64-mingw32/5*/libgcc_s_seh-1.dll
 usr/lib/gcc/x86_64-w64-mingw32/5*/libgcov.a
-usr/lib/gcc/x86_64-w64-mingw32/5*/libgomp.a
-usr/lib/gcc/x86_64-w64-mingw32/5*/libgomp-1.dll
-usr/lib/gcc/x86_64-w64-mingw32/5*/libgomp.dll.a
-usr/lib/gcc/x86_64-w64-mingw32/5*/libgomp.spec
+usr/lib/gcc/x86_64-w64-mingw32/5*/libgomp*.a
+usr/lib/gcc/x86_64-w64-mingw32/5*/libgomp*.dll
+usr/lib/gcc/x86_64-w64-mingw32/5*/libgomp*.spec
 usr/lib/gcc/x86_64-w64-mingw32/5*/liblto_plugin.so
 usr/lib/gcc/x86_64-w64-mingw32/5*/liblto_plugin.so.0
 usr/lib/gcc/x86_64-w64-mingw32/5*/liblto_plugin.so.0.0.0
@@ -32,5 +33,8 @@ usr/lib/gcc/x86_64-w64-mingw32/5*/libssp-0.dll
 usr/lib/gcc/x86_64-w64-mingw32/5*/libssp.a
 usr/lib/gcc/x86_64-w64-mingw32/5*/libssp.dll.a
 usr/lib/gcc/x86_64-w64-mingw32/5*/libssp_nonshared.a
+usr/lib/gcc/x86_64-w64-mingw32/5*/libvtv*.a
+usr/lib/gcc/x86_64-w64-mingw32/5*/libvtv*.dll
 usr/lib/gcc/x86_64-w64-mingw32/5*/lto-wrapper
 usr/lib/gcc/x86_64-w64-mingw32/5*/lto1
+usr/lib/gcc/x86_64-w64-mingw32/5*/plugin

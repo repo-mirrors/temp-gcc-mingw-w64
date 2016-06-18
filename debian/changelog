@@ -1,3 +1,9 @@
+gcc-mingw-w64 (18.1) UNRELEASED; urgency=medium
+
+  * Add missing files (gomp, vtv, plugin support).
+
+ -- Stephen Kitt <skitt@debian.org>  Sat, 18 Jun 2016 12:08:03 +0200
+
 gcc-mingw-w64 (18) unstable; urgency=medium
 
   * Use build-profiles for bootstrapping.
