@@ -1,9 +1,9 @@
-gcc-mingw-w64 (18.1) UNRELEASED; urgency=medium
+gcc-mingw-w64 (18.1) unstable; urgency=medium
 
   * Add missing files (gomp, vtv, plugin support).
   * Ignore libcc1.
 
- -- Stephen Kitt <skitt@debian.org>  Sat, 18 Jun 2016 12:08:03 +0200
+ -- Stephen Kitt <skitt@debian.org>  Sat, 18 Jun 2016 12:09:37 +0200
 
 gcc-mingw-w64 (18) unstable; urgency=medium
 
