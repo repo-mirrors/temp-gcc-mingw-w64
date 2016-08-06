@@ -1,3 +1,9 @@
+gcc-mingw-w64 (19.1) UNRELEASED; urgency=medium
+
+  * Disable PIE, it causes issues with pre-compiled headers.
+
+ -- Stephen Kitt <skitt@debian.org>  Sat, 06 Aug 2016 18:08:29 +0200
+
 gcc-mingw-w64 (19) experimental; urgency=medium
 
   * Build with gcc-6.
