@@ -19,6 +19,10 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+# Disable package mangling in Launchpad; it currently fails to parse
+# Built-Using, which results in build failures
+export NO_PKG_MANGLE=1
+
 target_version := 6
 
 top_dir := $(shell pwd)
