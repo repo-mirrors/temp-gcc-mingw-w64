@@ -83,6 +83,7 @@ control-stamp:
 	sed -i '/^Breaks: $$/d' debian/control
 	sed -i '/^Conflicts: $$/d' debian/control
 	sed -i '/^Replaces: $$/d' debian/control
+	sed -i 's/@@VERSION@@/$(target_version)/g' debian/control
 	touch $@
 
 targets := i686-w64-mingw32 x86_64-w64-mingw32

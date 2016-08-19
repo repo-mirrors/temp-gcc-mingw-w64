@@ -1,7 +1,7 @@
 Package: gcc-mingw-w64-base
 Architecture: any
 Depends: ${misc:Depends}
-Built-Using: gcc-6 (= ${gcc:Version})
+Built-Using: gcc-@@VERSION@@ (= ${gcc:Version})
 Description: GNU Compiler Collection for MinGW-w64 (base package)
  MinGW-w64 provides a development and runtime environment for 32- and
  64-bit (x86 and x64) Windows applications using the Windows API and

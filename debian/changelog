@@ -5,6 +5,7 @@ gcc-mingw-w64 (19.1) UNRELEASED; urgency=medium
     for the Ubuntu patch).
   * Build-depend on libisl-dev instead of libcloog-isl-dev (Closes:
     #833579).
+  * Use a token for the GCC version in debian/control.
 
  -- Stephen Kitt <skitt@debian.org>  Sat, 06 Aug 2016 18:08:29 +0200
 
