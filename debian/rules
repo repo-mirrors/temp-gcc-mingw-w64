@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Build gcc-mingw-w64 using gcc-5-source.
-# Copyright © 2010-2015 Stephen Kitt <skitt@debian.org>
+# Build gcc-mingw-w64 using gcc-6-source.
+# Copyright © 2010-2016 Stephen Kitt <skitt@debian.org>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,11 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-target_version := 5
+# Disable package mangling in Launchpad; it currently fails to parse
+# Built-Using, which results in build failures
+export NO_PKG_MANGLE=1
+
+target_version := 6
 
 top_dir := $(shell pwd)
 gcc_dir := /usr/src/gcc-$(target_version)
@@ -79,14 +83,15 @@ control-stamp:
 	sed -i '/^Breaks: $$/d' debian/control
 	sed -i '/^Conflicts: $$/d' debian/control
 	sed -i '/^Replaces: $$/d' debian/control
+	sed -i 's/@@VERSION@@/$(target_version)/g' debian/control
 	touch $@
 
 targets := i686-w64-mingw32 x86_64-w64-mingw32
 threads := posix win32
 
 # Hardening on the host, none on the target
-# Format fails the build currently; using PIE produces a compiler which can't
-# build with pre-compiled headers
+# Format fails the build currently; using PIE produces a compiler
+# which can't build with pre-compiled headers
 dpkg_buildflags_host = DEB_BUILD_MAINT_OPTIONS="hardening=+all,-format,-pie" dpkg-buildflags
 dpkg_buildflags_target = DEB_BUILD_MAINT_OPTIONS="hardening=-all" dpkg-buildflags
 
@@ -151,7 +156,7 @@ $(unpack_stamp):
 	mv gcc-* $(upstream_dir)
 	# Apply our extra patches here...
 	# We can't use a separate target for this because the patches
-	# need to be applied before gcc-5-source's
+	# need to be applied before gcc-6-source's
 	patch -p0 < debian/patches/disable-multilib.patch
 	patch -p2 -d$(upstream_dir) < debian/patches/reproducible-sort.patch
 	mkdir -p $(stampdir)
@@ -208,10 +213,10 @@ CONFFLAGS += \
 CONFFLAGS += \
 	--disable-libatomic
 
-spelling = grep -rl "$(1)" $(upstream_dir) | xargs sed -i "s/$(1)/$(2)/g"
+spelling = grep -rl "$(1)" $(upstream_dir) | xargs -r sed -i "s/$(1)/$(2)/g"
 
 # Patches applied or unapplied after the upstream sources have been
-# unpacked and patched using the gcc-5-source package's patches
+# unpacked and patched using the gcc-6-source package's patches
 mingw-w64-patch: mingw-w64-patch-stamp
 mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring
@@ -224,12 +229,14 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	$(call spelling,endianess,endianness)
 	$(call spelling,eroneous,erroneous)
 	$(call spelling,informations,information)
+	$(call spelling,intial,initial)
 	$(call spelling,intrument,instrument)
 	$(call spelling,invokations,invocations)
 	$(call spelling,occured,occurred)
 	$(call spelling,refrence,reference)
 	$(call spelling,splitted,split)
 	$(call spelling,Staticly,Statically)
+	$(call spelling,wihout,without)
 	# Force /bin/sh in mkheaders
 	sed -i sX@SHELL@X/bin/shX $(upstream_dir)/fixincludes/mkheaders.in
 	touch $@

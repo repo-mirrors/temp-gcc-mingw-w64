@@ -1,15 +1,21 @@
-gcc-mingw-w64 (18.2) unstable; urgency=medium
+gcc-mingw-w64 (19.1) unstable; urgency=medium
 
+  * Upload to unstable.
   * Disable PIE, it causes issues with pre-compiled headers.
+  * Disable package mangling in Launchpad (thanks to Dimitri John Ledkov
+    for the Ubuntu patch).
+  * Build-depend on libisl-dev instead of libcloog-isl-dev (Closes:
+    #833579).
+  * Use a token for the GCC version in debian/control.
 
- -- Stephen Kitt <skitt@debian.org>  Fri, 24 Jun 2016 12:58:08 +0200
+ -- Stephen Kitt <skitt@debian.org>  Sat, 20 Aug 2016 17:24:54 +0200
 
-gcc-mingw-w64 (18.1) unstable; urgency=medium
+gcc-mingw-w64 (19) experimental; urgency=medium
 
-  * Add missing files (gomp, vtv, plugin support).
-  * Ignore libcc1.
+  * Build with gcc-6.
+  * Remove obsolete hardening overrides.
 
- -- Stephen Kitt <skitt@debian.org>  Sat, 18 Jun 2016 12:09:37 +0200
+ -- Stephen Kitt <skitt@debian.org>  Tue, 14 Jun 2016 22:37:44 +0200
 
 gcc-mingw-w64 (18) unstable; urgency=medium
 

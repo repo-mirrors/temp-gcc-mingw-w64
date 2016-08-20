@@ -1,9 +1,9 @@
 usr/bin/x86_64-w64-mingw32-c++*
 usr/bin/x86_64-w64-mingw32-g++*
-usr/lib/gcc/x86_64-w64-mingw32/5*/cc1plus
-usr/lib/gcc/x86_64-w64-mingw32/5*/include/c++/*
-usr/lib/gcc/x86_64-w64-mingw32/5*/libstdc++-6.dll
-usr/lib/gcc/x86_64-w64-mingw32/5*/libstdc++.a
-usr/lib/gcc/x86_64-w64-mingw32/5*/libstdc++.dll.a
-usr/lib/gcc/x86_64-w64-mingw32/5*/libstdc++.dll.a-gdb.py
-usr/lib/gcc/x86_64-w64-mingw32/5*/libsupc++.a
+usr/lib/gcc/x86_64-w64-mingw32/6*/cc1plus
+usr/lib/gcc/x86_64-w64-mingw32/6*/include/c++/*
+usr/lib/gcc/x86_64-w64-mingw32/6*/libstdc++-6.dll
+usr/lib/gcc/x86_64-w64-mingw32/6*/libstdc++.a
+usr/lib/gcc/x86_64-w64-mingw32/6*/libstdc++.dll.a
+usr/lib/gcc/x86_64-w64-mingw32/6*/libstdc++.dll.a-gdb.py
+usr/lib/gcc/x86_64-w64-mingw32/6*/libsupc++.a

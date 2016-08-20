@@ -1,3 +1,0 @@
-# Hardening isn't supported (yet)
-gobjc++-mingw-w64-x86-64: hardening-no-relro
-gobjc++-mingw-w64-x86-64: hardening-no-fortify-functions
