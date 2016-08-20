@@ -4,10 +4,3 @@ gnat-mingw-w64-i686: binary-without-manpage
 # These aren't spelling errors
 gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatlink-* nam name
 gnat-mingw-w64-i686: spelling-error-in-binary usr/lib/gcc/i686-w64-mingw32/*/gnat1 Nam Name
-gnat-mingw-w64-i686: spelling-error-in-binary usr/bin/i686-w64-mingw32-gnatmake-* proces process
-
-# Hardening isn't supported (yet)
-gnat-mingw-w64-i686: hardening-no-relro usr/bin/i686-w64-mingw32-gnat*
-gnat-mingw-w64-i686: hardening-no-fortify-functions usr/bin/i686-w64-mingw32-gnat*
-gnat-mingw-w64-i686: hardening-no-relro usr/lib/gcc/i686-w64-mingw32/*/gnat1
-gnat-mingw-w64-i686: hardening-no-fortify-functions usr/lib/gcc/i686-w64-mingw32/*/gnat1

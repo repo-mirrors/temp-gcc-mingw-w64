@@ -1,3 +1,15 @@
+gnat-mingw-w64 (19.1) unstable; urgency=medium
+
+  * Merge changes up to gcc-mingw-w64 19.1:
+    - build with gcc-6;
+    - remove obsolete hardening overrides;
+    - disable package mangling in Launchpad;
+    - build-depend on libisl-dev instead of libcloog-isl-dev (Closes:
+      #833579);
+    - use a token for the GCC version in debian/control.
+
+ -- Stephen Kitt <skitt@debian.org>  Sat, 20 Aug 2016 17:33:15 +0200
+
 gnat-mingw-w64 (18) unstable; urgency=medium
 
   * Merge changes up to gcc-mingw-w64 18:
