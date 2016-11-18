@@ -159,6 +159,7 @@ $(unpack_stamp):
 	# need to be applied before gcc-6-source's
 	patch -p0 < debian/patches/disable-multilib.patch
 	patch -p2 -d$(upstream_dir) < debian/patches/reproducible-sort.patch
+	patch -p1 -d$(upstream_dir) < debian/patches/bug-55930.patch
 	mkdir -p $(stampdir)
 	touch $@
 
@@ -209,9 +210,9 @@ CONFFLAGS += \
 	--target=$$target \
 	--with-as=/usr/bin/$$target-as \
 	--with-ld=/usr/bin/$$target-ld
-# Disable libatomic
+# Enable libatomic
 CONFFLAGS += \
-	--disable-libatomic
+	--enable-libatomic
 
 spelling = grep -rl "$(1)" $(upstream_dir) | xargs -r sed -i "s/$(1)/$(2)/g"
 
