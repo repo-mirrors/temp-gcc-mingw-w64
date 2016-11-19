@@ -77,8 +77,8 @@ control-stamp:
 	done
 	echo >> debian/control
 	cat debian/control.base >> debian/control
-	echo >> debian/control
-	cat debian/control.bootstrap >> debian/control
+#	echo >> debian/control
+#	cat debian/control.bootstrap >> debian/control
 	sed -i '/^Recommends: $$/d' debian/control
 	sed -i '/^Breaks: $$/d' debian/control
 	sed -i '/^Conflicts: $$/d' debian/control

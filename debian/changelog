@@ -3,6 +3,9 @@ gcc-mingw-w64 (19.2) UNRELEASED; urgency=medium
   * Enable libatomic, using Richard Purdie's patch from
     https://gcc.gnu.org/bugzilla/show_bug.cgi?id=55930 (Closes: #844617).
   * Add more spelling fixes.
+  * Disable the bootstrap package for now, the bootstrap sequence is
+    broken (#838879) and having a bootstrap package entails a trip through
+    NEW for every upload.
 
  -- Stephen Kitt <skitt@debian.org>  Fri, 18 Nov 2016 23:17:07 +0100
 
