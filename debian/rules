@@ -130,6 +130,9 @@ unpack_stamp = $(stampdir)/unpack
 patch_stamp = $(stampdir)/patch
 GFDL_INVARIANT_FREE=yes
 srcdir=$(upstream_dir)
+# Pretend to stage (this disables the ADA patches which cause problems for the
+# MinGW-w64 build)
+DEB_STAGE=1
 include $(gcc_dir)/debian/rules.patch
 
 unpack: $(unpack_stamp)

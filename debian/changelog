@@ -1,3 +1,11 @@
+gnat-mingw-w64 (19.2) UNRELEASED; urgency=medium
+
+  * Disable the ADA patches which are enabled by default since
+    gcc-6-source 6.2.1-3, but cause issues with the MinGW-w64 build
+    (Closes: #846737).
+
+ -- Stephen Kitt <skitt@debian.org>  Sat, 03 Dec 2016 23:20:47 +0100
+
 gnat-mingw-w64 (19.1) unstable; urgency=medium
 
   * Merge changes up to gcc-mingw-w64 19.1:
