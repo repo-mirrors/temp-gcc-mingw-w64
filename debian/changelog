@@ -1,4 +1,4 @@
-gnat-mingw-w64 (19.2) UNRELEASED; urgency=medium
+gnat-mingw-w64 (19.2) unstable; urgency=medium
 
   * Disable the ADA patches which are enabled by default since
     gcc-6-source 6.2.1-3, but cause issues with the MinGW-w64 build
@@ -8,7 +8,7 @@ gnat-mingw-w64 (19.2) UNRELEASED; urgency=medium
     - add more spelling fixes.
   * Update debian/watch.
 
- -- Stephen Kitt <skitt@debian.org>  Sat, 03 Dec 2016 23:20:47 +0100
+ -- Stephen Kitt <skitt@debian.org>  Sun, 04 Dec 2016 22:55:36 +0100
 
 gnat-mingw-w64 (19.1) unstable; urgency=medium
 
