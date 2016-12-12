@@ -1,0 +1,10 @@
+--- src/gcc/ada/gcc-interface/Makefile.in.orig	2016-12-11 23:18:26.639718462 +0100
++++ src/gcc/ada/gcc-interface/Makefile.in	2016-12-11 23:18:37.968027787 +0100
+@@ -2786,6 +2786,7 @@
+ 	    $(OSCONS_CPP) ; \
+ 	    $(OSCONS_EXTRACT) ; \
+ 	    ../bldtools/oscons/xoscons s-oscons)
++	touch --date='$(DEB_DATE)' $@
+ 
+ gnatlib: ../stamp-gnatlib1-$(RTSDIR) ../stamp-gnatlib2-$(RTSDIR) $(RTSDIR)/s-oscons.ads
+ 	test -f $(RTSDIR)/s-oscons.ads || exit 1

@@ -38,6 +38,9 @@ deb_upstream_nextversion := $(shell echo $(deb_upstream_version) | awk -F. "{ fo
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 derives_from_ubuntu := $(shell (dpkg-vendor --derives-from Ubuntu && echo "yes") || echo "no")
 
+DEB_DATE := $(shell dpkg-parsechangelog -S date)
+export DEB_DATE
+
 # First split version
 first_split_version := 4.6.3-3+4
 ifeq ($(derives_from_ubuntu),yes)
@@ -208,6 +211,8 @@ mingw-w64-patch: mingw-w64-patch-stamp
 mingw-w64-patch-stamp: $(patch_stamp)
 	# Remove the patch building libstdc++_pic.a before configuring
 	patch -R -p2 -d$(upstream_dir) < $(gcc_dir)/debian/patches/libstdc++-pic.diff
+	# Ensure s-oscons.ads gets a fixed date and time
+	patch -p1 -d$(upstream_dir) < debian/patches/reproducible-s-oscons.patch
 	# Spelling fixes
 	$(call spelling,adress,address)
 	$(call spelling,Allow to,Allow one to)
@@ -229,6 +234,9 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	$(call spelling,wihout,without)
 	# Force /bin/sh in mkheaders
 	sed -i sX@SHELL@X/bin/shX $(upstream_dir)/fixincludes/mkheaders.in
+	# Fix the date and time of patched files
+	find . -type f -a -newermt '$(DEB_DATE)' -print0 | \
+		xargs -0r touch --no-dereference --date='$(DEB_DATE)'
 	touch $@
 
 configure: configure-stamp

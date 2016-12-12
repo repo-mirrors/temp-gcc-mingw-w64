@@ -1,3 +1,12 @@
+gnat-mingw-w64 (19.3) UNRELEASED; urgency=medium
+
+  * Set the date and time of patched files to the changelog's, and set
+    s-oscons.ads' date and time likewise, to limit date-related
+    reproducibility variations (s-oscons.ads' timestamp in particular ends
+    up encoded in .ali files).
+
+ -- Stephen Kitt <skitt@debian.org>  Sun, 11 Dec 2016 23:30:10 +0100
+
 gnat-mingw-w64 (19.2) unstable; urgency=medium
 
   * Disable the ADA patches which are enabled by default since
