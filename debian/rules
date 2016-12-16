@@ -38,9 +38,6 @@ deb_upstream_nextversion := $(shell echo $(deb_upstream_version) | awk -F. "{ fo
 base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1/')
 derives_from_ubuntu := $(shell (dpkg-vendor --derives-from Ubuntu && echo "yes") || echo "no")
 
-DEB_DATE := $(shell dpkg-parsechangelog -S date)
-export DEB_DATE
-
 # First split version
 first_split_version := 4.6.3-3+4
 ifeq ($(derives_from_ubuntu),yes)
@@ -235,8 +232,8 @@ mingw-w64-patch-stamp: $(patch_stamp)
 	# Force /bin/sh in mkheaders
 	sed -i sX@SHELL@X/bin/shX $(upstream_dir)/fixincludes/mkheaders.in
 	# Fix the date and time of patched files
-	find . -type f -a -newermt '$(DEB_DATE)' -print0 | \
-		xargs -0r touch --no-dereference --date='$(DEB_DATE)'
+	find . -type f -a -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
+		xargs -0r touch --no-dereference --date='@$(SOURCE_DATE_EPOCH)'
 	touch $@
 
 configure: configure-stamp

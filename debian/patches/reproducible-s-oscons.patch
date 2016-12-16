@@ -4,7 +4,7 @@
  	    $(OSCONS_CPP) ; \
  	    $(OSCONS_EXTRACT) ; \
  	    ../bldtools/oscons/xoscons s-oscons)
-+	touch --date='$(DEB_DATE)' $@
++	touch --date='@$(SOURCE_DATE_EPOCH)' $@
  
  gnatlib: ../stamp-gnatlib1-$(RTSDIR) ../stamp-gnatlib2-$(RTSDIR) $(RTSDIR)/s-oscons.ads
  	test -f $(RTSDIR)/s-oscons.ads || exit 1
